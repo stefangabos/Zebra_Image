@@ -1,0 +1,23 @@
+{
+    "name": "stefangabos/zebra_image",
+    "type": "library",
+    "description": "A compact (one-file only), lightweight, image manipulation PHP library",
+    "keywords": ["php","image", "gd", "thumbnail", "resize", "crop", "filters"],
+    "homepage": "http://stefangabos.ro/php-libraries/zebra-image/",
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Stefan Gabos",
+            "email": "contact@stefangabos.ro",
+            "homepage": "http://stefangabos.ro/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=4.4.9"
+    },
+    "version": "2.2.3",
+    "autoload": {
+        "psr-0": { "Zebra_Image": "" }
+    }
+}
