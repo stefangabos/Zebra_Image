@@ -102,4 +102,4 @@ PHP 4.4.9+ (PHP 5+ for using filters), bundled GD 2.0.28+
 ?>
 ```
 
-Visit the **[project's homepage](http://stefangabos.ro/php-libraries/zebra_image/)** for more information.
+Visit the **[project's homepage](http://stefangabos.ro/php-libraries/zebra-image/)** for more information.
