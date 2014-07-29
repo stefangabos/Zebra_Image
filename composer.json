@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=4.4.9"
+        "php": ">=5.0.0"
     },
     "autoload": {
         "classmap": ["Zebra_Image.php"]
