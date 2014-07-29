@@ -29,7 +29,7 @@ The cool thing about it is that it can re-size images to exact given width and h
 
 ## Requirements
 
-PHP 4.4.9+ (PHP 5+ for using filters), bundled GD 2.0.28+
+PHP 5+, bundled GD 2.0.28+
 
 ## How to use
 
