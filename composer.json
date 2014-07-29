@@ -16,8 +16,7 @@
     "require": {
         "php": ">=4.4.9"
     },
-    "version": "2.2.3",
     "autoload": {
-        "psr-0": { "Zebra_Image": "" }
+        "classmap": ["Zebra_Image.php"]
     }
 }
