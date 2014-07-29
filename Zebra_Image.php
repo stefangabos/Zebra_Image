@@ -66,7 +66,7 @@ class Zebra_Image
      *
      *  @var integer
      */
-    var $chmod_value;
+    public $chmod_value;
 
     /**
      *  If set to FALSE, images having both width and height smaller than the required width and height, will be left
@@ -78,7 +78,7 @@ class Zebra_Image
      *
      *  @var boolean
      */
-    var $enlarge_smaller_images;
+    public $enlarge_smaller_images;
 
     /**
      *  In case of an error read this property's value to see the error's code.
@@ -98,7 +98,7 @@ class Zebra_Image
      *
      *  @var integer
      */
-    var $error;
+    public $error;
 
     /**
      *  Indicates the quality of the output image (better quality means bigger file size).
@@ -111,7 +111,7 @@ class Zebra_Image
      *
      *  @var integer
      */
-    var $jpeg_quality;
+    public $jpeg_quality;
 
     /**
      *  Indicates the compression level of the output image (lower compression means bigger file size).
@@ -127,7 +127,7 @@ class Zebra_Image
      *
      *  @var integer
      */
-    var $png_compression;
+    public $png_compression;
 
     /**
      *  Specifies whether, upon resizing, images should preserve their aspect ratio.
@@ -138,7 +138,7 @@ class Zebra_Image
      *
      *  @var boolean
      */
-    var $preserve_aspect_ratio;
+    public $preserve_aspect_ratio;
 
     /**
      *  Indicates whether a target files should preserve the source file's date/time.
@@ -149,7 +149,7 @@ class Zebra_Image
      *
      *  @var boolean
      */
-    var $preserve_time;
+    public $preserve_time;
 
     /**
      *  Indicates whether the target image should have a "sharpen" filter applied to it.
@@ -165,7 +165,7 @@ class Zebra_Image
      *
      *  @var boolean
      */
-    var $sharpen_images;
+    public $sharpen_images;
 
     /**
      *  Path to an image file to apply the transformations to.
@@ -174,7 +174,7 @@ class Zebra_Image
      *
      *  @var    string
      */
-    var $source_path;
+    public $source_path;
 
     /**
      *  Path (including file name) to where to save the transformed image.
@@ -184,7 +184,7 @@ class Zebra_Image
      *
      *  @var    string
      */
-    var $target_path;
+    public $target_path;
 
     /**
      *  Constructor of the class.
@@ -193,7 +193,7 @@ class Zebra_Image
      *
      *  @return void
      */
-    function Zebra_Image()
+    function __construct()
     {
 
         // set default values for properties
@@ -326,7 +326,7 @@ class Zebra_Image
      *                              {@link http://php.net/manual/en/function.imagefilter.php imagefilter} exists and that
      *                              the requested filter is valid, check the {@link error} property to see the error code.
      */
-    function apply_filter($filter, $arg1 = '', $arg2 = '', $arg3 = '', $arg4 = '')
+    public function apply_filter($filter, $arg1 = '', $arg2 = '', $arg3 = '', $arg4 = '')
     {
 
         // if "imagefilter" function exists and the requested filter exists
@@ -435,7 +435,7 @@ class Zebra_Image
      *
      *                      If FALSE is returned, check the {@link error} property to see the error code.
      */
-    function crop($start_x, $start_y, $end_x, $end_y)
+    public function crop($start_x, $start_y, $end_x, $end_y)
     {
 
         // this method might be also called internally
@@ -518,7 +518,7 @@ class Zebra_Image
      *
      *                      If FALSE is returned, check the {@link error} property to see the error code.
      */
-    function flip_both()
+    public function flip_both()
     {
 
         return $this->_flip('both');
@@ -551,7 +551,7 @@ class Zebra_Image
      *
      *                      If FALSE is returned, check the {@link error} property to see the error code.
      */
-    function flip_horizontal()
+    public function flip_horizontal()
     {
 
         return $this->_flip('horizontal');
@@ -584,7 +584,7 @@ class Zebra_Image
      *
      *                      If FALSE is returned, check the {@link error} property to see the error code.
      */
-    function flip_vertical()
+    public function flip_vertical()
     {
 
         return $this->_flip('vertical');
@@ -713,7 +713,7 @@ class Zebra_Image
      *                                          If FALSE is returned, check the {@link error} property to see what went
      *                                          wrong
      */
-    function resize($width = 0, $height = 0, $method = ZEBRA_IMAGE_CROP_CENTER, $background_color = '#FFFFFF')
+    public function resize($width = 0, $height = 0, $method = ZEBRA_IMAGE_CROP_CENTER, $background_color = '#FFFFFF')
     {
 
         // if image resource was successfully created
@@ -1098,7 +1098,7 @@ class Zebra_Image
      *                                          If FALSE is returned, check the {@link error} property to see the error
      *                                          code.
      */
-    function rotate($angle, $background_color = -1)
+    public function rotate($angle, $background_color = -1)
     {
 
         // if image resource was successfully created
@@ -1193,7 +1193,7 @@ class Zebra_Image
      *
      *  @access private
      */
-    function _create_from_source()
+    private function _create_from_source()
     {
 
         // perform some error checking first
@@ -1322,7 +1322,7 @@ class Zebra_Image
      *
      *  @access private
      */
-    function _hex2rgb($color, $default_on_error = '#FFFFFF')
+    private function _hex2rgb($color, $default_on_error = '#FFFFFF')
     {
 
         // if color is not formatted correctly
@@ -1371,7 +1371,7 @@ class Zebra_Image
      *
      *                      If FALSE is returned, check the {@link error} property to see the error code.
      */
-    function _flip($orientation)
+    private function _flip($orientation)
     {
 
         // if image resource was successfully created
@@ -1472,7 +1472,7 @@ class Zebra_Image
      *
      *  @access private
      */
-    function _prepare_image($width, $height, $background_color = '#FFFFFF')
+    private function _prepare_image($width, $height, $background_color = '#FFFFFF')
     {
 
         // create a blank image
@@ -1544,7 +1544,7 @@ class Zebra_Image
      *
      *  @access private
      */
-    function _sharpen_image($image)
+    private function _sharpen_image($image)
     {
 
         // if the "sharpen_images" is set to true and we're running an appropriate version of PHP
@@ -1585,7 +1585,7 @@ class Zebra_Image
      *
      *  @access private
      */
-    function _write_image($identifier)
+    private function _write_image($identifier)
     {
 
         // sharpen image if it's required
