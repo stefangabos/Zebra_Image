@@ -1,12 +1,12 @@
 # Zebra_Image
 
+####A compact (one-file only), lightweight, image manipulation PHP library
+
 ----
 
 [Packagist](https://packagist.org/) stats
 
 [![Latest Stable Version](https://poser.pugx.org/stefangabos/zebra_image/v/stable)](https://packagist.org/packages/stefangabos/zebra_image) [![Total Downloads](https://poser.pugx.org/stefangabos/zebra_image/downloads)](https://packagist.org/packages/stefangabos/zebra_image) [![Monthly Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/monthly)](https://packagist.org/packages/stefangabos/zebra_image) [![Daily Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/daily)](https://packagist.org/packages/stefangabos/zebra_image) [![License](https://poser.pugx.org/stefangabos/zebra_image/license)](https://packagist.org/packages/stefangabos/zebra_image)
-
-####A compact (one-file only), lightweight, image manipulation PHP library
 
 Provides methods for performing several types of image manipulation operations. It doesn’t require any external libraries other than the GD2 extension (with which PHP usually comes pre-compiled with).
 
