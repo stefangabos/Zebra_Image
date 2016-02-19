@@ -185,6 +185,14 @@ class Zebra_Image
      *  @var    string
      */
     public $target_path;
+    
+   /**
+    * Array for error messages
+    *
+    * @var array
+    */
+    public $error_messages = array();
+
 
     /**
      *  Constructor of the class.
@@ -210,6 +218,19 @@ class Zebra_Image
         $this->sharpen_images = false;
 
         $this->source_path = $this->target_path = '';
+        
+        /**
+         * Array with default error messages
+         */
+        $this->error_messages = array(
+            'Source file could not be found!',
+            'Source file is not readable!',
+            'Could not write target file!',
+            'Unsupported source file format!',
+            'Unsupported target file format!',
+            'GD library version does not support target file format!',
+            'GD library is not installed!'
+        );
 
     }
 
@@ -1703,5 +1724,26 @@ class Zebra_Image
         return true;
 
     }
+    
+   /**
+    * Return the error message
+    * 
+    * @return mixed
+    */
+    public function getErrorMessage(){
+    	return $this->error_messages[$this->error];
+    }
+    
+    /**
+     * Set custom error messages 
+     * 
+     * @param array $error_messages
+     */
+    public function setErrorMessages($error_messages = array())
+    {
+        $this->error_messages = $error_messages;
+    }
+
+}
 
 }
