@@ -93,6 +93,7 @@ class Zebra_Image
      *  - 6:  GD library version does not support target file format
      *  - 7:  GD library is not installed!
      *  - 8:  "chmod" command is disabled via configuration
+     *  - 9:  "exif_read_data" function is not available
      *
      *  Default is 0 (no error).
      *
@@ -168,6 +169,15 @@ class Zebra_Image
     public $sharpen_images;
 
     /**
+     *  If set to TRUE, images will be rotated acording to the Exif Orientation Tag.
+     *
+     *  Default is FALSE
+     *
+     *  @var boolean
+     */
+    public $handle_exif_orientation_tag;
+
+    /**
      *  Path to an image file to apply the transformations to.
      *
      *  Supported file types are <b>GIF</b>, <b>PNG</b> and <b>JPEG</b>.
@@ -207,7 +217,7 @@ class Zebra_Image
 
         $this->preserve_aspect_ratio = $this->preserve_time = $this->enlarge_smaller_images = true;
 
-        $this->sharpen_images = false;
+        $this->sharpen_images = $this->handle_exif_orientation_tag = false;
 
         $this->source_path = $this->target_path = '';
 
@@ -1229,6 +1239,14 @@ class Zebra_Image
 
             return false;
 
+        // handle exif orientation tag
+        } elseif ($this->handle_exif_orientation_tag && !$this->fix_exif_orientation_tag()) {
+
+            // save the error level and stop the execution of the script
+            $this->error = 9;
+
+            return false;
+
         // try to get source file width, height and type
         // and if it founds an unsupported file type
         } elseif (!list($this->source_width, $this->source_height, $this->source_type) = @getimagesize($this->source_path)) {
@@ -1571,6 +1589,87 @@ class Zebra_Image
 
         // return the image's identifier
         return $image;
+
+    }
+
+    /**
+     *
+     *  Rotates image acording to the Exif Orientation Tag
+     *
+     *  Read more about this here {@link http://jpegclub.org/exif_orientation.html}.
+     *
+     */
+    public function fix_exif_orientation_tag()
+    {
+
+        if (!function_exists('exif_read_data')) return false;
+
+        // read the exif data
+        $exif = exif_read_data($this->source_path);
+
+        // if orientation need fixing
+        if(in_array($exif['Orientation'], array(3, 6, 8)))
+        {
+
+            // get image info
+            $imsize = getimagesize($this->source_path);
+
+            // create image resource
+            switch($imsize[2]) {
+                case IMAGETYPE_GIF:
+                    $identifier = imagecreatefromgif($this->source_path);
+                    break;
+
+                case IMAGETYPE_JPEG:
+                    $identifier = imagecreatefromjpeg($this->source_path);
+                    break;
+
+                case IMAGETYPE_PNG:
+                    $identifier = imagecreatefrompng($this->source_path);
+                    break;
+            }
+
+            // fix the orientation
+            switch($exif['Orientation']) {
+                case 3:
+                    $identifier = imagerotate($identifier, 180, 0);
+                    break;
+
+                case 6:
+                    $identifier = imagerotate($identifier, -90, 0);
+                    break;
+
+                case 8:
+                    $identifier = imagerotate($identifier, 90, 0);
+                    break;
+            }
+
+            // save the image
+            switch($imsize[2]) {
+                case IMAGETYPE_GIF:
+                    imagegif($identifier, $this->target_path, $this->jpeg_quality);
+                    break;
+
+                case IMAGETYPE_JPEG:
+                    imagejpeg($identifier, $this->target_path, $this->jpeg_quality);
+                    break;
+
+                case IMAGETYPE_PNG:
+                    imagepng($identifier, $this->target_path, $this->jpeg_quality);
+                    break;
+            }
+
+            // overwrite the source path in order for the folowing methods to use the corrected image file
+            $this->source_path = $this->target_path;
+
+            return true;
+        }
+
+
+        // if script gets this far, return false
+        // note that we do not set the error level as it has been already set
+        // by the _create_from_source() method earlier
+        return false;
 
     }
 

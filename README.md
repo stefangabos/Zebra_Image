@@ -66,6 +66,7 @@ PHP 5+, bundled GD 2.0.28+
     $image->preserve_aspect_ratio = true;
     $image->enlarge_smaller_images = true;
     $image->preserve_time = true;
+    $image->handle_exif_orientation_tag = true;
 
     // resize the image to exactly 100x100 pixels by using the "crop from center" method
     // (read more in the overview section or in the documentation)
@@ -98,6 +99,9 @@ PHP 5+, bundled GD 2.0.28+
                 break;
             case 8:
                 echo '"chmod" command is disabled via configuration!';
+                break;
+            case 9:
+                echo '"exif_read_data" function is not available';
                 break;
 
         }
