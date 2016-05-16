@@ -37,8 +37,8 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  For more resources visit {@link http://stefangabos.ro/}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.2.3 (last revision: July 14, 2013)
- *  @copyright  (c) 2006 - 2013 Stefan Gabos
+ *  @version    2.2.4 (last revision: May 16, 2016)
+ *  @copyright  (c) 2006 - 2016 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
  */
@@ -100,6 +100,22 @@ class Zebra_Image
      *  @var integer
      */
     public $error;
+
+    /**
+     *  If set to TRUE, images will be auto-rotated acording to the {@link http://keyj.emphy.de/exif-orientation-rant/ Exif Orientation Tag}
+     *  so that they are always shown correctly.
+     *
+     *  <samp>If you set this to TRUE you must also enable exif-support with --enable-exif. Windows users must enable both
+     *  the php_mbstring.dll and php_exif.dll DLL's in php.ini. The php_mbstring.dll DLL must be loaded before the
+     *  php_exif.dll DLL so adjust your php.ini accordingly. See {@link http://php.net/manual/en/exif.installation.php the PHP manual}</samp>
+     *
+     *  Default is FALSE
+     *
+     *  @since 2.2.4
+     *
+     *  @var boolean
+     */
+    public $auto_handle_exif_orientation;
 
     /**
      *  Indicates the quality of the output image (better quality means bigger file size).
@@ -169,15 +185,6 @@ class Zebra_Image
     public $sharpen_images;
 
     /**
-     *  If set to TRUE, images will be rotated acording to the Exif Orientation Tag.
-     *
-     *  Default is FALSE
-     *
-     *  @var boolean
-     */
-    public $handle_exif_orientation_tag;
-
-    /**
      *  Path to an image file to apply the transformations to.
      *
      *  Supported file types are <b>GIF</b>, <b>PNG</b> and <b>JPEG</b>.
@@ -217,7 +224,7 @@ class Zebra_Image
 
         $this->preserve_aspect_ratio = $this->preserve_time = $this->enlarge_smaller_images = true;
 
-        $this->sharpen_images = $this->handle_exif_orientation_tag = false;
+        $this->sharpen_images = $this->auto_handle_exif_orientation = false;
 
         $this->source_path = $this->target_path = '';
 
@@ -1111,8 +1118,14 @@ class Zebra_Image
     public function rotate($angle, $background_color = -1)
     {
 
-        // if image resource was successfully created
-        if ($this->_create_from_source()) {
+        // get function arguments
+        $arguments = func_get_args();
+
+        // if a third argument exists
+        $use_existing_source = (isset($arguments[2]) && $arguments[2] === false);
+
+        // if we came here just to fix orientation or if image resource was successfully created
+        if ($use_existing_source || $this->_create_from_source()) {
 
             // angles are given clockwise but imagerotate works counterclockwise so we need to negate our value
             $angle = -$angle;
@@ -1185,8 +1198,22 @@ class Zebra_Image
 
             }
 
-            // write image
-            $this->_write_image($target_identifier);
+            // if we called this method from the _create_from_source() method
+            // bacause we are fixing orientation
+            if ($use_existing_source) {
+
+                // make any further method work on the rotated image
+                $this->source_identifier = $target_identifier;
+
+                // update the width and height of the image to the values
+                // of the rotated image
+                $this->source_width = imagesx($target_identifier);
+                $this->source_height = imagesy($target_identifier);
+
+                return true;
+
+            // write image otherwise
+            } else return $this->_write_image($target_identifier);
 
         }
 
@@ -1236,14 +1263,6 @@ class Zebra_Image
 
             // save the error level and stop the execution of the script
             $this->error = 3;
-
-            return false;
-
-        // handle exif orientation tag
-        } elseif ($this->handle_exif_orientation_tag && !$this->fix_exif_orientation_tag()) {
-
-            // save the error level and stop the execution of the script
-            $this->error = 9;
 
             return false;
 
@@ -1322,59 +1341,46 @@ class Zebra_Image
         // make available the source image's identifier
         $this->source_identifier = $identifier;
 
+        // if we need to handle exif orientation automatically
+        if ($this->auto_handle_exif_orientation)
+
+            // if "exif_read_data" function is not available, return false
+            if (!function_exists('exif_read_data')) {
+
+                // save the error level and stop the execution of the script
+                $this->error = 9;
+
+                return false;
+
+            // if "exif_read_data" function is available, EXIF information is available, orientation information is available and orientation needs fixing
+            } elseif (($exif = exif_read_data($this->source_path)) && isset($exif['Orientation']) && in_array($exif['Orientation'], array(3, 6, 8))) {
+
+                // fix the orientation
+                switch ($exif['Orientation']) {
+
+                    case 3:
+
+                        // 180 rotate left
+                        $this->rotate(180, -1, false);
+                        break;
+
+                    case 6:
+
+                        // 90 rotate right
+                        $this->rotate(90, -1, false);
+                        break;
+
+                    case 8:
+
+                        // 90 rotate left
+                        $this->rotate(-90, -1, false);
+                        break;
+
+                }
+
+            }
+
         return true;
-
-    }
-
-    /**
-     *  Converts a hexadecimal representation of a color (i.e. #123456 or #AAA) to a RGB representation.
-     *
-     *  The RGB values will be a value between 0 and 255 each.
-     *
-     *  @param  string  $color              Hexadecimal representation of a color (i.e. #123456 or #AAA).
-     *
-     *  @param  string  $default_on_error   Hexadecimal representation of a color to be used in case $color is not
-     *                                      recognized as a hexadecimal color.
-     *
-     *  @return array                       Returns an associative array with the values of (R)ed, (G)reen and (B)lue
-     *
-     *  @access private
-     */
-    private function _hex2rgb($color, $default_on_error = '#FFFFFF')
-    {
-
-        // if color is not formatted correctly
-        // use the default color
-        if (preg_match('/^#?([a-f]|[0-9]){3}(([a-f]|[0-9]){3})?$/i', $color) == 0) $color = $default_on_error;
-
-        // trim off the "#" prefix from $background_color
-        $color = ltrim($color, '#');
-
-        // if color is given using the shorthand (i.e. "FFF" instead of "FFFFFF")
-        if (strlen($color) == 3) {
-
-            $tmp = '';
-
-            // take each value
-            // and duplicate it
-            for ($i = 0; $i < 3; $i++) $tmp .= str_repeat($color[$i], 2);
-
-            // the color in it's full, 6 characters length notation
-            $color = $tmp;
-
-        }
-
-        // decimal representation of the color
-        $int = hexdec($color);
-
-        // extract and return the RGB values
-        return array(
-
-            'r' =>  0xFF & ($int >> 0x10),
-            'g' =>  0xFF & ($int >> 0x8),
-            'b' =>  0xFF & $int
-
-        );
 
     }
 
@@ -1469,6 +1475,58 @@ class Zebra_Image
         // note that we do not set the error level as it has been already set
         // by the _create_from_source() method earlier
         return false;
+
+    }
+
+    /**
+     *  Converts a hexadecimal representation of a color (i.e. #123456 or #AAA) to a RGB representation.
+     *
+     *  The RGB values will be a value between 0 and 255 each.
+     *
+     *  @param  string  $color              Hexadecimal representation of a color (i.e. #123456 or #AAA).
+     *
+     *  @param  string  $default_on_error   Hexadecimal representation of a color to be used in case $color is not
+     *                                      recognized as a hexadecimal color.
+     *
+     *  @return array                       Returns an associative array with the values of (R)ed, (G)reen and (B)lue
+     *
+     *  @access private
+     */
+    private function _hex2rgb($color, $default_on_error = '#FFFFFF')
+    {
+
+        // if color is not formatted correctly
+        // use the default color
+        if (preg_match('/^#?([a-f]|[0-9]){3}(([a-f]|[0-9]){3})?$/i', $color) == 0) $color = $default_on_error;
+
+        // trim off the "#" prefix from $background_color
+        $color = ltrim($color, '#');
+
+        // if color is given using the shorthand (i.e. "FFF" instead of "FFFFFF")
+        if (strlen($color) == 3) {
+
+            $tmp = '';
+
+            // take each value
+            // and duplicate it
+            for ($i = 0; $i < 3; $i++) $tmp .= str_repeat($color[$i], 2);
+
+            // the color in it's full, 6 characters length notation
+            $color = $tmp;
+
+        }
+
+        // decimal representation of the color
+        $int = hexdec($color);
+
+        // extract and return the RGB values
+        return array(
+
+            'r' =>  0xFF & ($int >> 0x10),
+            'g' =>  0xFF & ($int >> 0x8),
+            'b' =>  0xFF & $int
+
+        );
 
     }
 
@@ -1589,87 +1647,6 @@ class Zebra_Image
 
         // return the image's identifier
         return $image;
-
-    }
-
-    /**
-     *
-     *  Rotates image acording to the Exif Orientation Tag
-     *
-     *  Read more about this here {@link http://jpegclub.org/exif_orientation.html}.
-     *
-     */
-    public function fix_exif_orientation_tag()
-    {
-
-        if (!function_exists('exif_read_data')) return false;
-
-        // read the exif data
-        $exif = exif_read_data($this->source_path);
-
-        // if orientation need fixing
-        if(in_array($exif['Orientation'], array(3, 6, 8)))
-        {
-
-            // get image info
-            $imsize = getimagesize($this->source_path);
-
-            // create image resource
-            switch($imsize[2]) {
-                case IMAGETYPE_GIF:
-                    $identifier = imagecreatefromgif($this->source_path);
-                    break;
-
-                case IMAGETYPE_JPEG:
-                    $identifier = imagecreatefromjpeg($this->source_path);
-                    break;
-
-                case IMAGETYPE_PNG:
-                    $identifier = imagecreatefrompng($this->source_path);
-                    break;
-            }
-
-            // fix the orientation
-            switch($exif['Orientation']) {
-                case 3:
-                    $identifier = imagerotate($identifier, 180, 0);
-                    break;
-
-                case 6:
-                    $identifier = imagerotate($identifier, -90, 0);
-                    break;
-
-                case 8:
-                    $identifier = imagerotate($identifier, 90, 0);
-                    break;
-            }
-
-            // save the image
-            switch($imsize[2]) {
-                case IMAGETYPE_GIF:
-                    imagegif($identifier, $this->target_path, $this->jpeg_quality);
-                    break;
-
-                case IMAGETYPE_JPEG:
-                    imagejpeg($identifier, $this->target_path, $this->jpeg_quality);
-                    break;
-
-                case IMAGETYPE_PNG:
-                    imagepng($identifier, $this->target_path, $this->jpeg_quality);
-                    break;
-            }
-
-            // overwrite the source path in order for the folowing methods to use the corrected image file
-            $this->source_path = $this->target_path;
-
-            return true;
-        }
-
-
-        // if script gets this far, return false
-        // note that we do not set the error level as it has been already set
-        // by the _create_from_source() method earlier
-        return false;
 
     }
 
