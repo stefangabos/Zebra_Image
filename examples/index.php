@@ -61,6 +61,10 @@
     // create a new instance of the class
     $image = new Zebra_Image();
 
+    // set this to TRUE if you work on images uploaded by users
+    // (see http://stefangabos.ro/wp-content/docs/Zebra_Image/Zebra_Image/Zebra_Image.html#var$auto_handle_exif_orientation)
+    //$auto_handle_exif_orientation = true;
+
     // indicate a source image
     $image->source_path = 'images/transparent-png24.png';
 
