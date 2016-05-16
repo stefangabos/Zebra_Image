@@ -37,6 +37,8 @@ The cool thing about it is that it can re-size images to exact given width and h
 
 PHP 5+, bundled GD 2.0.28+
 
+--enable-exif (or, for Windows, php_mbstring.dll and php_exif.dll extensions enabled) for auto-fixing image rotation so you always see images correctly
+
 ## How to use
 
 ```php
@@ -47,6 +49,11 @@ PHP 5+, bundled GD 2.0.28+
 
     // create a new instance of the class
     $image = new Zebra_Image();
+
+    // if you handle image uploads from users and you have enabled exif-support with --enable-exif
+    // (or, on a Windows machine you have enabled php_mbstring.dll and php_exif.dll in php.ini)
+    // set this property to TRUE in order to fix rotation so you always see images in correct position
+    $image->auto_handle_exif_orientation = false;
 
     // indicate a source image (a GIF, PNG or JPEG file)
     $image->source_path = 'path/to/image.png';
