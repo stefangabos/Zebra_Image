@@ -1,6 +1,6 @@
 # Zebra_Image
 
-####A compact (one-file only), lightweight, image manipulation PHP library
+#### A compact (one-file only), lightweight, image manipulation PHP library
 
 ----
 
@@ -24,7 +24,7 @@ The cool thing about it is that it can re-size images to exact given width and h
 
 4. after the image has been scaled so that its width and height are equal or greater than the required width and height respectively, a region of required width and height will be cropped from the center of the resulted image.
 
-##Features
+## Features
 
 - can be used to resize, flip, rotate, crop and sharpen images
 - filters can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
