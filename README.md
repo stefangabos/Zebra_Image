@@ -42,8 +42,6 @@ PHP 5+, bundled GD 2.0.28+
 ## How to use
 
 ```php
-<?php
-
     // load the image manipulation class
     require 'path/to/Zebra_Image.php';
 
@@ -115,8 +113,6 @@ PHP 5+, bundled GD 2.0.28+
 
     // if no errors
     } else echo 'Success!';
-
-?>
 ```
 
 Visit the **[project's homepage](http://stefangabos.ro/php-libraries/zebra-image/)** for more information.
