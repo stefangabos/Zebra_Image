@@ -2,7 +2,7 @@
 
 # Zebra_Image
 
-*A compact and lightweight image manipulation PHP library written providing methods for performing several types of image manipulation operations*
+*A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several types of image manipulation operations and applying filters to images.*
 
 [![Latest Stable Version](https://poser.pugx.org/stefangabos/zebra_image/v/stable)](https://packagist.org/packages/stefangabos/zebra_image) [![Total Downloads](https://poser.pugx.org/stefangabos/zebra_image/downloads)](https://packagist.org/packages/stefangabos/zebra_image) [![Monthly Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/monthly)](https://packagist.org/packages/stefangabos/zebra_image) [![Daily Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/daily)](https://packagist.org/packages/stefangabos/zebra_image) [![License](https://poser.pugx.org/stefangabos/zebra_image/license)](https://packagist.org/packages/stefangabos/zebra_image)
 
