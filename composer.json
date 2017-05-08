@@ -3,13 +3,13 @@
     "type": "library",
     "description": "A compact (one-file only), lightweight, image manipulation PHP library",
     "keywords": ["php","image", "gd", "thumbnail", "resize", "crop", "filters"],
-    "homepage": "http://stefangabos.ro/php-libraries/zebra-image/",
+    "homepage": "https://github.com/stefangabos/Zebra_Image/",
     "license": "LGPL-3.0",
     "authors": [
         {
             "name": "Stefan Gabos",
             "email": "contact@stefangabos.ro",
-            "homepage": "http://stefangabos.ro/",
+            "homepage": "https://github.com/stefangabos/",
             "role": "Developer"
         }
     ],
