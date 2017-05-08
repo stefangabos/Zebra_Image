@@ -19,22 +19,9 @@ define('ZEBRA_IMAGE_CROP_BOTTOMRIGHT', 10);
 ini_set('gd.jpeg_ignore_warning', true);
 
 /**
- *  A compact, lightweight, object-oriented image manipulation library written in and for PHP, that provides methods
- *  for performing several types of image manipulation operations. It doesn't require any external libraries other than
- *  the GD2 extension (with which PHP usually comes precompiled with).
+ *  A compact (one-file only) and lightweight PHP library for image manipulation
  *
- *  The code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to
- *  E_ALL.
- *
- *  With this library you can rescale, flip, rotate and crop images. It supports loading and saving images in the GIF,
- *  JPEG and PNG formats and preserves transparency for GIF, PNG and PNG24.
- *
- *  The cool thing about it is that it can resize images to exact given width and height and still maintain aspect
- *  ratio.
- *
- *  Visit {@link http://stefangabos.ro/php-libraries/zebra-image/} for more information.
- *
- *  For more resources visit {@link http://stefangabos.ro/}
+ *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
  *  @version    2.2.5 (last revision: May 16, 2016)
