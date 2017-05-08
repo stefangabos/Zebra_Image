@@ -1,43 +1,100 @@
+<img src="https://github.com/stefangabos/zebrajs/blob/master/docs/images/logo.png" alt="zebrajs" align="right">
+
 # Zebra_Image
 
-#### A compact (one-file only), lightweight, image manipulation PHP library
-
-----
-
-[Packagist](https://packagist.org/) stats
+*A compact and lightweight image manipulation PHP library written providing methods for performing several types of image manipulation operations*
 
 [![Latest Stable Version](https://poser.pugx.org/stefangabos/zebra_image/v/stable)](https://packagist.org/packages/stefangabos/zebra_image) [![Total Downloads](https://poser.pugx.org/stefangabos/zebra_image/downloads)](https://packagist.org/packages/stefangabos/zebra_image) [![Monthly Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/monthly)](https://packagist.org/packages/stefangabos/zebra_image) [![Daily Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/daily)](https://packagist.org/packages/stefangabos/zebra_image) [![License](https://poser.pugx.org/stefangabos/zebra_image/license)](https://packagist.org/packages/stefangabos/zebra_image)
 
-Provides methods for performing several types of image manipulation operations. It doesn’t require any external libraries other than the GD2 extension (with which PHP usually comes pre-compiled with).
+Use Zebra_Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** images. The library supports loading and saving images in the **GIF**, **JPEG** and **PNG** formats and preserves transparency of **GIF**, **PNG8** and **PNG24** images and it doesn't require any external libraries other than the [GD2 extension](http://www.php.net/manual/en/book.image.php/) (with which PHP usually comes pre-compiled with).
 
-With this library you can resize, flip, rotate, crop and sharpen images. All sort of filters can also be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters; It supports loading and saving images in the GIF, JPEG and PNG formats and preserves transparency of GIF, PNG8 and PNG24 images.
+All the [filters supported by PHP](http://php.net/manual/ro/function.imagefilter.php) can be applied to images. These filters include negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate. Multiple filters can be applied at once for creating custom filters.
 
-Code is heavily commented and generates no warnings/errors/notices when PHP’s error reporting level is set to E_ALL.
+The code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to [E_ALL](https://web.archive.org/web/20160226192832/http://www.php.net/manual/en/function.error-reporting.php).
 
-The cool thing about it is that it can re-size images to exact given width and height and still maintain aspect ratio by using one of the following methods:
+Using this library you can resize images to *exact* given width and height and still maintain aspect ratio by using one of the following methods:
 
-1. the image will be scaled so that it will fit in a box with the given width and height and then it will be centered both horizontally and vertically in the box. The blank area will be filled with a specified color.
+- the image will be scaled so that it will fit in a box with the given width and height and then it will be centered both horizontally and vertically in the box. The blank area will be filled with a specified color.
 
-2. the image will be scaled so that it could fit in a box with the given width and height but will not be enclosed in a box with given width and height
+- the image will be scaled so that it *could* fit in a box with the given width and height but will not be enclosed in a box with given width and height
 
-3. after the image has been scaled so that its width and height are equal or greater than the required width and height respectively, a region of required width and height will be cropped from the top left corner of the resulted image.
+- after the image has been scaled so that its width and height are equal or greater than the required width and height respectively, a region of required width and height will be cropped from the top left corner of the resulted image.
 
-4. after the image has been scaled so that its width and height are equal or greater than the required width and height respectively, a region of required width and height will be cropped from the center of the resulted image.
+- after the image has been scaled so that its width and height are equal or greater than the required width and height respectively, a region of required width and height will be cropped from the center of the resulted image.
+
+Here are the results of resizing a 800×573 pixels image to a 200×200 pixels image and preserving the aspect ratio by using each of the aforementioned methods:
+
+<table width="100%" border="0">
+    <tr>
+        <td width="33%" valign="top" rowspan="4">
+            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-1.jpg" alt="Zebra_Image" align="right">
+        </td>
+        <td valign="top" width="33%">
+            <strong>Method 1</strong><br>
+            After the image is resized to 200x143 pixels representing the size of the image that <em>would fit</em> in a 200x200 pixels box while preserving its aspect ratio, it is centered both horizontally and vertically in a 200x200 pixels box. In our example the background is white but it can be set to any color. The resulting image has 200x200 pixels.
+        </td>
+        <td width="33%" valign="top">
+            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-2.jpg" alt="Zebra_Image">
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="33%">
+            <strong>Method 2</strong><br>
+            The image is resized to 200x143 pixels representing the size of the image that would fit in a 200200 pixels box while preserving its aspect ratio.
+        </td>
+        <td width="33%" valign="top">
+            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-3.jpg" alt="Zebra_Image">
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="33%">
+            <strong>Method 3 & 4</strong><br>
+            <strong>Step 1:</strong> The image is first resized to 279x200 pixels representing the size closest to the required size where the image's width and height are both equal or greater than the required width and height respectively, while preserving its aspect ratio.
+        </td>
+        <td width="33%" valign="top">
+            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-4.jpg" alt="Zebra_Image">
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" width="33%">
+            <strong>Step 2:</strong> A 200x200 pixels area will be cropped from the top-left corner of the image (for method 3) or from the center of the image (for method 4).
+        </td>
+        <td width="33%" valign="top">
+            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-5.jpg" alt="Zebra_Image">
+        </td>
+    </tr>
+</table>
 
 ## Features
 
 - can be used to resize, flip, rotate, crop and sharpen images
-- filters can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
-- can resize images to *exact* size by automatically cropping them
+- all the [filters supported by PHP](http://php.net/manual/ro/function.imagefilter.php) can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
+- images can be resized to *exact* sizes and maintaining aspect ratio by automatically cropping them
 - preserves transparency of GIF, PNG8 and PNG24 images
-- code is heavily commented and generates no warnings/errors/notices when PHP’s error reporting level is set to E_ALL
-- has comprehensive documentation
+- code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
+- has awesome documentation
 
 ## Requirements
 
 PHP 5+, bundled GD 2.0.28+
 
---enable-exif (or, for Windows, php_mbstring.dll and php_exif.dll extensions enabled) for auto-fixing image rotation so you always see images correctly
+PHP needs to be compiled with `--enable-exif` (Windows users enable `php_mbstring.dll` and `php_exif.dll` extensions in `php.ini`) for auto-fixing image rotation so images are always shown correctly regardless of how the camera was held when the pictures were taken.
+
+## Installation
+
+Download the latest version, unpack it, and load it in your project
+
+```php
+require_once ('Zebra_Image.php');
+```
+
+## Installation with Composer
+
+You can install Zebra_Image via [Composer](https://packagist.org/packages/stefangabos/zebra_image)
+
+```
+composer require stefangabos/zebra_image:dev-master
+```
 
 ## How to use
 
@@ -115,4 +172,4 @@ if (!$image->resize(100, 100, ZEBRA_IMAGE_CROP_CENTER)) {
 } else echo 'Success!';
 ```
 
-Visit the **[project's homepage](http://stefangabos.ro/php-libraries/zebra-image/)** for more information.
+:books: Checkout the [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)!
