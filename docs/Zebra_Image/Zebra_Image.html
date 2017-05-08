@@ -1,0 +1,800 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Zebra_Image, a compact (one-file only) and lightweight image manipulation PHP library - Class Zebra_Image</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="../media/reset.css">
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+<div id="phpdoc">
+<div id="doc_header">
+Package: <strong>Zebra_Image</strong>
+<ul class="notype float">
+<!--
+<li><a href="../classtrees_Zebra_Image.html">class tree: Zebra_Image</a></li>
+-->
+<li><a href="../elementindex_Zebra_Image.html">element index: Zebra_Image</a></li>
+<!--
+<li class="last"><a href="../elementindex.html">all elements</a></li>
+-->
+</ul>
+<div class="clear"></div>
+</div>
+<table cellspacing="0" cellpadding="0" class="stretch">
+<tr>
+<td valign="top" class="sidebar">
+<div id="doc_sidebar">
+<p><strong>Project's homepage</strong></p>
+<ul>
+<li>
+<a href="https://github.com/stefangabos/Zebra_Image/" class="projects-homepage">Zebra_Image</a>
+</li>
+</ul>
+<p><strong>Packages:</strong></p>
+<ul>
+<li><a href="../li_Zebra_Image.html">Zebra_Image</a></li>
+</ul>
+<p><strong>Classes:</strong></p>
+<ul>
+<li><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></li>
+</ul>
+</div>
+</td>
+<td valign="top" width="100%">
+<div id="doc_content">
+<h2>Class: <strong>Zebra_Image</strong></h2>
+<h6><strong>source file:</strong> /Zebra_Image.php</h6>
+<h3>Class Overview</h3>
+<pre></pre>
+<p>A compact (one-file only) and lightweight PHP library for image manipulation<p>Read more <a href="https://github.com/stefangabos/Zebra_Image/">here</a></p></p>
+<h4>Author(s):</h4>
+<ul>
+<li>Stefan Gabos &lt;<a href="mailto:contact@stefangabos.ro">contact@stefangabos.ro</a>&gt;</li>
+</ul>
+<h4>Version:</h4>
+<ul>
+<li>2.2.5 (last revision: May 16, 2016)</li>
+</ul>
+<h4>Copyright:</h4>
+<ul>
+<li>(c) 2006 - 2016 Stefan Gabos</li>
+</ul>
+<a name="top"></a>
+<div class="doc_toc">
+<div class="left">
+<h3>Properties</h3>
+<ul>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$auto_handle_exif_orientation">$auto_handle_exif_orientation</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$chmod_value">$chmod_value</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$enlarge_smaller_images">$enlarge_smaller_images</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$error">$error</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$jpeg_quality">$jpeg_quality</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$png_compression">$png_compression</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">$preserve_aspect_ratio</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$preserve_time">$preserve_time</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$sharpen_images">$sharpen_images</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$source_path">$source_path</a></li>
+<li><a href="../Zebra_Image/Zebra_Image.html#var$target_path">$target_path</a></li>
+</ul>
+</div>
+<div class="left">
+<h3>Methods</h3>
+<ul>
+<li><a href="../Zebra_Image/Zebra_Image.html#method__construct">__construct</a>()</li>
+<li><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a>()</li>
+<li><a href="../Zebra_Image/Zebra_Image.html#methodcrop">crop</a>()</li>
+<li><a href="../Zebra_Image/Zebra_Image.html#methodflip_both">flip_both</a>()</li>
+<li><a href="../Zebra_Image/Zebra_Image.html#methodflip_horizontal">flip_horizontal</a>()</li>
+<li><a href="../Zebra_Image/Zebra_Image.html#methodflip_vertical">flip_vertical</a>()</li>
+<li><a href="../Zebra_Image/Zebra_Image.html#methodresize">resize</a>()</li>
+<li><a href="../Zebra_Image/Zebra_Image.html#methodrotate">rotate</a>()</li>
+</ul>
+</div>
+<div class="clear"></div>
+<div class="clear"></div>
+</div>
+<a name="class_vars"></a>
+<h3>Class properties</h3>
+<a name="var$auto_handle_exif_orientation"></a>
+<h4 class="variable"><span><em>boolean</em></span> $auto_handle_exif_orientation <span class="value"></span></h4>
+<div class="doc_block">
+<p>If set to TRUE, images will be auto-rotated according to the <a href="http://keyj.emphy.de/exif-orientation-rant/">Exif Orientation Tag</a>   so that they are always shown correctly.</p>
+<p><div class="highlight">If you set this to TRUE you must also enable exif-support with --enable-exif. Windows users must enable both
+the php_mbstring.dll and php_exif.dll DLL's in php.ini. The php_mbstring.dll DLL must be loaded before the
+php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net/manual/en/exif.installation.php">the PHP manual</a></div></p><p>Default is FALSE</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>since:</strong></td>
+<td valign="top">2.2.4</td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$chmod_value"></a>
+<h4 class="variable"><span><em>integer</em></span> $chmod_value <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates the file system permissions to be set for newly created images.</p>
+<p>Better is to leave this setting as it is.</p><p>If you know what you are doing, here is how you can calculate the permission levels:</p><ul><li>400 Owner Read</li><li>200 Owner Write</li><li>100 Owner Execute</li><li>40 Group Read</li><li>20 Group Write</li><li>10 Group Execute</li><li>4 Global Read</li><li>2 Global Write</li><li>1 Global Execute</li></ul><p>   Default is 0755</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$enlarge_smaller_images"></a>
+<h4 class="variable"><span><em>boolean</em></span> $enlarge_smaller_images <span class="value"></span></h4>
+<div class="doc_block">
+<p>If set to FALSE, images having both width and height smaller than the required width and height, will be left   untouched (<a href="../Zebra_Image/Zebra_Image.html#var$jpeg_quality">jpeg_quality</a> and <a href="../Zebra_Image/Zebra_Image.html#var$png_compression">png_compression</a> will still apply).</p>
+<p>Available only for the <a href="../Zebra_Image/Zebra_Image.html#methodresize">resize()</a> method</p><p>Default is TRUE</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$error"></a>
+<h4 class="variable"><span><em>integer</em></span> $error <span class="value"></span></h4>
+<div class="doc_block">
+<p>In case of an error read this property's value to see the error's code.</p>
+<p>Possible error codes are:</p><p><ul><li>1:  source file could not be found</li><li>2:  source file is not readable</li><li>3:  could not write target file</li><li>4:  unsupported source file format</li><li>5:  unsupported target file format</li><li>6:  GD library version does not support target file format</li><li>7:  GD library is not installed!</li><li>8:  &quot;chmod&quot; command is disabled via configuration</li><li>9:  &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is 0 (no error).</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$jpeg_quality"></a>
+<h4 class="variable"><span><em>integer</em></span> $jpeg_quality <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates the quality of the output image (better quality means bigger file size).</p>
+<p>Used only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a JPG/JPEG image.</p><p>Range is 0 - 100</p><p>Default is 85</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$png_compression"></a>
+<h4 class="variable"><span><em>integer</em></span> $png_compression <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates the compression level of the output image (lower compression means bigger file size).</p>
+<p>Available only if PHP version is 5.1.2+, and only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a PNG image. It will be   ignored otherwise.</p><p>Range is 0 - 9</p><p>Default is 9</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>since:</strong></td>
+<td valign="top">2.2</td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$preserve_aspect_ratio"></a>
+<h4 class="variable"><span><em>boolean</em></span> $preserve_aspect_ratio <span class="value"></span></h4>
+<div class="doc_block">
+<p>Specifies whether, upon resizing, images should preserve their aspect ratio.</p>
+<p>Available only for the <a href="../Zebra_Image/Zebra_Image.html#methodresize">resize()</a> method</p><p>Default is TRUE</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$preserve_time"></a>
+<h4 class="variable"><span><em>boolean</em></span> $preserve_time <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates whether a target files should preserve the source file's date/time.</p>
+<p>Default is TRUE</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>since:</strong></td>
+<td valign="top">1.0.4</td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$sharpen_images"></a>
+<h4 class="variable"><span><em>boolean</em></span> $sharpen_images <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates whether the target image should have a &quot;sharpen&quot; filter applied to it.</p>
+<p>Can be very useful when creating thumbnails and should be used only when creating thumbnails.</p><p><em>The sharpen filter relies on the &quot;imageconvolution&quot; PHP function which is available only for PHP version
+5.1.0+, and will leave the images unaltered for older versions!</em></p><p>Default is FALSE</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>since:</strong></td>
+<td valign="top">2.2</td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$source_path"></a>
+<h4 class="variable"><span><em>string</em></span> $source_path <span class="value"></span></h4>
+<div class="doc_block">
+<p>Path to an image file to apply the transformations to.</p>
+<p>Supported file types are <strong>GIF</strong>, <strong>PNG</strong> and <strong>JPEG</strong>.</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$target_path"></a>
+<h4 class="variable"><span><em>string</em></span> $target_path <span class="value"></span></h4>
+<div class="doc_block">
+<p>Path (including file name) to where to save the transformed image.</p>
+<p><em>Can be a different than <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> - the type of the transformed image will be as indicated by the
+file's extension (supported file types are GIF, PNG and JPEG)</em>.</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="class_methods"></a>
+<h3>Class methods</h3>
+<a name="method__construct"></a>
+<h4 class="method"><span><em>constructor</em></span> __construct()</h4>
+<div class="doc_block">
+<p class="code">
+<em>void</em>
+__construct (
+)
+</p>
+<p>Constructor of the class.</p>
+<p>Initializes the class and the default properties</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="methodapply_filter"></a>
+<h4 class="method"><span><em>method</em></span> apply_filter()</h4>
+<div class="doc_block">
+<p class="code">
+<em>boolean</em>
+apply_filter (
+string
+$filter
+, 
+[
+mixed
+$arg1
+= '']
+, 
+[
+mixed
+$arg2
+= '']
+, 
+[
+mixed
+$arg3
+= '']
+, 
+[
+mixed
+$arg4
+= '']
+)
+</p>
+<p>Applies one or more filters to the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs it as the file specified as   <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
+<p><div class="highlight">This method is available only if the <a href="http://php.net/manual/en/function.imagefilter.php">imagefilter</a>
+function is available (available from PHP 5+), and will leave images unaltered otherwise.</div></p><p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;the&nbsp;&quot;grayscale&quot;&nbsp;filter</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-str">'grayscale'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;the&nbsp;&quot;contrast&quot;&nbsp;filter</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-str">'contrast'</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">20</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol><p>You can also apply multiple filters at once. In this case, the method requires a single argument, an array of   arrays, containing the filters and associated arguments, where applicable:</p><p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;create&nbsp;a&nbsp;sepia&nbsp;effect</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;how&nbsp;we're&nbsp;applying&nbsp;multiple&nbsp;filters&nbsp;at&nbsp;once</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;each&nbsp;filter&nbsp;is&nbsp;in&nbsp;its&nbsp;own&nbsp;array</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;first&nbsp;we&nbsp;apply&nbsp;the&nbsp;&quot;grayscale&quot;&nbsp;filter</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'grayscale'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;then&nbsp;we&nbsp;apply&nbsp;the&nbsp;&quot;colorize&quot;&nbsp;filter&nbsp;with&nbsp;90,&nbsp;60,&nbsp;40&nbsp;as</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;the&nbsp;values&nbsp;for&nbsp;red,&nbsp;green&nbsp;and&nbsp;blue</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'colorize'</span><span class="src-sym">,&nbsp;</span><span class="src-num">90</span><span class="src-sym">,&nbsp;</span><span class="src-num">60</span><span class="src-sym">,&nbsp;</span><span class="src-num">40</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+</ol>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>return:</strong></td>
+<td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If <a href="http://php.net/manual/en/function.imagefilter.php">imagefilter</a> is not                               available the method will return FALSE without setting an <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> code.</p><p>If the requested filter doesn't exist, or invalid arguments are passed, the method                               will trigger a warning.</p><p>If FALSE is returned and you are sure that                               <a href="http://php.net/manual/en/function.imagefilter.php">imagefilter</a> exists and that                               the requested filter is valid, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
+</tr>
+<tr>
+<td valign="top"><strong>since:</strong></td>
+<td valign="top">2.2.2</td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<h5>Parameters:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><em>string</em></td>
+<td valign="top"><strong>$filter</strong></td>
+<td valign="top"><p>The (case-insensitive) name of the filter to apply. Can be one of the following:</p><p><ul><li><strong>brightness</strong>       -   changes the brightness of the image; use <strong>arg1</strong>
+to set the level of brightness; the range of brightness
+is -255 to 255;</li><li><strong>colorize</strong>         -   adds (subtracts) specified RGB values to each pixel;
+use <strong>arg1</strong>, <strong>arg2</strong> and <strong>arg3</strong> in the
+form of red, green, blue and <strong>arg4</strong> for the alpha
+channel. the range for each color is -255 to 255 and
+0 to 127 for alpha; <em>alpha support is available only
+for PHP 5.2.5+</em>;</li><li><strong>contrast</strong>         -   changes the contrast of the image; use <strong>arg1</strong>
+to set the level of contrast; the range of contrast
+is -100 to 100;</li><li><strong>gausian_blur</strong>     -   blurs the image using the Gaussian method;</li><li><strong>grayscale</strong>        -   converts the image into grayscale;</li><li><strong>edgedetect</strong>       -   uses edge detection to highlight the edges in the image;</li><li><strong>emboss</strong>           -   embosses the image;</li><li><strong>mean_removal</strong>     -   uses mean removal to achieve a &quot;sketchy&quot; effect;</li><li><strong>negate</strong>           -   reverses all the colors of the image;</li><li><strong>pixelate</strong>         -   applies pixelation effect to the image, use <strong>arg1</strong>
+to set the block size and <strong>arg2</strong> to set the
+pixelation effect mode; <em>this filter is available
+only for PHP 5.3.0+</em>;</li><li><strong>selective_blur</strong>   -   blurs the image;</li><li><strong>smooth</strong>           -   makes the image smoother. Use <strong>arg1</strong> to set the
+level of smoothness. applies a 9-cell convolution matrix
+where center pixel has the weight of <strong>arg1</strong> and
+others weight of 1.0. the result is normalized by dividing
+the sum with <strong>arg1</strong> + 8.0 (sum of the matrix).
+any float is accepted;</li></ul></td>
+</tr>
+<tr>
+<td valign="top"><em>mixed</em></td>
+<td valign="top"><strong>$arg1</strong></td>
+<td valign="top">Used by the following filters: <ul><li><strong>brightness</strong>       -   sets the brightness level (-255 to 255)</li><li><strong>contrast</strong>         -   sets the contrast level (-100 to 100)</li><li><strong>colorize</strong>         -   sets the value of the red component (-255 to 255)</li><li><strong>smooth</strong>           -   sets the smoothness level</li><li><strong>pixelate</strong>         -   sets the block size, in pixels</li></ul></td>
+</tr>
+<tr>
+<td valign="top"><em>mixed</em></td>
+<td valign="top"><strong>$arg2</strong></td>
+<td valign="top">Used by the following filters: <ul><li><strong>colorize</strong>         -   sets the value of the green component (-255 to 255)</li><li><strong>pixelate</strong>         -   whether to use advanced pixelation effect or not (defaults to FALSE).</li></ul></td>
+</tr>
+<tr>
+<td valign="top"><em>mixed</em></td>
+<td valign="top"><strong>$arg3</strong></td>
+<td valign="top">Used by the following filters: <ul><li><strong>colorize</strong>         -   sets the value of the blue component (-255 to 255)</li></ul></td>
+</tr>
+<tr>
+<td valign="top"><em>mixed</em></td>
+<td valign="top"><strong>$arg4</strong></td>
+<td valign="top">Used by the following filters: <ul><li><strong>colorize</strong>         -   alpha channel; a value between 0 and 127. 0 indicates
+completely opaque while 127 indicates completely
+transparent.</li></ul></td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="methodcrop"></a>
+<h4 class="method"><span><em>method</em></span> crop()</h4>
+<div class="doc_block">
+<p class="code">
+<em>boolean</em>
+crop (
+integer
+$start_x
+, 
+integer
+$start_y
+, 
+integer
+$end_x
+, 
+integer
+$end_y
+)
+</p>
+<p>Crops a portion of the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs it as the file specified as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;crop&nbsp;a&nbsp;rectangle&nbsp;of&nbsp;100x100&nbsp;pixels,&nbsp;starting&nbsp;from&nbsp;the&nbsp;top-left&nbsp;corner</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodcrop">crop</a><span class="src-sym">(</span><span class="src-num">0</span><span class="src-sym">,&nbsp;</span><span class="src-num">0</span><span class="src-sym">,&nbsp;</span><span class="src-num">100</span><span class="src-sym">,&nbsp;</span><span class="src-num">100</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>return:</strong></td>
+<td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
+</tr>
+<tr>
+<td valign="top"><strong>since:</strong></td>
+<td valign="top">1.0.4</td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<h5>Parameters:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><em>integer</em></td>
+<td valign="top"><strong>$start_x</strong></td>
+<td valign="top">x coordinate to start cropping from</td>
+</tr>
+<tr>
+<td valign="top"><em>integer</em></td>
+<td valign="top"><strong>$start_y</strong></td>
+<td valign="top">y coordinate to start cropping from</td>
+</tr>
+<tr>
+<td valign="top"><em>integer</em></td>
+<td valign="top"><strong>$end_x</strong></td>
+<td valign="top">x coordinate where to end the cropping</td>
+</tr>
+<tr>
+<td valign="top"><em>integer</em></td>
+<td valign="top"><strong>$end_y</strong></td>
+<td valign="top">y coordinate where to end the cropping</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="methodflip_both"></a>
+<h4 class="method"><span><em>method</em></span> flip_both()</h4>
+<div class="doc_block">
+<p class="code">
+<em>boolean</em>
+flip_both (
+)
+</p>
+<p>Flips both horizontally and vertically the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as   <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a></p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;flip&nbsp;the&nbsp;image&nbsp;both&nbsp;horizontally&nbsp;and&nbsp;vertically</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodflip_both">flip_both</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>return:</strong></td>
+<td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
+</tr>
+<tr>
+<td valign="top"><strong>since:</strong></td>
+<td valign="top">2.1</td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="methodflip_horizontal"></a>
+<h4 class="method"><span><em>method</em></span> flip_horizontal()</h4>
+<div class="doc_block">
+<p class="code">
+<em>boolean</em>
+flip_horizontal (
+)
+</p>
+<p>Flips horizontally the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a></p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;flip&nbsp;the&nbsp;image&nbsp;horizontally</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodflip_horizontal">flip_horizontal</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>return:</strong></td>
+<td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="methodflip_vertical"></a>
+<h4 class="method"><span><em>method</em></span> flip_vertical()</h4>
+<div class="doc_block">
+<p class="code">
+<em>boolean</em>
+flip_vertical (
+)
+</p>
+<p>Flips vertically the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a></p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;flip&nbsp;the&nbsp;image&nbsp;vertically</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodflip_vertical">flip_vertical</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>return:</strong></td>
+<td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="methodresize"></a>
+<h4 class="method"><span><em>method</em></span> resize()</h4>
+<div class="doc_block">
+<p class="code">
+<em>boolean</em>
+resize (
+[
+integer
+$width
+= 0]
+, 
+[
+integer
+$height
+= 0]
+, 
+[
+int
+$method
+= ZEBRA_IMAGE_CROP_CENTER]
+, 
+[
+hexadecimal
+$background_color
+= '#FFFFFF']
+)
+</p>
+<p>Resizes the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;a&nbsp;&quot;sharpen&quot;&nbsp;filter&nbsp;to&nbsp;the&nbsp;resulting&nbsp;images</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$sharpen_images">sharpen_images</a>&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;resize&nbsp;the&nbsp;image&nbsp;to&nbsp;exactly&nbsp;150x150&nbsp;pixels,&nbsp;without&nbsp;altering&nbsp;aspect&nbsp;ratio,&nbsp;by&nbsp;using&nbsp;the&nbsp;CROP_CENTER&nbsp;method</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodresize">resize</a><span class="src-sym">(</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-id"><a href="../Zebra_Image/_Zebra_Image.php.html#defineZEBRA_IMAGE_CROP_CENTER">ZEBRA_IMAGE_CROP_CENTER</a></span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>return:</strong></td>
+<td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see what went                                           wrong</p></td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<h5>Parameters:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><em>integer</em></td>
+<td valign="top"><strong>$width</strong></td>
+<td valign="top"><p>The width to resize the image to.</p><p>If set to <strong>0</strong>, the width will be automatically adjusted, depending                                           on the value of the <strong>height</strong> argument so that the image preserves                                           its aspect ratio.</p><p>If <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> is set to TRUE and both this and the                                           <strong>height</strong> arguments are values greater than <strong>0</strong>, the image will                                           be resized to the exact required width and height and the aspect ratio                                           will be preserved - (also see the description for the <strong>method</strong>                                           argument below on how can this be done).</p><p>If <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> is set to FALSE, the image will be                                           resized to the required width and the aspect ratio will be ignored.</p><p>If both <strong>width</strong> and <strong>height</strong> are set to <strong>0</strong>, a copy of                                           the source image will be created (<a href="../Zebra_Image/Zebra_Image.html#var$jpeg_quality">jpeg_quality</a> and                                           <a href="../Zebra_Image/Zebra_Image.html#var$png_compression">png_compression</a> will still apply).</p><p>If either <strong>width</strong> or <strong>height</strong> are set to <strong>0</strong>, the script                                           will consider the value of the <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> to bet set                                           to TRUE regardless of its actual value!</p></td>
+</tr>
+<tr>
+<td valign="top"><em>integer</em></td>
+<td valign="top"><strong>$height</strong></td>
+<td valign="top"><p>The height to resize the image to.</p><p>If set to <strong>0</strong>, the height will be automatically adjusted, depending                                           on the value of the <strong>width</strong> argument so that the image preserves                                           its aspect ratio.</p><p>If <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> is set to TRUE and both this and the                                           <strong>width</strong> arguments are values greater than <strong>0</strong>, the image will                                           be resized to the exact required width and height and the aspect ratio                                           will be preserved - (also see the description for the <strong>method</strong>                                           argument below on how can this be done).</p><p>If <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> is set to FALSE, the image will be                                           resized to the required height and the aspect ratio will be ignored.</p><p>If both <strong>width</strong> and <strong>height</strong> are set to <strong>0</strong>, a copy of                                           the source image will be created (<a href="../Zebra_Image/Zebra_Image.html#var$jpeg_quality">jpeg_quality</a> and                                           <a href="../Zebra_Image/Zebra_Image.html#var$png_compression">png_compression</a> will still apply).</p><p>If either <strong>height</strong> or <strong>width</strong> are set to <strong>0</strong>, the script                                           will consider the value of the <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> to bet set                                           to TRUE regardless of its actual value!</p></td>
+</tr>
+<tr>
+<td valign="top"><em>int</em></td>
+<td valign="top"><strong>$method</strong></td>
+<td valign="top"><p>(Optional) Method to use when resizing images to exact width and height                                           while preserving aspect ratio.</p><p>If the <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> property is set to TRUE and both the                                           <strong>width</strong> and <strong>height</strong> arguments are values greater than <strong>0</strong>,                                           the image will be resized to the exact given width and height and the                                           aspect ratio will be preserved by using on of the following methods:</p><p><ul><li><strong>ZEBRA_IMAGE_BOXED</strong> - the image will be scaled so that it will
+fit in a box with the given width and height (both width/height will
+be smaller or equal to the required width/height) and then it will
+be centered both horizontally and vertically. The blank area will be
+filled with the color specified by the <strong>bgcolor</strong> argument. (the
+blank area will be filled only if the image is not transparent!)</li></ul> <ul><li><strong>ZEBRA_IMAGE_NOT_BOXED</strong> - the image will be scalled so that it
+<em>could</em> fit in a box with the given width and height but will
+not be enclosed in a box with given width and height. The new width/
+height will be both smaller or equal to the required width/height</li></ul><p> <ul><li><strong>ZEBRA_IMAGE_CROP_TOPLEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_TOPCENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_TOPRIGHT</strong></li><li><strong>ZEBRA_IMAGE_CROP_MIDDLELEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_CENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_MIDDLERIGHT</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMLEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMCENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMRIGHT</strong></li></ul>                                           For the methods involving crop, first the image is scaled so that both                                           its sides are equal or greater than the respective sizes of the bounding                                           box; next, a region of required width and height will be cropped from                                           indicated region of the resulted image.</p><p>Default is ZEBRA_IMAGE_CROP_CENTER</p></td>
+</tr>
+<tr>
+<td valign="top"><em>hexadecimal</em></td>
+<td valign="top"><strong>$background_color</strong></td>
+<td valign="top"><p>(Optional) The hexadecimal color (like &quot;#FFFFFF&quot; or &quot;#FFF&quot;) of the                                           blank area. See the <strong>method</strong> argument.</p><p>When set to -1 the script will preserve transparency for transparent GIF                                           and PNG images. For non-transparent images the background will be white                                           in this case.</p><p>Default is #FFFFFF.</p></td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="methodrotate"></a>
+<h4 class="method"><span><em>method</em></span> rotate()</h4>
+<div class="doc_block">
+<p class="code">
+<em>boolean</em>
+rotate (
+double
+$angle
+, 
+[
+mixed
+$background_color
+= -1]
+)
+</p>
+<p>Rotates the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;rotate&nbsp;the&nbsp;image&nbsp;45&nbsp;degrees,&nbsp;clockwise</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodrotate">rotate</a><span class="src-sym">(</span><span class="src-num">45</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>return:</strong></td>
+<td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error                                           code.</p></td>
+</tr>
+<tr>
+<td valign="top"><strong>access:</strong></td>
+<td valign="top">public</td>
+</tr>
+</table>
+<h5>Parameters:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><em>double</em></td>
+<td valign="top"><strong>$angle</strong></td>
+<td valign="top"><p>Angle by which to rotate the image clockwise.</p><p>Between 0 and 360.</p></td>
+</tr>
+<tr>
+<td valign="top"><em>mixed</em></td>
+<td valign="top"><strong>$background_color</strong></td>
+<td valign="top"><p>(Optional) The hexadecimal color (like &quot;#FFFFFF&quot; or &quot;#FFF&quot;) of the                                           uncovered zone after the rotation.</p><p>When set to -1 the script will preserve transparency for transparent GIF                                           and PNG images. For non-transparent images the background will be white                                           in this case.</p><p>Default is -1.</p></td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+</div>
+</td>
+</tr>
+</table>
+<div id="doc_footer">
+Documentation generated on <span>Mon, 08 May 2017 21:06:23 +0200</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+</div>
+</div>
+</body>
+</html>
