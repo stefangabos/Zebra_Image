@@ -27,14 +27,14 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 <table width="100%" border="0">
     <tr>
         <td width="33%" valign="top" rowspan="4">
-            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-1.jpg" alt="Zebra_Image" align="right">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-1.jpg" alt="Zebra_Image" align="right">
         </td>
         <td valign="top" width="33%">
             <strong>Method 1</strong><br>
             After the image is resized to 200x143 pixels representing the size of the image that <em>would fit</em> in a 200x200 pixels box while preserving its aspect ratio, it is centered both horizontally and vertically in a 200x200 pixels box. In our example the background is white but it can be set to any color. The resulting image has 200x200 pixels.
         </td>
         <td width="33%" valign="top">
-            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-2.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-2.jpg" alt="Zebra_Image">
         </td>
     </tr>
     <tr>
@@ -43,7 +43,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
             The image is resized to 200x143 pixels representing the size of the image that would fit in a 200200 pixels box while preserving its aspect ratio.
         </td>
         <td width="33%" valign="top">
-            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-3.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-3.jpg" alt="Zebra_Image">
         </td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
             <strong>Step 1:</strong> The image is first resized to 279x200 pixels representing the size closest to the required size where the image's width and height are both equal or greater than the required width and height respectively, while preserving its aspect ratio.
         </td>
         <td width="33%" valign="top">
-            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-4.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-4.jpg" alt="Zebra_Image">
         </td>
     </tr>
     <tr>
@@ -60,7 +60,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
             <strong>Step 2:</strong> A 200x200 pixels area will be cropped from the top-left corner of the image (for method 3) or from the center of the image (for method 4).
         </td>
         <td width="33%" valign="top">
-            <img src="https://web.archive.org/web/20160226192832im_/http://stefangabos.ro/wp-content/uploads/2011/01/example-5.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-5.jpg" alt="Zebra_Image">
         </td>
     </tr>
 </table>
