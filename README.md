@@ -76,7 +76,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 - images can be resized to *exact* sizes and maintaining aspect ratio by automatically cropping them
 - preserves transparency of GIF, PNG8 and PNG24 images
 - code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
-- has awesome documentation
+- has [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)
 
 ## Requirements
 
@@ -97,7 +97,7 @@ require_once ('Zebra_Image.php');
 You can install Zebra_Image via [Composer](https://packagist.org/packages/stefangabos/zebra_image)
 
 ```
-composer require stefangabos/zebra_image:dev-master
+composer require stefangabos/zebra_image
 ```
 
 ## How to use
