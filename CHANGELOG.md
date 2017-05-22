@@ -1,3 +1,10 @@
+## version 2.2.6 (May 22, 2017)
+
+- minor source code tweaks
+- unnecessary files are no more included when downloading from GitHub or via Composer
+- documentation is now available in the repository and on GitHub
+- the home of the library is now exclusively on GitHub
+
 ## version 2.2.5 (May 16, 2016)
 
 - use the newly added "auto_handle_exif_orientation" property for auto fixing image rotation if EXIF information is available; requires PHP to be configured with exif-support via --enable-exif (or, for Windows user, by enabling the php_mbstring.dll and php_exif.dll extensions); thanks to <strong>Sebi Popa</strong>
