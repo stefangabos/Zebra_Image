@@ -25,7 +25,7 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.2.5 (last revision: May 16, 2016)
+ *  @version    2.2.6 (last revision: May 22, 2017)
  *  @copyright  (c) 2006 - 2016 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
