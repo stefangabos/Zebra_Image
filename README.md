@@ -96,8 +96,12 @@ require_once ('Zebra_Image.php');
 
 You can install Zebra_Image via [Composer](https://packagist.org/packages/stefangabos/zebra_image)
 
-```
+```bash
+# get the latest stable release
 composer require stefangabos/zebra_image
+
+# get the latest commit
+composer require stefangabos/zebra_image:dev-master
 ```
 
 ## How to use
