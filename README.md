@@ -89,7 +89,7 @@ PHP needs to be compiled with `--enable-exif` (Windows users enable `php_mbstrin
 Download the latest version, unpack it, and load it in your project
 
 ```php
-require_once ('Zebra_Image.php');
+require_once 'Zebra_Image.php';
 ```
 
 ## Installation with Composer
