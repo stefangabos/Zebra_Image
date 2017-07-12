@@ -25,8 +25,8 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.2.6 (last revision: May 22, 2017)
- *  @copyright  (c) 2006 - 2016 Stefan Gabos
+ *  @version    2.2.7 (last revision: July 12, 2017)
+ *  @copyright  (c) 2006 - 2017 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
  */
@@ -1044,7 +1044,33 @@ class Zebra_Image {
             // if we get here it means that
             // smaller images than the given width/height are to be left untouched
             // therefore, we save the image as it is
-            } else return $this->_write_image($this->source_identifier);
+            } else {
+
+                // prepare the target image
+                $target_identifier = $this->_prepare_image($target_width, $target_height, $background_color);
+
+                imagecopyresampled(
+
+                    $target_identifier,
+                    $this->source_identifier,
+                    0,
+                    0,
+                    0,
+                    0,
+                    $this->source_width,
+                    $this->source_height,
+                    $this->source_width,
+                    $this->source_height
+
+                );
+
+                // previously to 2.2.7 I was simply calling the _write_images() method without the code from above this
+                // comment and therefore, when resizing transparent images to a format which doesn't support transparency
+                // and the "enlarge_smaller_images" property being set to FALSE, the "background_color" argument was not
+                // applied and lead to unexpected background colors for the resulting images
+                return $this->_write_image($target_identifier);
+
+            }
 
         }
 
