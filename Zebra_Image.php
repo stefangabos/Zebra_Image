@@ -1047,7 +1047,7 @@ class Zebra_Image {
             } else {
 
                 // prepare the target image
-                $target_identifier = $this->_prepare_image($target_width, $target_height, $background_color);
+                $target_identifier = $this->_prepare_image($this->source_width, $this->source_height, $background_color);
 
                 imagecopyresampled(
 
@@ -1059,8 +1059,8 @@ class Zebra_Image {
                     0,
                     $this->source_width,
                     $this->source_height,
-                    $target_width,
-                    $target_height
+                    $this->source_width,
+                    $this->source_height
 
                 );
 
