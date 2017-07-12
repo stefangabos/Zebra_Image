@@ -1059,8 +1059,8 @@ class Zebra_Image {
                     0,
                     $this->source_width,
                     $this->source_height,
-                    $this->source_width,
-                    $this->source_height
+                    $target_width,
+                    $target_height
 
                 );
 
