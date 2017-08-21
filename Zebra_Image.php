@@ -25,7 +25,7 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.2.7 (last revision: July 12, 2017)
+ *  @version    2.2.7 (last revision: August 21, 2017)
  *  @copyright  (c) 2006 - 2017 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
@@ -89,7 +89,7 @@ class Zebra_Image {
     public $error;
 
     /**
-     *  If set to TRUE, images will be auto-rotated according to the {@link http://keyj.emphy.de/exif-orientation-rant/ Exif Orientation Tag}
+     *  If set to TRUE, JPEG images will be auto-rotated according to the {@link http://keyj.emphy.de/exif-orientation-rant/ Exif Orientation Tag}
      *  so that they are always shown correctly.
      *
      *  <samp>If you set this to TRUE you must also enable exif-support with --enable-exif. Windows users must enable both
@@ -1345,8 +1345,8 @@ class Zebra_Image {
         // make available the source image's identifier
         $this->source_identifier = $identifier;
 
-        // if we need to handle exif orientation automatically
-        if ($this->auto_handle_exif_orientation)
+        // for JPEG files, if we need to handle exif orientation automatically
+        if ($this->auto_handle_exif_orientation && $this->source_type === IMAGETYPE_JPEG)
 
             // if "exif_read_data" function is not available, return false
             if (!function_exists('exif_read_data')) {
