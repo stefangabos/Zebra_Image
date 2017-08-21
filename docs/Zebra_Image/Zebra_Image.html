@@ -54,7 +54,7 @@ Package: <strong>Zebra_Image</strong>
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.2.7 (last revision: July 12, 2017)</li>
+<li>2.2.7 (last revision: August 21, 2017)</li>
 </ul>
 <h4>Copyright:</h4>
 <ul>
@@ -99,7 +99,7 @@ Package: <strong>Zebra_Image</strong>
 <a name="var$auto_handle_exif_orientation"></a>
 <h4 class="variable"><span><em>boolean</em></span> $auto_handle_exif_orientation <span class="value"></span></h4>
 <div class="doc_block">
-<p>If set to TRUE, images will be auto-rotated according to the <a href="http://keyj.emphy.de/exif-orientation-rant/">Exif Orientation Tag</a>   so that they are always shown correctly.</p>
+<p>If set to TRUE, JPEG images will be auto-rotated according to the <a href="http://keyj.emphy.de/exif-orientation-rant/">Exif Orientation Tag</a>   so that they are always shown correctly.</p>
 <p><div class="highlight">If you set this to TRUE you must also enable exif-support with --enable-exif. Windows users must enable both
 the php_mbstring.dll and php_exif.dll DLL's in php.ini. The php_mbstring.dll DLL must be loaded before the
 php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net/manual/en/exif.installation.php">the PHP manual</a></div></p><p>Default is FALSE</p>
@@ -714,7 +714,7 @@ fit in a box with the given width and height (both width/height will
 be smaller or equal to the required width/height) and then it will
 be centered both horizontally and vertically. The blank area will be
 filled with the color specified by the <strong>bgcolor</strong> argument. (the
-blank area will be filled only if the image is not transparent!)</li></ul> <ul><li><strong>ZEBRA_IMAGE_NOT_BOXED</strong> - the image will be scalled so that it
+blank area will be filled only if the image is not transparent!)</li></ul> <ul><li><strong>ZEBRA_IMAGE_NOT_BOXED</strong> - the image will be scaled so that it
 <em>could</em> fit in a box with the given width and height but will
 not be enclosed in a box with given width and height. The new width/
 height will be both smaller or equal to the required width/height</li></ul><p> <ul><li><strong>ZEBRA_IMAGE_CROP_TOPLEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_TOPCENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_TOPRIGHT</strong></li><li><strong>ZEBRA_IMAGE_CROP_MIDDLELEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_CENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_MIDDLERIGHT</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMLEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMCENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMRIGHT</strong></li></ul>                                           For the methods involving crop, first the image is scaled so that both                                           its sides are equal or greater than the respective sizes of the bounding                                           box; next, a region of required width and height will be cropped from                                           indicated region of the resulted image.</p><p>Default is ZEBRA_IMAGE_CROP_CENTER</p></td>
@@ -793,7 +793,7 @@ $background_color
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Wed, 12 Jul 2017 10:40:33 +0200</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+Documentation generated on <span>Mon, 21 Aug 2017 17:15:44 +0200</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 </div>
 </div>
 </body>
