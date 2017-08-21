@@ -675,7 +675,7 @@ class Zebra_Image {
      *                                              filled with the color specified by the <b>bgcolor</b> argument. (the
      *                                              blank area will be filled only if the image is not transparent!)
      *
-     *                                          -   <b>ZEBRA_IMAGE_NOT_BOXED</b> - the image will be scalled so that it
+     *                                          -   <b>ZEBRA_IMAGE_NOT_BOXED</b> - the image will be scaled so that it
      *                                              <i>could</i> fit in a box with the given width and height but will
      *                                              not be enclosed in a box with given width and height. The new width/
      *                                              height will be both smaller or equal to the required width/height
