@@ -65,10 +65,6 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
     </tr>
 </table>
 
-## Support the development of this library
-
-[![Donate](https://img.shields.io/badge/Be%20kind%20%7C%20Donate%20$3%20with%20-%20PayPal%20-brightgreen.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXHCKWCF6JCPQ)
-
 ## Features
 
 - can be used to resize, flip, rotate, crop and sharpen images
@@ -78,6 +74,10 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 - code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
 - has [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)
 
+## Support the development of this library
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXHCKWCF6JCPQ)
+
 ## Requirements
 
 PHP 5+, bundled GD 2.0.28+
@@ -85,14 +85,6 @@ PHP 5+, bundled GD 2.0.28+
 PHP needs to be compiled with `--enable-exif` (Windows users enable `php_mbstring.dll` and `php_exif.dll` extensions in `php.ini`) for auto-fixing image rotation so images are always shown correctly regardless of how the camera was held when the pictures were taken.
 
 ## Installation
-
-Download the latest version, unpack it, and load it in your project
-
-```php
-require_once 'Zebra_Image.php';
-```
-
-## Installation with Composer
 
 You can install Zebra_Image via [Composer](https://packagist.org/packages/stefangabos/zebra_image)
 
@@ -102,6 +94,14 @@ composer require stefangabos/zebra_image
 
 # get the latest commit
 composer require stefangabos/zebra_image:dev-master
+```
+
+Or you can install it manually by downloading the latest version, unpacking it, and then including it in your project
+
+Download the latest version, unpack it, and load it in your project
+
+```php
+require_once 'Zebra_Image.php';
 ```
 
 ## How to use
