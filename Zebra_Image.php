@@ -1774,6 +1774,10 @@ class Zebra_Image {
 
         }
 
+        // free memory
+        imagedestroy($this->source_identifier);
+        imagedestroy($identifier);
+
         // return true
         return true;
 
