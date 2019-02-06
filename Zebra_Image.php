@@ -610,7 +610,8 @@ class Zebra_Image {
      *  // apply a "sharpen" filter to the resulting images
      *  $img->sharpen_images = true;
      *
-     *  // resize the image to exactly 150x150 pixels, without altering aspect ratio, by using the CROP_CENTER method
+     *  // resize the image to exactly 150x150 pixels, without altering
+     *  // aspect ratio, by using the CROP_CENTER method
      *  $img->resize(150, 150, ZEBRA_IMAGE_CROP_CENTER);
      *  </code>
      *
