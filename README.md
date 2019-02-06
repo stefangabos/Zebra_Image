@@ -65,6 +65,12 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
     </tr>
 </table>
 
+:books: Check out the [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)!
+
+## Support the development of this library
+
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXHCKWCF6JCPQ)
+
 ## Features
 
 - can be used to resize, flip, rotate, crop and sharpen images
@@ -73,10 +79,6 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 - preserves transparency of GIF, PNG8 and PNG24 images
 - code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
 - has [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)
-
-## Support the development of this library
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXHCKWCF6JCPQ)
 
 ## Requirements
 
@@ -178,4 +180,4 @@ if (!$image->resize(100, 100, ZEBRA_IMAGE_CROP_CENTER)) {
 } else echo 'Success!';
 ```
 
-:books: Checkout the [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)!
+:books: Check out the [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)!
