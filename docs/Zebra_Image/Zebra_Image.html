@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Zebra_Image, a compact (one-file only) and lightweight image manipulation PHP library - Class Zebra_Image</title>
+<title>Zebra_Image, a compact and lightweight image manipulation PHP library - Class: Zebra_Image</title>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="../media/reset.css">
 <link rel="stylesheet" type="text/css" href="../media/style.css">
@@ -31,10 +31,6 @@ Package: <strong>Zebra_Image</strong>
 <a href="https://github.com/stefangabos/Zebra_Image/" class="projects-homepage">Zebra_Image</a>
 </li>
 </ul>
-<p><strong>Packages:</strong></p>
-<ul>
-<li><a href="../li_Zebra_Image.html">Zebra_Image</a></li>
-</ul>
 <p><strong>Classes:</strong></p>
 <ul>
 <li><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></li>
@@ -45,7 +41,6 @@ Package: <strong>Zebra_Image</strong>
 <div id="doc_content">
 <h2>Class: <strong>Zebra_Image</strong></h2>
 <h6><strong>source file:</strong> /Zebra_Image.php</h6>
-<h3>Class Overview</h3>
 <pre></pre>
 <p>A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several   types of image manipulation operations and applying filters to images.<p>Read more <a href="https://github.com/stefangabos/Zebra_Image/">here</a></p></p>
 <h4>Author(s):</h4>
@@ -54,41 +49,43 @@ Package: <strong>Zebra_Image</strong>
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.2.7 (last revision: August 21, 2017)</li>
+<li>2.3.0 (last revision: February 03, 2019)</li>
 </ul>
 <h4>Copyright:</h4>
 <ul>
-<li>(c) 2006 - 2017 Stefan Gabos</li>
+<li>(c) 2006 - 2019 Stefan Gabos</li>
 </ul>
 <a name="top"></a>
 <div class="doc_toc">
 <div class="left">
 <h3>Properties</h3>
 <ul>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$auto_handle_exif_orientation">$auto_handle_exif_orientation</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$chmod_value">$chmod_value</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$enlarge_smaller_images">$enlarge_smaller_images</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$error">$error</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$jpeg_quality">$jpeg_quality</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$png_compression">$png_compression</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">$preserve_aspect_ratio</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$preserve_time">$preserve_time</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$sharpen_images">$sharpen_images</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$source_path">$source_path</a></li>
-<li><a href="../Zebra_Image/Zebra_Image.html#var$target_path">$target_path</a></li>
+<li><a href="#var$auto_handle_exif_orientation">$auto_handle_exif_orientation</a></li>
+<li><a href="#var$chmod_value">$chmod_value</a></li>
+<li><a href="#var$enlarge_smaller_images">$enlarge_smaller_images</a></li>
+<li><a href="#var$error">$error</a></li>
+<li><a href="#var$jpeg_quality">$jpeg_quality</a></li>
+<li><a href="#var$png_compression">$png_compression</a></li>
+<li><a href="#var$preserve_aspect_ratio">$preserve_aspect_ratio</a></li>
+<li><a href="#var$preserve_time">$preserve_time</a></li>
+<li><a href="#var$sharpen_images">$sharpen_images</a></li>
+<li><a href="#var$source_path">$source_path</a></li>
+<li><a href="#var$target_path">$target_path</a></li>
 </ul>
 </div>
 <div class="left">
 <h3>Methods</h3>
 <ul>
-<li><a href="../Zebra_Image/Zebra_Image.html#method__construct">__construct</a>()</li>
-<li><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a>()</li>
-<li><a href="../Zebra_Image/Zebra_Image.html#methodcrop">crop</a>()</li>
-<li><a href="../Zebra_Image/Zebra_Image.html#methodflip_both">flip_both</a>()</li>
-<li><a href="../Zebra_Image/Zebra_Image.html#methodflip_horizontal">flip_horizontal</a>()</li>
-<li><a href="../Zebra_Image/Zebra_Image.html#methodflip_vertical">flip_vertical</a>()</li>
-<li><a href="../Zebra_Image/Zebra_Image.html#methodresize">resize</a>()</li>
-<li><a href="../Zebra_Image/Zebra_Image.html#methodrotate">rotate</a>()</li>
+</ul>
+<ul>
+<li><a href="#method__construct">__construct</a></li>
+<li><a href="#methodapply_filter">apply_filter</a></li>
+<li><a href="#methodcrop">crop</a></li>
+<li><a href="#methodflip_both">flip_both</a></li>
+<li><a href="#methodflip_horizontal">flip_horizontal</a></li>
+<li><a href="#methodflip_vertical">flip_vertical</a></li>
+<li><a href="#methodresize">resize</a></li>
+<li><a href="#methodrotate">rotate</a></li>
 </ul>
 </div>
 <div class="clear"></div>
@@ -106,11 +103,11 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>since:</strong></td>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
 <td valign="top">2.2.4</td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -125,7 +122,7 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -140,7 +137,7 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -155,7 +152,7 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -170,7 +167,7 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -185,11 +182,11 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>since:</strong></td>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
 <td valign="top">2.2</td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -204,7 +201,7 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -219,11 +216,11 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>since:</strong></td>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
 <td valign="top">1.0.4</td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -239,11 +236,11 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>since:</strong></td>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
 <td valign="top">2.2</td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -258,7 +255,7 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -274,7 +271,7 @@ file's extension (supported file types are GIF, PNG and JPEG)</em>.</p>
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -284,7 +281,7 @@ file's extension (supported file types are GIF, PNG and JPEG)</em>.</p>
 <a name="class_methods"></a>
 <h3>Class methods</h3>
 <a name="method__construct"></a>
-<h4 class="method"><span><em>constructor</em></span> __construct()</h4>
+<h4 class="method"><span><em>constructor</em></span> __construct() <span class="smalllinenumber">[line 200]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>void</em>
@@ -296,7 +293,7 @@ __construct (
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -304,7 +301,7 @@ __construct (
 <div class="clear"></div>
 </div>
 <a name="methodapply_filter"></a>
-<h4 class="method"><span><em>method</em></span> apply_filter()</h4>
+<h4 class="method"><span><em>method</em></span> apply_filter() <span class="smalllinenumber">[line 332]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -371,15 +368,15 @@ function is available (available from PHP 5+), and will leave images unaltered o
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>return:</strong></td>
+<td valign="top"><strong>return:</strong>&nbsp;&nbsp;</td>
 <td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If <a href="http://php.net/manual/en/function.imagefilter.php">imagefilter</a> is not                               available the method will return FALSE without setting an <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> code.</p><p>If the requested filter doesn't exist, or invalid arguments are passed, the method                               will trigger a warning.</p><p>If FALSE is returned and you are sure that                               <a href="http://php.net/manual/en/function.imagefilter.php">imagefilter</a> exists and that                               the requested filter is valid, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
 </tr>
 <tr>
-<td valign="top"><strong>since:</strong></td>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
 <td valign="top">2.2.2</td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -434,7 +431,7 @@ transparent.</li></ul></td>
 <div class="clear"></div>
 </div>
 <a name="methodcrop"></a>
-<h4 class="method"><span><em>method</em></span> crop()</h4>
+<h4 class="method"><span><em>method</em></span> crop() <span class="smalllinenumber">[line 440]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -473,15 +470,15 @@ $end_y
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>return:</strong></td>
+<td valign="top"><strong>return:</strong>&nbsp;&nbsp;</td>
 <td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
 </tr>
 <tr>
-<td valign="top"><strong>since:</strong></td>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
 <td valign="top">1.0.4</td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -512,7 +509,7 @@ $end_y
 <div class="clear"></div>
 </div>
 <a name="methodflip_both"></a>
-<h4 class="method"><span><em>method</em></span> flip_both()</h4>
+<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 522]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -540,15 +537,15 @@ flip_both (
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>return:</strong></td>
+<td valign="top"><strong>return:</strong>&nbsp;&nbsp;</td>
 <td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
 </tr>
 <tr>
-<td valign="top"><strong>since:</strong></td>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
 <td valign="top">2.1</td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -556,7 +553,7 @@ flip_both (
 <div class="clear"></div>
 </div>
 <a name="methodflip_horizontal"></a>
-<h4 class="method"><span><em>method</em></span> flip_horizontal()</h4>
+<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 554]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -584,11 +581,11 @@ flip_horizontal (
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>return:</strong></td>
+<td valign="top"><strong>return:</strong>&nbsp;&nbsp;</td>
 <td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -596,7 +593,7 @@ flip_horizontal (
 <div class="clear"></div>
 </div>
 <a name="methodflip_vertical"></a>
-<h4 class="method"><span><em>method</em></span> flip_vertical()</h4>
+<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 586]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -624,11 +621,11 @@ flip_vertical (
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>return:</strong></td>
+<td valign="top"><strong>return:</strong>&nbsp;&nbsp;</td>
 <td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error code.</p></td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -636,7 +633,7 @@ flip_vertical (
 <div class="clear"></div>
 </div>
 <a name="methodresize"></a>
-<h4 class="method"><span><em>method</em></span> resize()</h4>
+<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 715]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -680,17 +677,18 @@ $background_color
 <li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;a&nbsp;&quot;sharpen&quot;&nbsp;filter&nbsp;to&nbsp;the&nbsp;resulting&nbsp;images</span></div></li>
 <li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$sharpen_images">sharpen_images</a>&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;resize&nbsp;the&nbsp;image&nbsp;to&nbsp;exactly&nbsp;150x150&nbsp;pixels,&nbsp;without&nbsp;altering&nbsp;aspect&nbsp;ratio,&nbsp;by&nbsp;using&nbsp;the&nbsp;CROP_CENTER&nbsp;method</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;resize&nbsp;the&nbsp;image&nbsp;to&nbsp;exactly&nbsp;150x150&nbsp;pixels,&nbsp;without&nbsp;altering</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;aspect&nbsp;ratio,&nbsp;by&nbsp;using&nbsp;the&nbsp;CROP_CENTER&nbsp;method</span></div></li>
 <li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodresize">resize</a><span class="src-sym">(</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-id"><a href="../Zebra_Image/_Zebra_Image.php.html#defineZEBRA_IMAGE_CROP_CENTER">ZEBRA_IMAGE_CROP_CENTER</a></span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 </ol>
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>return:</strong></td>
+<td valign="top"><strong>return:</strong>&nbsp;&nbsp;</td>
 <td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see what went                                           wrong</p></td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -729,7 +727,7 @@ height will be both smaller or equal to the required width/height</li></ul><p> <
 <div class="clear"></div>
 </div>
 <a name="methodrotate"></a>
-<h4 class="method"><span><em>method</em></span> rotate()</h4>
+<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1125]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -764,11 +762,11 @@ $background_color
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
-<td valign="top"><strong>return:</strong></td>
+<td valign="top"><strong>return:</strong>&nbsp;&nbsp;</td>
 <td valign="top"><p>Returns TRUE on success or FALSE on error.</p><p>If FALSE is returned, check the <a href="../Zebra_Image/Zebra_Image.html#var$error">error</a> property to see the error                                           code.</p></td>
 </tr>
 <tr>
-<td valign="top"><strong>access:</strong></td>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
 </tr>
 </table>
@@ -793,8 +791,10 @@ $background_color
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Mon, 21 Aug 2017 17:15:44 +0200</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+Documentation generated on <span>Thu, 07 Feb 19</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 </div>
 </div>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-431275-9"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-431275-9');</script>
 </body>
 </html>
