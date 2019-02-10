@@ -25,7 +25,7 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.3.0 (last revision: February 03, 2019)
+ *  @version    2.3.0 (last revision: February 10, 2019)
  *  @copyright  (c) 2006 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
@@ -1556,7 +1556,7 @@ class Zebra_Image {
         // create a blank image
         $identifier = imagecreatetruecolor((int)$width <= 0 ? 1 : (int)$width, (int)$height <= 0 ? 1 : (int)$height);
 
-        // if we are creating a PNG image
+        // if we are creating a transparent PNG image
         if ($this->target_type == 'png' && $background_color == -1) {
 
             // disable blending
@@ -1571,8 +1571,23 @@ class Zebra_Image {
             //save full alpha channel information
 			imagesavealpha($identifier, true);
 
-        // if source image is a transparent GIF
-        } elseif ($this->target_type == 'gif' && $background_color == -1 && $this->source_transparent_color_index >= 0) {
+        // if we are creating a transparent GIF image
+        } elseif ($this->target_type == 'gif' && $background_color == -1) {
+
+            // if source image was *not* also a transparent gif
+            if (!isset($this->source_transparent_color_index) || $this->source_transparent_color_index === false) {
+
+                // this will be the "transparent" color from now on, for this image
+                $color = $this->_hex2rgb('#FFFFFF');
+
+                // set this property
+                $this->source_transparent_color = array(
+                    'red'   =>  $color['r'],
+                    'green' =>  $color['g'],
+                    'blue'  =>  $color['b'],
+                );
+
+            }
 
             // allocate the source image's transparent color also to the new image resource
             $transparent_color = imagecolorallocate(
