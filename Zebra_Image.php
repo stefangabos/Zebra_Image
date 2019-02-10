@@ -1493,8 +1493,10 @@ class Zebra_Image {
      *
      *  @param  string  $color              Hexadecimal representation of a color (i.e. #123456 or #AAA).
      *
-     *  @param  string  $default_on_error   Hexadecimal representation of a color to be used in case $color is not
-     *                                      recognized as a hexadecimal color.
+     *  @param  string  $default_on_error   (Optional) Hexadecimal representation of a color to be used in case $color
+     *                                      is not recognized as a hexadecimal color.
+     *
+     *                                      Default is #FFFFFF
      *
      *  @return array                       Returns an associative array with the values of (R)ed, (G)reen and (B)lue
      *
