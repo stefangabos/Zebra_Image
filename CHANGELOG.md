@@ -1,3 +1,8 @@
+## version 2.3.0 (TBA)
+
+- memory is freed after images are written
+- fixed warnings shown when the target file was a gif but the source file was not
+
 ## version 2.2.6 (May 22, 2017)
 
 - minor source code tweaks
