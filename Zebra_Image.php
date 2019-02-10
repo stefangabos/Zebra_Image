@@ -1328,6 +1328,9 @@ class Zebra_Image {
                     // disable blending
                     imagealphablending($identifier, false);
 
+                    // save full alpha channel information
+                    imagesavealpha($identifier, true);
+
                     break;
 
                 default:
@@ -1568,14 +1571,14 @@ class Zebra_Image {
             // disable blending
             imagealphablending($identifier, false);
 
+            // save full alpha channel information
+			imagesavealpha($identifier, true);
+
             // allocate a transparent color
             $transparent_color = imagecolorallocatealpha($identifier, 0, 0, 0, 127);
 
             // fill the image with the transparent color
 			imagefill($identifier, 0, 0, $transparent_color);
-
-            //save full alpha channel information
-			imagesavealpha($identifier, true);
 
         // if we are creating a transparent GIF image
         } elseif ($this->target_type == 'gif' && $background_color == -1) {
@@ -1742,9 +1745,6 @@ class Zebra_Image {
 
             // if PNG
             case 'png':
-
-                // save full alpha channel information
-                imagesavealpha($identifier, true);
 
                 // if GD support for this file type is not available
                 if (!function_exists('imagepng')) {
