@@ -1584,7 +1584,7 @@ class Zebra_Image {
         } elseif ($this->target_type == 'gif' && $background_color == -1) {
 
             // if source image was *not* also a transparent gif
-            if (!isset($this->source_transparent_color_index) || $this->source_transparent_color_index === false) {
+            if (!isset($this->source_transparent_color_index) || $this->source_transparent_color_index < 0) {
 
                 // this will be the "transparent" color from now on, for this image
                 $color = $this->_hex2rgb('#FFFFFF');
