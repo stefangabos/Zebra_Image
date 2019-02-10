@@ -1117,7 +1117,7 @@ class Zebra_Image {
      *
      *                                          When set to -1 the script will preserve transparency for transparent GIF
      *                                          and PNG images. For non-transparent images the background will be white
-     *                                          in this case.
+     *                                          (#FFFFFF) in this case.
      *
      *                                          Default is -1.
      *
@@ -1551,7 +1551,7 @@ class Zebra_Image {
      *                                          Can also be -1 case in which the script will try to create a transparent
      *                                          image, if possible.
      *
-     *                                          Default is "#FFFFFF".
+     *                                          Default is #FFFFFF.
      *
      *  @return                                 Returns the identifier of the newly created image.
      *
