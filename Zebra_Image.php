@@ -459,8 +459,12 @@ class Zebra_Image {
         // if image resource was successfully created
         if ($result !== false) {
 
+            // compute width and height
+            $width = $end_x - $start_x;
+            $height = $end_y - $start_y;
+
             // prepare the target image
-            $target_identifier = $this->_prepare_image($end_x - $start_x, $end_y - $start_y, -1);
+            $target_identifier = $this->_prepare_image($width, $height, -1);
 
             // crop the image
             imagecopyresampled(
@@ -471,10 +475,10 @@ class Zebra_Image {
                 0,
                 $start_x,
                 $start_y,
-                $end_x - $start_x,
-                $end_y - $start_y,
-                $end_x - $start_x,
-                $end_y - $start_y
+                $width,
+                $height,
+                $width,
+                $height
 
             );
 
