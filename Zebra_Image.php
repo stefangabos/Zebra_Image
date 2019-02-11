@@ -1565,58 +1565,23 @@ class Zebra_Image {
         // create a blank image
         $identifier = imagecreatetruecolor((int)$width <= 0 ? 1 : (int)$width, (int)$height <= 0 ? 1 : (int)$height);
 
-        // if we are creating a transparent PNG image
-        if ($this->target_type == 'png' && $background_color == -1) {
+        // if we are creating a transparent image, and image type supports transparency
+        if ($background_color == -1 && $this->target_type != 'jpg') {
 
             // disable blending
             imagealphablending($identifier, false);
 
+            // allocate a transparent color
+            $background_color = imagecolorallocatealpha($identifier, 0, 0, 0, 127);
+
+            // we also need to set this for saving gifs
+            imagecolortransparent($identifier, $background_color);
+
             // save full alpha channel information
 			imagesavealpha($identifier, true);
 
-            // allocate a transparent color
-            $transparent_color = imagecolorallocatealpha($identifier, 0, 0, 0, 127);
-
-            // fill the image with the transparent color
-			imagefill($identifier, 0, 0, $transparent_color);
-
-        // if we are creating a transparent GIF image
-        } elseif ($this->target_type == 'gif' && $background_color == -1) {
-
-            // if source image was *not* also a transparent gif
-            if (!isset($this->source_transparent_color_index) || $this->source_transparent_color_index < 0) {
-
-                // this will be the "transparent" color from now on, for this image
-                $color = $this->_hex2rgb('#FFFFFF');
-
-                // set this property
-                $this->source_transparent_color = array(
-                    'red'   =>  $color['r'],
-                    'green' =>  $color['g'],
-                    'blue'  =>  $color['b'],
-                );
-
-            }
-
-            // allocate the source image's transparent color also to the new image resource
-            $transparent_color = imagecolorallocate(
-                $identifier,
-                $this->source_transparent_color['red'],
-                $this->source_transparent_color['green'],
-                $this->source_transparent_color['blue']
-            );
-
-            // fill the background of the new image with transparent color
-            imagefill($identifier, 0, 0, $transparent_color);
-
-            // from now on, every pixel having the same RGB as the transparent color will be transparent
-            imagecolortransparent($identifier, $transparent_color);
-
-        // for other image types
+        // if we are not creating a transparent image
         } else {
-
-            // if transparent background color specified, revert to white
-            if ($background_color == -1) $background_color = '#FFFFFF';
 
             // convert hex color to rgb
             $background_color = $this->_hex2rgb($background_color);
@@ -1624,10 +1589,10 @@ class Zebra_Image {
             // prepare the background color
             $background_color = imagecolorallocate($identifier, $background_color['r'], $background_color['g'], $background_color['b']);
 
-            // fill the image with the background color
-            imagefill($identifier, 0, 0, $background_color);
-
         }
+
+        // fill the image with the background color
+        imagefill($identifier, 0, 0, $background_color);
 
         // return the image's identifier
         return $identifier;
