@@ -49,7 +49,7 @@ Package: <strong>Zebra_Image</strong>
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.3.0 (last revision: February 03, 2019)</li>
+<li>2.3.0 (last revision: February 24, 2019)</li>
 </ul>
 <h4>Copyright:</h4>
 <ul>
@@ -509,7 +509,7 @@ $end_y
 <div class="clear"></div>
 </div>
 <a name="methodflip_both"></a>
-<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 522]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 526]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -553,7 +553,7 @@ flip_both (
 <div class="clear"></div>
 </div>
 <a name="methodflip_horizontal"></a>
-<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 554]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 558]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -593,7 +593,7 @@ flip_horizontal (
 <div class="clear"></div>
 </div>
 <a name="methodflip_vertical"></a>
-<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 586]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 590]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -633,7 +633,7 @@ flip_vertical (
 <div class="clear"></div>
 </div>
 <a name="methodresize"></a>
-<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 715]</span></h4>
+<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 719]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -656,7 +656,7 @@ $method
 [
 hexadecimal
 $background_color
-= '#FFFFFF']
+= -1]
 )
 </p>
 <p>Resizes the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
@@ -720,14 +720,14 @@ height will be both smaller or equal to the required width/height</li></ul><p> <
 <tr>
 <td valign="top"><em>hexadecimal</em></td>
 <td valign="top"><strong>$background_color</strong></td>
-<td valign="top"><p>(Optional) The hexadecimal color (like &quot;#FFFFFF&quot; or &quot;#FFF&quot;) of the                                           blank area. See the <strong>method</strong> argument.</p><p>When set to -1 the script will preserve transparency for transparent GIF                                           and PNG images. For non-transparent images the background will be white                                           in this case.</p><p>Default is #FFFFFF.</p></td>
+<td valign="top"><p>(Optional) The hexadecimal color (like &quot;#FFFFFF&quot; or &quot;#FFF&quot;) of the                                           blank area. See the <strong>method</strong> argument.</p><p>When set to -1 the script will preserve transparency for transparent GIF                                           and PNG images. For non-transparent images the background will be white                                           (#FFFFFF) in this case.</p><p>Default is -1</p></td>
 </tr>
 </table>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
 <a name="methodrotate"></a>
-<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1125]</span></h4>
+<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1129]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -780,7 +780,7 @@ $background_color
 <tr>
 <td valign="top"><em>mixed</em></td>
 <td valign="top"><strong>$background_color</strong></td>
-<td valign="top"><p>(Optional) The hexadecimal color (like &quot;#FFFFFF&quot; or &quot;#FFF&quot;) of the                                           uncovered zone after the rotation.</p><p>When set to -1 the script will preserve transparency for transparent GIF                                           and PNG images. For non-transparent images the background will be white                                           in this case.</p><p>Default is -1.</p></td>
+<td valign="top"><p>(Optional) The hexadecimal color (like &quot;#FFFFFF&quot; or &quot;#FFF&quot;) of the                                           uncovered zone after the rotation.</p><p>When set to -1 the script will preserve transparency for transparent GIF                                           and PNG images. For non-transparent images the background will be white                                           (#FFFFFF) in this case.</p><p>Default is -1.</p></td>
 </tr>
 </table>
 <a href="#top" class="top">top</a>
@@ -791,7 +791,7 @@ $background_color
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Thu, 07 Feb 19</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+Documentation generated on <span>Sun, 24 Feb 19</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
