@@ -25,7 +25,7 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.3.0 (last revision: February 10, 2019)
+ *  @version    2.3.0 (last revision: February 24, 2019)
  *  @copyright  (c) 2006 - 2019 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
@@ -1140,54 +1140,49 @@ class Zebra_Image {
             // angles are given clockwise but imagerotate works counterclockwise so we need to negate our value
             $angle = -$angle;
 
-            // if source image is PNG
-            if ($this->source_type == IMAGETYPE_PNG && $background_color == -1) {
+            // if the uncovered zone after the rotation is to be transparent
+            if ($background_color == -1) {
 
-                // rotate the image
-                // but if using -1 as background color didn't work (as is the case for PNG8)
-                if (!($target_identifier = imagerotate($this->source_identifier, $angle, -1))) {
+                // if target image is a PNG
+                if ($this->target_type == 'png') {
 
-                    // we will be using #FFF as the color to fill the uncovered zone after the rotation
+                    // allocate a transparent color
+                    $background_color = imagecolorallocatealpha($this->source_identifier, 0, 0, 0, 127);
+
+                // if target image is a GIF
+                } elseif ($this->target_type == 'gif') {
+
+                    // if source image was a GIF and a transparent color existed
+                    if ($this->source_type == IMAGETYPE_GIF && $this->source_transparent_color_index >= 0) {
+
+                        // use that color
+                        $background_color = imagecolorallocate(
+                            $this->source_identifier,
+                            $this->source_transparent_color['red'],
+                            $this->source_transparent_color['green'],
+                            $this->source_transparent_color['blue']
+                        );
+
+                    // if image had no transparent color
+                    } else {
+
+                        // allocate a transparent color
+                        $background_color = imagecolorallocate($this->source_identifier, 255, 255, 255);
+
+                        // make color transparent
+                        imagecolortransparent($this->source_identifier, $background_color);
+
+                    }
+
+                // for other image types
+                } else {
+
+                    // use white as the color of uncovered zone after the rotation
                     $background_color = imagecolorallocate($this->source_identifier, 255, 255, 255);
-
-                    // rotate the image
-                    $target_identifier = imagerotate($this->source_identifier, $angle, $background_color);
 
                 }
 
-            // if source image is a transparent GIF
-            } elseif ($this->source_type == IMAGETYPE_GIF && $this->source_transparent_color_index >= 0) {
-
-                // convert the background color to RGB values
-                $background_color = $this->_hex2rgb($background_color);
-
-                // allocate the color to the image identifier
-                $background_color = imagecolorallocate(
-
-                    $this->source_identifier,
-                    $background_color['r'],
-                    $background_color['g'],
-                    $background_color['b']
-
-                );
-
-                // rotate the image
-                $this->source_identifier = imagerotate($this->source_identifier, $angle, $background_color);
-
-                // get the width of rotated image
-                $width = imagesx($this->source_identifier);
-
-                // get the height of rotated image
-                $height = imagesy($this->source_identifier);
-
-                // create a blank image with the new width and height
-                // (this intermediary step is for preserving transparency)
-                $target_identifier = $this->_prepare_image($width, $height, -1);
-
-                // copy the rotated image on to the new one
-                imagecopyresampled($target_identifier, $this->source_identifier, 0, 0, 0, 0, $width, $height, $width, $height);
-
-            // for the other cases
+            // if a background color is given
             } else {
 
                 // convert the color to RGB values
@@ -1203,10 +1198,10 @@ class Zebra_Image {
 
                 );
 
-                // rotate the image
-                $target_identifier = imagerotate($this->source_identifier, $angle, $background_color);
-
             }
+
+            // rotate the image
+            $target_identifier = imagerotate($this->source_identifier, $angle, $background_color);
 
             // if we called this method from the _create_from_source() method
             // because we are fixing orientation
