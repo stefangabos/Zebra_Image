@@ -25,8 +25,8 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.3.0 (last revision: June 06, 2019)
- *  @copyright  (c) 2006 - 2019 Stefan Gabos
+ *  @version    2.4.0 (last revision: January 23, 2019)
+ *  @copyright  (c) 2006 - 2020 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
  */
@@ -423,13 +423,25 @@ class Zebra_Image {
      *  $img->crop(0, 0, 100, 100);
      *  </code>
      *
-     *  @param  integer     $start_x    x coordinate to start cropping from
+     *  @param  integer     $start_x            x coordinate to start cropping from
      *
-     *  @param  integer     $start_y    y coordinate to start cropping from
+     *  @param  integer     $start_y            y coordinate to start cropping from
      *
-     *  @param  integer     $end_x      x coordinate where to end the cropping
+     *  @param  integer     $end_x              x coordinate where to end the cropping
      *
-     *  @param  integer     $end_y      y coordinate where to end the cropping
+     *  @param  integer     $end_y              y coordinate where to end the cropping
+     *
+     *  @param  hexadecimal $background_color   (Optional) The hexadecimal color (like "#FFFFFF" or "#FFF") of the
+     *                                          blank area. See the <b>method</b> argument.
+     *
+     *                                          Used when the cropping coordinates are off-scale (negative values and/or
+     *                                          values greater than the image's size) to fill the remaining space.
+     *
+     *                                          When set to -1 the script will preserve transparency for transparent GIF
+     *                                          and PNG images. For non-transparent images the background will be black
+     *                                          (#000000) in this case.
+     *
+     *                                          Default is -1
      *
      *  @since  1.0.4
      *
@@ -437,7 +449,7 @@ class Zebra_Image {
      *
      *                      If FALSE is returned, check the {@link error} property to see the error code.
      */
-    public function crop($start_x, $start_y, $end_x, $end_y) {
+    public function crop($start_x, $start_y, $end_x, $end_y, $background_color = -1) {
 
         // this method might be also called internally
         // in this case, there's a fifth argument that points to an already existing image identifier
@@ -464,15 +476,46 @@ class Zebra_Image {
             $height = $end_y - $start_y;
 
             // prepare the target image
-            $target_identifier = $this->_prepare_image($width, $height, -1);
+            $target_identifier = $this->_prepare_image($width, $height, $background_color);
+
+            $dest_x = 0;
+            $dest_y = 0;
+
+            // if starting x is negative
+            if ($start_x < 0) {
+
+                // we are adjusting the position where we place the cropped image on the target image
+                $dest_x = abs($start_x);
+
+                // and crop starting from 0
+                $start_x = 0;
+
+            }
+
+            // if ending x is larger than the image's width, adjust the width we're showing
+            if ($end_x > ($image_width = imagesx($this->source_identifier))) $width = $image_width - $start_x;
+
+            // if starting y is negative
+            if ($start_y < 0) {
+
+                // we are adjusting the position where we place the cropped image on the target image
+                $dest_y = abs($start_y);
+
+                // and crop starting from 0
+                $start_y = 0;
+
+            }
+
+            // if ending y is larger than the image's height, adjust the height we're showing
+            if ($end_y > ($image_height = imagesy($this->source_identifier))) $height = $image_height - $start_y;
 
             // crop the image
             imagecopyresampled(
 
                 $target_identifier,
                 $this->source_identifier,
-                0,
-                0,
+                $dest_x,
+                $dest_y,
                 $start_x,
                 $start_y,
                 $width,
