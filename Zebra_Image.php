@@ -431,11 +431,9 @@ class Zebra_Image {
      *
      *  @param  integer     $end_y              y coordinate where to end the cropping
      *
-     *  @param  hexadecimal $background_color   (Optional) The hexadecimal color (like "#FFFFFF" or "#FFF") of the
-     *                                          blank area. See the <b>method</b> argument.
-     *
-     *                                          Used when the cropping coordinates are off-scale (negative values and/or
-     *                                          values greater than the image's size) to fill the remaining space.
+     *  @param  hexadecimal $background_color   (Optional) A hexadecimal color value (like "#FFFFFF" or "#FFF") used when
+     *                                          the cropping coordinates are off-scale (negative values and/or values
+     *                                          greater than the image's size) to fill the remaining space.
      *
      *                                          When set to -1 the script will preserve transparency for transparent GIF
      *                                          and PNG images. For non-transparent images the background will be black
