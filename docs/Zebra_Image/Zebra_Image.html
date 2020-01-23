@@ -49,11 +49,11 @@ Package: <strong>Zebra_Image</strong>
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.3.0 (last revision: June 06, 2019)</li>
+<li>2.4.0 (last revision: January 23, 2019)</li>
 </ul>
 <h4>Copyright:</h4>
 <ul>
-<li>(c) 2006 - 2019 Stefan Gabos</li>
+<li>(c) 2006 - 2020 Stefan Gabos</li>
 </ul>
 <a name="top"></a>
 <div class="doc_toc">
@@ -431,7 +431,7 @@ transparent.</li></ul></td>
 <div class="clear"></div>
 </div>
 <a name="methodcrop"></a>
-<h4 class="method"><span><em>method</em></span> crop() <span class="smalllinenumber">[line 440]</span></h4>
+<h4 class="method"><span><em>method</em></span> crop() <span class="smalllinenumber">[line 452]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -447,6 +447,11 @@ $end_x
 , 
 integer
 $end_y
+, 
+[
+hexadecimal
+$background_color
+= -1]
 )
 </p>
 <p>Crops a portion of the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs it as the file specified as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
@@ -504,12 +509,17 @@ $end_y
 <td valign="top"><strong>$end_y</strong></td>
 <td valign="top">y coordinate where to end the cropping</td>
 </tr>
+<tr>
+<td valign="top"><em>hexadecimal</em></td>
+<td valign="top"><strong>$background_color</strong></td>
+<td valign="top"><p>(Optional) The hexadecimal color (like &quot;#FFFFFF&quot; or &quot;#FFF&quot;) of the                                           blank area. See the <strong>method</strong> argument.</p><p>Used when the cropping coordinates are off-scale (negative values and/or                                           values greater than the image's size) to fill the remaining space.</p><p>When set to -1 the script will preserve transparency for transparent GIF                                           and PNG images. For non-transparent images the background will be black                                           (#000000) in this case.</p><p>Default is -1</p></td>
+</tr>
 </table>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
 <a name="methodflip_both"></a>
-<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 526]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 569]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -553,7 +563,7 @@ flip_both (
 <div class="clear"></div>
 </div>
 <a name="methodflip_horizontal"></a>
-<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 558]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 601]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -593,7 +603,7 @@ flip_horizontal (
 <div class="clear"></div>
 </div>
 <a name="methodflip_vertical"></a>
-<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 590]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 633]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -633,7 +643,7 @@ flip_vertical (
 <div class="clear"></div>
 </div>
 <a name="methodresize"></a>
-<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 719]</span></h4>
+<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 762]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -727,7 +737,7 @@ height will be both smaller or equal to the required width/height</li></ul><p> <
 <div class="clear"></div>
 </div>
 <a name="methodrotate"></a>
-<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1129]</span></h4>
+<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1172]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -791,7 +801,7 @@ $background_color
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Thu, 06 Jun 19</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+Documentation generated on <span>Thu, 23 Jan 20</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
