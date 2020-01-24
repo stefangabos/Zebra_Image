@@ -78,6 +78,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 - images can be resized to *exact* sizes and maintaining aspect ratio by automatically cropping them
 - preserves transparency of GIF, PNG8 and PNG24 images
 - code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
+- can automatically fix incorrect image orientation
 - has [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)
 
 ## Requirements
