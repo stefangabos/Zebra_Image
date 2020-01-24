@@ -1,3 +1,7 @@
+## version 2.4.0 (January 24, 2020)
+
+- added the `background_color` argument to the [crop](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html#methodcrop) method; used when the cropping coordinates are off-scale (negative values and/or values greater than the image's size) to fill the remaining space; see #18; thank you [Thomas Skerbis](https://github.com/skerbis)!
+
 ## version 2.3.0 (June 06, 2019)
 
 - the default value of the "background_color" argument of the "resize" method is now -1 (for preserving transparency)
