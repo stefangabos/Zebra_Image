@@ -25,7 +25,7 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.4.0 (last revision: January 23, 2019)
+ *  @version    2.5.0 (last revision: February 06, 2020)
  *  @copyright  (c) 2006 - 2020 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
@@ -103,6 +103,17 @@ class Zebra_Image {
      *  @var boolean
      */
     public $auto_handle_exif_orientation;
+
+    /**
+     *  Indicates whether the created image should be saved as a progressive JPEG.
+     *
+     *  Used only if the file at {@link target_path} is a JPG/JPEG image.
+     *
+     *  Default is FALSE
+     *
+     *  @var boolean
+     */
+    public $jpeg_interlace;
 
     /**
      *  Indicates the quality of the output image (better quality means bigger file size).
@@ -202,7 +213,7 @@ class Zebra_Image {
         // set default values for properties
         $this->chmod_value = 0755;
 
-        $this->error = 0;
+        $this->error = $this->jpeg_interlace = 0;
 
         $this->jpeg_quality = 85;
 
@@ -1691,6 +1702,9 @@ class Zebra_Image {
 
         // sharpen image if it's required
         $this->_sharpen_image($identifier);
+
+        // save interlaced JPEG images if required
+        if (in_array($this->target_type, array('jpg', 'jpeg')) && $this->jpeg_interlace) imageinterlace($identifier, 1);
 
         // image saving process goes according to required extension
         switch ($this->target_type) {
