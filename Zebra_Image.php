@@ -111,6 +111,8 @@ class Zebra_Image {
      *
      *  Default is FALSE
      *
+     *  @since 2.5.0
+     *
      *  @var boolean
      */
     public $jpeg_interlace;
