@@ -1,3 +1,7 @@
+## version 2.5.0 (TBA)
+
+- progressive JPEGs can now be saved by setting the newly added [jpeg_interlace](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html#var$jpeg_interlace) property; thanks [tohizma](https://github.com/tohizma) for suggesting!
+
 ## version 2.4.0 (January 24, 2020)
 
 - added the `background_color` argument to the [crop](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html#methodcrop) method; used when the cropping coordinates are off-scale (negative values and/or values greater than the image's size) to fill the remaining space; see #18; thank you [Thomas Skerbis](https://github.com/skerbis)!
