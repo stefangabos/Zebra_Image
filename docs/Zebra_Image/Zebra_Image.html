@@ -49,7 +49,7 @@ Package: <strong>Zebra_Image</strong>
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.4.0 (last revision: January 23, 2019)</li>
+<li>2.5.0 (last revision: February 06, 2020)</li>
 </ul>
 <h4>Copyright:</h4>
 <ul>
@@ -64,6 +64,7 @@ Package: <strong>Zebra_Image</strong>
 <li><a href="#var$chmod_value">$chmod_value</a></li>
 <li><a href="#var$enlarge_smaller_images">$enlarge_smaller_images</a></li>
 <li><a href="#var$error">$error</a></li>
+<li><a href="#var$jpeg_interlace">$jpeg_interlace</a></li>
 <li><a href="#var$jpeg_quality">$jpeg_quality</a></li>
 <li><a href="#var$png_compression">$png_compression</a></li>
 <li><a href="#var$preserve_aspect_ratio">$preserve_aspect_ratio</a></li>
@@ -149,6 +150,21 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <div class="doc_block">
 <p>In case of an error read this property's value to see the error's code.</p>
 <p>Possible error codes are:</p><p><ul><li>1:  source file could not be found</li><li>2:  source file is not readable</li><li>3:  could not write target file</li><li>4:  unsupported source file format</li><li>5:  unsupported target file format</li><li>6:  GD library version does not support target file format</li><li>7:  GD library is not installed!</li><li>8:  &quot;chmod&quot; command is disabled via configuration</li><li>9:  &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is 0 (no error).</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$jpeg_interlace"></a>
+<h4 class="variable"><span><em>boolean</em></span> $jpeg_interlace <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates whether the created image should be saved as a progressive JPEG.</p>
+<p>Used only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a JPG/JPEG image.</p><p>Default is FALSE</p>
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
@@ -281,7 +297,7 @@ file's extension (supported file types are GIF, PNG and JPEG)</em>.</p>
 <a name="class_methods"></a>
 <h3>Class methods</h3>
 <a name="method__construct"></a>
-<h4 class="method"><span><em>constructor</em></span> __construct() <span class="smalllinenumber">[line 200]</span></h4>
+<h4 class="method"><span><em>constructor</em></span> __construct() <span class="smalllinenumber">[line 211]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>void</em>
@@ -301,7 +317,7 @@ __construct (
 <div class="clear"></div>
 </div>
 <a name="methodapply_filter"></a>
-<h4 class="method"><span><em>method</em></span> apply_filter() <span class="smalllinenumber">[line 332]</span></h4>
+<h4 class="method"><span><em>method</em></span> apply_filter() <span class="smalllinenumber">[line 343]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -431,7 +447,7 @@ transparent.</li></ul></td>
 <div class="clear"></div>
 </div>
 <a name="methodcrop"></a>
-<h4 class="method"><span><em>method</em></span> crop() <span class="smalllinenumber">[line 450]</span></h4>
+<h4 class="method"><span><em>method</em></span> crop() <span class="smalllinenumber">[line 461]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -519,7 +535,7 @@ $background_color
 <div class="clear"></div>
 </div>
 <a name="methodflip_both"></a>
-<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 567]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 578]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -563,7 +579,7 @@ flip_both (
 <div class="clear"></div>
 </div>
 <a name="methodflip_horizontal"></a>
-<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 599]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 610]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -603,7 +619,7 @@ flip_horizontal (
 <div class="clear"></div>
 </div>
 <a name="methodflip_vertical"></a>
-<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 631]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 642]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -643,7 +659,7 @@ flip_vertical (
 <div class="clear"></div>
 </div>
 <a name="methodresize"></a>
-<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 760]</span></h4>
+<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 771]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -737,7 +753,7 @@ height will be both smaller or equal to the required width/height</li></ul><p> <
 <div class="clear"></div>
 </div>
 <a name="methodrotate"></a>
-<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1170]</span></h4>
+<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1181]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -801,7 +817,7 @@ $background_color
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Thu, 23 Jan 20</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+Documentation generated on <span>Wed, 05 Feb 20</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
