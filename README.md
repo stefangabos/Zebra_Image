@@ -69,6 +69,8 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 
 ## Support the development of this library
 
+Your support means a lot and keeps me motivated to keep this project alive. If you like this project please :star: it by clicking on the star button at the top of the page. Thank you!
+
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXHCKWCF6JCPQ)
 
 ## Features
