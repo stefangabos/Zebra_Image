@@ -65,8 +65,6 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
     </tr>
 </table>
 
-:books: Check out the [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)!
-
 ## Support the development of this library
 
 Your support means a lot and keeps me motivated to keep this project alive. If you like this project please :star: it by clicking on the star button at the top of the page. Thank you!
@@ -79,6 +77,7 @@ Your support means a lot and keeps me motivated to keep this project alive. If y
 - all the [filters supported by PHP](http://php.net/manual/ro/function.imagefilter.php) can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
 - images can be resized to *exact* sizes and maintaining aspect ratio by automatically cropping them
 - preserves transparency of GIF, PNG8 and PNG24 images
+- supports creation of interlaced JPEG images
 - code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
 - can automatically fix incorrect image orientation
 - has [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)
