@@ -25,7 +25,7 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.5.0 (last revision: February 06, 2020)
+ *  @version    2.5.0 (last revision: February 16, 2020)
  *  @copyright  (c) 2006 - 2020 Stefan Gabos
  *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
@@ -463,14 +463,14 @@ class Zebra_Image {
     public function crop($start_x, $start_y, $end_x, $end_y, $background_color = -1) {
 
         // this method might be also called internally
-        // in this case, there's a fifth argument that points to an already existing image identifier
+        // in this case, there's a sixth argument that points to an already existing image identifier
         $args = func_get_args();
 
-        // if fifth argument exists
-        if (isset($args[4]) && is_resource($args[4])) {
+        // if a sixth argument exists
+        if (isset($args[5]) && is_resource($args[5])) {
 
             // that it is the image identifier that we'll be using further on
-            $this->source_identifier = $args[4];
+            $this->source_identifier = $args[5];
 
             // set this to true so that the script will continue to execute at the next IF
             $result = true;
@@ -938,6 +938,7 @@ class Zebra_Image {
                                 0,
                                 $width,
                                 $height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
                             );
 
@@ -952,6 +953,7 @@ class Zebra_Image {
                                 0,
                                 floor(($target_width - $width) / 2) + $width,
                                 $height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
                             );
 
@@ -966,6 +968,7 @@ class Zebra_Image {
                                 0,
                                 $target_width,
                                 $height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
                             );
 
@@ -981,6 +984,7 @@ class Zebra_Image {
                                 floor(($target_height - $height) / 2),
                                 $width,
                                 floor(($target_height - $height) / 2) + $height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
 
                             );
@@ -997,6 +1001,7 @@ class Zebra_Image {
                                 floor(($target_height - $height) / 2),
                                 floor(($target_width - $width) / 2) + $width,
                                 floor(($target_height - $height) / 2) + $height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
 
                             );
@@ -1013,6 +1018,7 @@ class Zebra_Image {
                                 floor(($target_height - $height) / 2),
                                 $target_width,
                                 floor(($target_height - $height) / 2) + $height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
 
                             );
@@ -1029,6 +1035,7 @@ class Zebra_Image {
                                 $target_height - $height,
                                 $width,
                                 $target_height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
 
                             );
@@ -1045,6 +1052,7 @@ class Zebra_Image {
                                 $target_height - $height,
                                 floor(($target_width - $width) / 2) + $width,
                                 $target_height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
 
                             );
@@ -1061,6 +1069,7 @@ class Zebra_Image {
                                 $target_height - $height,
                                 $target_width,
                                 $target_height,
+                                $background_color,
                                 $target_identifier // crop this resource instead
 
                             );
