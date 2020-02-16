@@ -1,5 +1,6 @@
 ## version 2.5.0 (TBA)
 
+- fixed bug introduced in previous release because of the new argument added to the crop method
 - progressive JPEGs can now be saved by setting the newly added [jpeg_interlace](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html#var$jpeg_interlace) property; thanks [tohizma](https://github.com/tohizma) for suggesting!
 
 ## version 2.4.0 (January 24, 2020)
