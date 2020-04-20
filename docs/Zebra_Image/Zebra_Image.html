@@ -42,14 +42,14 @@ Package: <strong>Zebra_Image</strong>
 <h2>Class: <strong>Zebra_Image</strong></h2>
 <h6><strong>source file:</strong> /Zebra_Image.php</h6>
 <pre></pre>
-<p>A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several   types of image manipulation operations and applying filters to images.<p>Read more <a href="https://github.com/stefangabos/Zebra_Image/">here</a></p></p>
+<p>A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several   types of image manipulation operations and applying filters to images. Supports WEBP format.<p>Read more <a href="https://github.com/stefangabos/Zebra_Image/">here</a></p></p>
 <h4>Author(s):</h4>
 <ul>
 <li>Stefan Gabos &lt;<a href="mailto:contact@stefangabos.ro">contact@stefangabos.ro</a>&gt;</li>
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.5.0 (last revision: February 16, 2020)</li>
+<li>2.6.0 (last revision: April 20, 2020)</li>
 </ul>
 <h4>Copyright:</h4>
 <ul>
@@ -72,6 +72,7 @@ Package: <strong>Zebra_Image</strong>
 <li><a href="#var$sharpen_images">$sharpen_images</a></li>
 <li><a href="#var$source_path">$source_path</a></li>
 <li><a href="#var$target_path">$target_path</a></li>
+<li><a href="#var$webp_quality">$webp_quality</a></li>
 </ul>
 </div>
 <div class="left">
@@ -271,7 +272,9 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <h4 class="variable"><span><em>string</em></span> $source_path <span class="value"></span></h4>
 <div class="doc_block">
 <p>Path to an image file to apply the transformations to.</p>
-<p>Supported file types are <strong>GIF</strong>, <strong>PNG</strong> and <strong>JPEG</strong>.</p>
+<p>Supported file types are <strong>GIF</strong>, <strong>PNG</strong>, <strong>JPEG</strong> and <strong>WEBP</strong>.</p><p><div class="highlight">WEBP support is available only for PHP version 7.0.0+. Note that even though WEBP support was added to PHP
+in version 5.5.0, it only started working since version 5.5.1, while support for transparency was added with PHP
+version 7.0.0. As a result, I decided to make it available only if PHP version is at least 7.0.0.</div></p>
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
 <tr>
@@ -287,9 +290,30 @@ php_exif.dll DLL so adjust your php.ini accordingly. See <a href="http://php.net
 <div class="doc_block">
 <p>Path (including file name) to where to save the transformed image.</p>
 <p><em>Can be a different than <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> - the type of the transformed image will be as indicated by the
-file's extension (supported file types are GIF, PNG and JPEG)</em>.</p>
+file's extension (supported file types are GIF, PNG, JPEG and WEBP)</em>.</p><p><div class="highlight">WEBP support is available only for PHP version 7.0.0+. Note that even though WEBP support was added to PHP
+in version 5.5.0, it only started working since version 5.5.1, while support for transparency was added with PHP
+version 7.0.0. As a result, I decided to make it available only if PHP version is at least 7.0.0.</div></p>
 <h5>Tags:</h5>
 <table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
+<td valign="top">public</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
+<a name="var$webp_quality"></a>
+<h4 class="variable"><span><em>integer</em></span> $webp_quality <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates the quality level of the output image.</p>
+<p>Available only if PHP version is 7.0.0+ and only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a WEBP image. It will be   ignored otherwise.</p><p>Range is 0 - 100</p><p>Default is 80</p>
+<h5>Tags:</h5>
+<table cellspacing="0" cellpadding="0">
+<tr>
+<td valign="top"><strong>since:</strong>&nbsp;&nbsp;</td>
+<td valign="top">2.6.0</td>
+</tr>
 <tr>
 <td valign="top"><strong>access:</strong>&nbsp;&nbsp;</td>
 <td valign="top">public</td>
@@ -301,7 +325,7 @@ file's extension (supported file types are GIF, PNG and JPEG)</em>.</p>
 <a name="class_methods"></a>
 <h3>Class methods</h3>
 <a name="method__construct"></a>
-<h4 class="method"><span><em>constructor</em></span> __construct() <span class="smalllinenumber">[line 213]</span></h4>
+<h4 class="method"><span><em>constructor</em></span> __construct() <span class="smalllinenumber">[line 237]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>void</em>
@@ -321,7 +345,7 @@ __construct (
 <div class="clear"></div>
 </div>
 <a name="methodapply_filter"></a>
-<h4 class="method"><span><em>method</em></span> apply_filter() <span class="smalllinenumber">[line 345]</span></h4>
+<h4 class="method"><span><em>method</em></span> apply_filter() <span class="smalllinenumber">[line 371]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -451,7 +475,7 @@ transparent.</li></ul></td>
 <div class="clear"></div>
 </div>
 <a name="methodcrop"></a>
-<h4 class="method"><span><em>method</em></span> crop() <span class="smalllinenumber">[line 463]</span></h4>
+<h4 class="method"><span><em>method</em></span> crop() <span class="smalllinenumber">[line 489]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -539,7 +563,7 @@ $background_color
 <div class="clear"></div>
 </div>
 <a name="methodflip_both"></a>
-<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 580]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_both() <span class="smalllinenumber">[line 606]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -583,7 +607,7 @@ flip_both (
 <div class="clear"></div>
 </div>
 <a name="methodflip_horizontal"></a>
-<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 612]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_horizontal() <span class="smalllinenumber">[line 638]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -623,7 +647,7 @@ flip_horizontal (
 <div class="clear"></div>
 </div>
 <a name="methodflip_vertical"></a>
-<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 644]</span></h4>
+<h4 class="method"><span><em>method</em></span> flip_vertical() <span class="smalllinenumber">[line 670]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -663,7 +687,7 @@ flip_vertical (
 <div class="clear"></div>
 </div>
 <a name="methodresize"></a>
-<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 773]</span></h4>
+<h4 class="method"><span><em>method</em></span> resize() <span class="smalllinenumber">[line 799]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -757,7 +781,7 @@ height will be both smaller or equal to the required width/height</li></ul><p> <
 <div class="clear"></div>
 </div>
 <a name="methodrotate"></a>
-<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1192]</span></h4>
+<h4 class="method"><span><em>method</em></span> rotate() <span class="smalllinenumber">[line 1218]</span></h4>
 <div class="doc_block">
 <p class="code">
 <em>boolean</em>
@@ -821,7 +845,7 @@ $background_color
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Sun, 16 Feb 20</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+Documentation generated on <span>Mon, 20 Apr 20</span> by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
