@@ -1,6 +1,7 @@
 ## version 2.6.0 (TBA)
 
 - added sport for the WEBP format
+- handle GD bug where transparency is lost when rotating at angles of 90, 180 and 270 degrees
 
 ## version 2.5.0 (February 16, 2020)
 
