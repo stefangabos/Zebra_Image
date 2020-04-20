@@ -6,7 +6,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/stefangabos/zebra_image/v/stable)](https://packagist.org/packages/stefangabos/zebra_image) [![Total Downloads](https://poser.pugx.org/stefangabos/zebra_image/downloads)](https://packagist.org/packages/stefangabos/zebra_image) [![Monthly Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/monthly)](https://packagist.org/packages/stefangabos/zebra_image) [![Daily Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/daily)](https://packagist.org/packages/stefangabos/zebra_image) [![License](https://poser.pugx.org/stefangabos/zebra_image/license)](https://packagist.org/packages/stefangabos/zebra_image)
 
-Use Zebra_Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** images. The library supports loading and saving images in the **GIF**, **JPEG** and **PNG** formats and preserves transparency of **GIF**, **PNG8** and **PNG24** images and it doesn't require any external libraries other than the [GD2 extension](http://www.php.net/manual/en/book.image.php/) (with which PHP usually comes pre-compiled with).
+Use Zebra_Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** images. The library supports loading and saving images in the **GIF**, **JPEG**, **PNG** and **WEBP** formats and preserves transparency of **GIF**, **PNG8**, **PNG24** and **WEBP** images and it doesn't require any external libraries other than the [GD2 extension](http://www.php.net/manual/en/book.image.php/) (with which PHP usually comes pre-compiled with).
 
 All the [filters supported by PHP](http://php.net/manual/ro/function.imagefilter.php) can be applied to images. These filters include negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate. Multiple filters can be applied at once for creating custom filters.
 
@@ -76,7 +76,7 @@ Your support means a lot and keeps me motivated to keep this project alive. If y
 - can be used to resize, flip, rotate, crop and sharpen images
 - all the [filters supported by PHP](http://php.net/manual/ro/function.imagefilter.php) can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
 - images can be resized to *exact* sizes and maintaining aspect ratio by automatically cropping them
-- preserves transparency of GIF, PNG8 and PNG24 images
+- preserves transparency of GIF, PNG8, PNG24 and WEBP images
 - supports creation of interlaced JPEG images
 - code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
 - can automatically fix incorrect image orientation
@@ -84,7 +84,7 @@ Your support means a lot and keeps me motivated to keep this project alive. If y
 
 ## Requirements
 
-PHP 5+, bundled GD 2.0.28+
+PHP 5+, bundled GD 2.0.28+ (PHP 7.0.0+ for WEBP support)
 
 PHP needs to be compiled with `--enable-exif` (Windows users enable `php_mbstring.dll` and `php_exif.dll` extensions in `php.ini`) for auto-fixing image rotation so images are always shown correctly regardless of how the camera was held when the pictures were taken.
 
@@ -120,7 +120,7 @@ $image = new Zebra_Image();
 // set this property to TRUE in order to fix rotation so you always see images in correct position
 $image->auto_handle_exif_orientation = false;
 
-// indicate a source image (a GIF, PNG or JPEG file)
+// indicate a source image (a GIF, PNG, JPEG or WEBP file)
 $image->source_path = 'path/to/image.png';
 
 // indicate a target image
