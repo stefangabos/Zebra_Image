@@ -1217,6 +1217,9 @@ class Zebra_Image {
      */
     public function rotate($angle, $background_color = -1) {
 
+        // don't do anything if no angle is given
+        if ($angle == 0 || $angle == 360) return true;
+
         // get function arguments
         $arguments = func_get_args();
 
