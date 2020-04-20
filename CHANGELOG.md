@@ -1,3 +1,7 @@
+## version 2.6.0 (TBA)
+
+- added sport for the WEBP format
+
 ## version 2.5.0 (February 16, 2020)
 
 - fixed bug introduced in previous release because of the new argument added to the crop method
