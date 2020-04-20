@@ -1226,6 +1226,10 @@ class Zebra_Image {
         // if we came here just to fix orientation or if image resource was successfully created
         if ($use_existing_source || $this->_create_from_source()) {
 
+            // there is a bug in GD when angle is 90, 180, 270
+            // transparency is not preserved
+            if ($angle % 90 === 0) $angle += 0.001;
+
             // angles are given clockwise but imagerotate works counterclockwise so we need to negate our value
             $angle = -$angle;
 
