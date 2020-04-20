@@ -25,6 +25,10 @@ a {
     color: #0000BB;
 }
 
+code {
+    font-size: 14px;
+}
+
 table {
     border: 1px solid #666;
     margin: 0 auto 50px;
@@ -41,6 +45,13 @@ table thead th {
     font-weight: normal;
     border-bottom: 1px solid #dedede;
     position: relative;
+}
+
+table thead th b {
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 0 4px;
+    background: #F0F0F0;
 }
 
 table td {

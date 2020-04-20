@@ -68,7 +68,7 @@ $image->target_path = 'results/rotate.' . $ext;
 // rotate
 // and if there is an error, show the error message
 // (if we are rotating a solid image, use #FFF as color of uncovered zone after the rotation)
-if (!$image->rotate(90, (stripos($original_image, 'solid') !== false ? '#FFFFFF' : -1))) show_error($image->error, $image->source_path, $image->target_path);
+if (!$image->rotate(45, stripos($original_image, 'solid') !== false ? '#FFFFFF' : -1)) show_error($image->error, $image->source_path, $image->target_path);
 
 // indicate a target image
 $image->target_path = 'results/filter.' . $ext;
@@ -131,7 +131,7 @@ function show_error($error_code, $source_path, $target_path) {
         <thead>
         <tr>
             <th colspan="2" width="1">
-                Original image was <strong><?php echo basename($original_image); ?></strong><br>
+                Original image was <b><?php echo basename($original_image); ?></b><br>
                 Multiple image types to test with are available:<br>
                 <ul>
                     <li><a href="?original=image-solid.gif">solid <strong>GIF</strong></a></li>
@@ -181,7 +181,7 @@ function show_error($error_code, $source_path, $target_path) {
             array(
                 'title' => 'Rotate',
                 'image' => 'rotate',
-                'usage' => '$image->rotate(90' . (stripos($original_image, 'solid') !== false ? ', \'#FFFFFF\'' : '') . ')',
+                'usage' => '$image->rotate(45' . (stripos($original_image, 'solid') !== false ? ', \'#FFFFFF\'' : '') . ')',
                 'docs'  =>  'methodrotate',
             ),
             array(
