@@ -14,7 +14,7 @@ $image = new Zebra_Image();
 //$auto_handle_exif_orientation = true;
 
 // indicate a source image
-$original_image = $image->source_path = 'images/' . (!isset($_GET['original']) || !in_array($_GET['original'], array('image-solid.gif', 'image-transparent.gif', 'image.jpg', 'image-solid-png24.png', 'image-solid-png8.png', 'image-transparent-png24.png', 'image-transparent-png8.png')) ? 'image-transparent-png24.png' : $_GET['original']);
+$original_image = $image->source_path = 'images/' . (!isset($_GET['original']) || !in_array($_GET['original'], array('image-solid.gif', 'image-transparent.gif', 'image.jpg', 'image-solid-png24.png', 'image-solid-png8.png', 'image-transparent-png24.png', 'image-transparent-png8.png', 'image-transparent-webp.webp')) ? 'image-transparent-png24.png' : $_GET['original']);
 
 /**
  *
@@ -141,6 +141,7 @@ function show_error($error_code, $source_path, $target_path) {
                     <li><a href="?original=image-solid-png8.png">solid <strong>PNG8</strong></a></li>
                     <li><a href="?original=image-transparent-png24.png">transparent <strong>PNG24</strong></a></li>
                     <li><a href="?original=image-transparent-png8.png">transparent <strong>PNG8</strong></a></li>
+                    <li><a href="?original=image-transparent-webp.webp">transparent <strong>WEBP</strong></a></li>
                 </ul>
                 <small class="text-right display-block"><em>images have background in order to observe transparency</em></small>
             </th>
