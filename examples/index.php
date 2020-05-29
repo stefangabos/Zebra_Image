@@ -1,5 +1,10 @@
 <?php
 
+// report all error messages
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // error if results folder doesn't exist or is not writable
 if (!is_dir('results') || !is_writable('results')) die('<strong>ERROR</strong><br>Please create the <em>results</em> folder at <em>' . dirname(__FILE__) . '</em> and make sure it is writable!');
 
