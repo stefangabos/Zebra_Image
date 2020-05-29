@@ -317,7 +317,7 @@ class Zebra_Image {
      *                              -   <b>contrast</b>         -   changes the contrast of the image; use <b>arg1</b>
      *                                                              to set the level of contrast; the range of contrast
      *                                                              is -100 to 100;
-     *                              -   <b>gausian_blur</b>     -   blurs the image using the Gaussian method;
+     *                              -   <b>gaussian_blur</b>    -   blurs the image using the Gaussian method;
      *                              -   <b>grayscale</b>        -   converts the image into grayscale;
      *                              -   <b>edgedetect</b>       -   uses edge detection to highlight the edges in the image;
      *                              -   <b>emboss</b>           -   embosses the image;
