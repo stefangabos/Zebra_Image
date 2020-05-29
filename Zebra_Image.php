@@ -426,7 +426,7 @@ class Zebra_Image {
                         trigger_error('Invalid arguments used for "' . strtoupper($arguments[0]) . '" filter', E_USER_WARNING);
 
                 // if filter doesn't exists, trigger an error
-                } else trigger_error('Filter "' . strtoupper($arguments[0]) . '" is not available', E_USER_WARNING);
+                } else trigger_error('Filter "' . strtoupper($filter) . '" is not available', E_USER_WARNING);
 
                 // write image
                 return $this->_write_image($target_identifier);
