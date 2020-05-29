@@ -1,7 +1,8 @@
-## version 2.6.0 (TBA)
+## version 2.6.0 (May 29, 2020)
 
 - added sport for the WEBP format
 - handle GD bug where transparency is lost when rotating at angles of 90, 180 and 270 degrees
+- fixed [#22](https://github.com/stefangabos/Zebra_Image/issues/22); thanks to [Almir Neto](https://github.com/AlmirNeeto99) for reporting!
 
 ## version 2.5.0 (February 16, 2020)
 
