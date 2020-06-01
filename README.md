@@ -103,12 +103,16 @@ composer require stefangabos/zebra_image:dev-master
 Or you can install it manually by downloading the latest version, unpacking it, and then including it in your project
 
 ```php
+<?php
+
 require_once 'Zebra_Image.php';
 ```
 
 ## How to use
 
 ```php
+<?php
+
 // load the image manipulation class
 require 'path/to/Zebra_Image.php';
 
