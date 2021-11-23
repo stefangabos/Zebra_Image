@@ -6,9 +6,9 @@
 
 [![Latest Stable Version](https://poser.pugx.org/stefangabos/zebra_image/v/stable)](https://packagist.org/packages/stefangabos/zebra_image) [![Total Downloads](https://poser.pugx.org/stefangabos/zebra_image/downloads)](https://packagist.org/packages/stefangabos/zebra_image) [![Monthly Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/monthly)](https://packagist.org/packages/stefangabos/zebra_image) [![Daily Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/daily)](https://packagist.org/packages/stefangabos/zebra_image) [![License](https://poser.pugx.org/stefangabos/zebra_image/license)](https://packagist.org/packages/stefangabos/zebra_image)
 
-Use Zebra_Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** images. The library supports loading and saving images in the **GIF**, **JPEG**, **PNG** and **WEBP** formats and preserves transparency of **GIF**, **PNG8**, **PNG24** and **WEBP** images and it doesn't require any external libraries other than the [GD2 extension](http://www.php.net/manual/en/book.image.php/) (with which PHP usually comes pre-compiled with).
+Use Zebra Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** images. The library supports loading and saving images in the **GIF**, **JPEG**, **PNG** and **WEBP** formats and preserves transparency of **GIF**, **PNG8**, **PNG24** and **WEBP** images and it doesn't require any external libraries other than the [GD2 extension](http://www.php.net/manual/en/book.image.php/) (with which PHP usually comes pre-compiled with).
 
-All the [filters supported by PHP](http://php.net/manual/ro/function.imagefilter.php) can be applied to images. These filters include negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate. Multiple filters can be applied at once for creating custom filters.
+All the [filters supported by PHP](http://php.net/manual/en/function.imagefilter.php) can be applied to images. These filters include negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate. Multiple filters can be applied at once for creating custom filters.
 
 The code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to [E_ALL](https://web.archive.org/web/20160226192832/http://www.php.net/manual/en/function.error-reporting.php).
 
@@ -27,14 +27,14 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 <table width="100%" border="0">
     <tr>
         <td width="33%" valign="top" rowspan="4">
-            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-1.jpg" alt="Zebra_Image" align="right">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-1.jpg" alt="Zebra Image" align="right">
         </td>
         <td valign="top" width="33%">
             <strong>Method 1</strong><br>
             After the image is resized to 200x143 pixels representing the size of the image that <em>would fit</em> in a 200x200 pixels box while preserving its aspect ratio, it is centered both horizontally and vertically in a 200x200 pixels box. In our example the background is white but it can be set to any color. The resulting image has 200x200 pixels.
         </td>
         <td width="33%" valign="top">
-            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-2.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-2.jpg" alt="Zebra Image">
         </td>
     </tr>
     <tr>
@@ -43,7 +43,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
             The image is resized to 200x143 pixels representing the size of the image that would fit in a 200200 pixels box while preserving its aspect ratio.
         </td>
         <td width="33%" valign="top">
-            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-3.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-3.jpg" alt="Zebra Image">
         </td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
             <strong>Step 1:</strong> The image is first resized to 279x200 pixels representing the size closest to the required size where the image's width and height are both equal or greater than the required width and height respectively, while preserving its aspect ratio.
         </td>
         <td width="33%" valign="top">
-            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-4.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-4.jpg" alt="Zebra Image">
         </td>
     </tr>
     <tr>
@@ -60,7 +60,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
             <strong>Step 2:</strong> A 200x200 pixels area will be cropped from the top-left corner of the image (for method 3) or from the center of the image (for method 4).
         </td>
         <td width="33%" valign="top">
-            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-5.jpg" alt="Zebra_Image">
+            <img src="https://raw.githubusercontent.com/stefangabos/Zebra_Image/master/docs/media/example-5.jpg" alt="Zebra Image">
         </td>
     </tr>
 </table>
@@ -68,7 +68,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 ## Features
 
 - can be used to resize, flip, rotate, crop and sharpen images
-- all the [filters supported by PHP](http://php.net/manual/ro/function.imagefilter.php) can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
+- all the [filters supported by PHP](http://php.net/manual/en/function.imagefilter.php) can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
 - images can be resized to *exact* sizes and maintaining aspect ratio by automatically cropping them
 - preserves transparency of GIF, PNG8, PNG24 and WEBP images
 - supports creation of interlaced JPEG images
@@ -97,7 +97,7 @@ PHP needs to be compiled with `--enable-exif` (Windows users enable `php_mbstrin
 
 ## Installation
 
-You can install Zebra_Image via [Composer](https://packagist.org/packages/stefangabos/zebra_image)
+You can install Zebra Image via [Composer](https://packagist.org/packages/stefangabos/zebra_image)
 
 ```bash
 # get the latest stable release
