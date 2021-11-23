@@ -1,6 +1,6 @@
 <img src="https://github.com/stefangabos/zebrajs/blob/master/docs/images/logo.png" alt="zebrajs" align="right">
 
-# Zebra_Image
+# Zebra_Image &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A+compact+(one-file+only)+and+lightweight+PHP+library+for+image+manipulation+providing+methods+for+performing+several+types+of+image+manipulation+operations+and+applying+filters+to+images+%23php&url=https://github.com/stefangabos/Zebra_Image&via=stefangabos)
 
 *A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several types of image manipulation operations and applying filters to images.*
 
@@ -65,12 +65,6 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
     </tr>
 </table>
 
-## Support the development of this library
-
-Your support means a lot and keeps me motivated to keep this project alive. If you like this project please :star: it by clicking on the star button at the top of the page. Thank you!
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXHCKWCF6JCPQ)
-
 ## Features
 
 - can be used to resize, flip, rotate, crop and sharpen images
@@ -81,6 +75,19 @@ Your support means a lot and keeps me motivated to keep this project alive. If y
 - code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to E_ALL
 - can automatically fix incorrect image orientation
 - has [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)
+
+## :notebook_with_decorative_cover: Documentation
+
+Check out the [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)!
+
+## 🎂 Support the development of this project
+
+Your support means a lot and it keeps me motivated to keep working on open source projects.<br>
+If you like this project please ⭐ it by clicking on the star button at the top of the page.<br>
+If you are feeling generous, you can buy me a coffee by donating through PayPal, or you can become a sponsor.<br>
+Either way - **Thank you!** 🎉
+
+[<img src="https://img.shields.io/github/stars/stefangabos/zebra_image?color=green&label=star%20it%20on%20GitHub" width="132" height="20" alt="Star it on GitHub">](https://github.com/stefangabos/Zebra_Image) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BXHCKWCF6JCPQ) [<img src="https://img.shields.io/badge/-Sponsor-fafbfc?logo=GitHub%20Sponsors">](https://github.com/sponsors/stefangabos)
 
 ## Requirements
 
@@ -185,5 +192,3 @@ if (!$image->resize(100, 100, ZEBRA_IMAGE_CROP_CENTER)) {
 // if no errors
 } else echo 'Success!';
 ```
-
-:books: Check out the [awesome documentation](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html)!
