@@ -1,6 +1,6 @@
 <img src="https://github.com/stefangabos/zebrajs/blob/master/docs/images/logo.png" alt="zebrajs" align="right">
 
-# Zebra_Image &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A+compact+(one-file+only)+and+lightweight+PHP+library+for+image+manipulation+providing+methods+for+performing+several+types+of+image+manipulation+operations+and+applying+filters+to+images+%23php&url=https://github.com/stefangabos/Zebra_Image&via=stefangabos)
+# Zebra Image &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A+compact+(one-file+only)+and+lightweight+PHP+library+for+image+manipulation+providing+methods+for+performing+several+types+of+image+manipulation+operations+and+applying+filters+to+images+%23php&url=https://github.com/stefangabos/Zebra_Image&via=stefangabos)
 
 *A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several types of image manipulation operations and applying filters to images.*
 
