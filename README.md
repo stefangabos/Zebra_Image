@@ -10,7 +10,7 @@ Use Zebra Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** im
 
 All the [filters supported by PHP](http://php.net/manual/en/function.imagefilter.php) can be applied to images. These filters include negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate. Multiple filters can be applied at once for creating custom filters.
 
-The code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to [E_ALL](https://web.archive.org/web/20160226192832/http://www.php.net/manual/en/function.error-reporting.php).
+The code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to [E_ALL](https://www.php.net/manual/en/function.error-reporting.php).
 
 Using this library you can resize images to *exact* given width and height and still maintain aspect ratio by using one of the following methods:
 
