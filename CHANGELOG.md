@@ -1,3 +1,7 @@
+## version 2.7.0 (May 29, 2022)
+
+- fixed compatibility with PHP 8.0.0+
+
 ## version 2.6.0 (May 29, 2020)
 
 - added sport for the WEBP format
