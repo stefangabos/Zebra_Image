@@ -522,6 +522,13 @@ class Zebra_Image {
             // set this to true so that the script will continue to execute at the next IF
             $result = true;
 
+        // we need to make sure these are integers or PHP 8.1+ will show a warning
+        // https://php.watch/versions/8.1/deprecate-implicit-conversion-incompatible-float-string
+        $start_x = (int)$start_x;
+        $start_y = (int)$start_y;
+        $end_x = (int)$end_x;
+        $end_y = (int)$end_y;
+
         // if method is called as usually
         // try to create an image resource from source path
         } else $result = $this->_create_from_source();
@@ -824,6 +831,11 @@ class Zebra_Image {
      *                                          wrong.
      */
     public function resize($width = 0, $height = 0, $method = ZEBRA_IMAGE_CROP_CENTER, $background_color = -1) {
+
+        // we need to make sure these are integers or PHP 8.1+ will show a warning
+        // https://php.watch/versions/8.1/deprecate-implicit-conversion-incompatible-float-string
+        $width = (int)$width;
+        $height = (int)$height;
 
         // if image resource was successfully created
         if ($this->_create_from_source()) {
