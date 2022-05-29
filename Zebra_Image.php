@@ -25,12 +25,29 @@ ini_set('gd.jpeg_ignore_warning', true);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.6.0 (last revision: May 29, 2020)
- *  @copyright  (c) 2006 - 2020 Stefan Gabos
- *  @license    http://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
+ *  @version    2.6.0 (last revision: May 29, 2022)
+ *  @copyright  © 2006 - 2022 Stefan Gabos
+ *  @license    https://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
  */
 class Zebra_Image {
+
+    /**
+     *  If set to `true`, JPEG images will be auto-rotated according to the {@link http://keyj.emphy.de/exif-orientation-rant/ Exif Orientation Tag}
+     *  so that they are always shown correctly.
+     *
+     *  >   If set to `true` you must also enable exif-support with `--enable-exif`.<br>
+     *      Windows users must enable both the `php_mbstring.dll` and `php_exif.dll` DLL's in `php.ini`.<br>
+     *      `php_mbstring.dll` must be loaded before `php_exif.dll`, so adjust your php.ini accordingly.
+     *      See {@link https://www.php.net/manual/en/exif.installation.php the manual}.
+     *
+     *  Default is `false`
+     *
+     *  @since 2.2.4
+     *
+     *  @var boolean
+     */
+    public $auto_handle_exif_orientation;
 
     /**
      *  Indicates the file system permissions to be set for newly created images.
@@ -49,19 +66,19 @@ class Zebra_Image {
      *  - 2 Global Write
      *  - 1 Global Execute
      *
-     *  Default is 0755
+     *  Default is `0755`
      *
      *  @var integer
      */
     public $chmod_value;
 
     /**
-     *  If set to FALSE, images having both width and height smaller than the required width and height, will be left
-     *  untouched ({@link jpeg_quality} and {@link png_compression} will still apply).
+     *  If set to `false`, images having both width and height smaller than the required width and height will be left
+     *  untouched. {@link jpeg_quality} and {@link png_compression} will still apply!
      *
-     *  Available only for the {@link resize()} method
+     *  Available only for the {@link resize()} method.
      *
-     *  Default is TRUE
+     *  Default is `true`
      *
      *  @var boolean
      */
@@ -72,44 +89,28 @@ class Zebra_Image {
      *
      *  Possible error codes are:
      *
-     *  - 1:  source file could not be found
-     *  - 2:  source file is not readable
-     *  - 3:  could not write target file
-     *  - 4:  unsupported source file format
-     *  - 5:  unsupported target file format
-     *  - 6:  GD library version does not support target file format
-     *  - 7:  GD library is not installed!
-     *  - 8:  "chmod" command is disabled via configuration
-     *  - 9:  "exif_read_data" function is not available
+     *  - `1` - source file could not be found
+     *  - `2` - source file is not readable
+     *  - `3` - could not write target file
+     *  - `4` - unsupported source file format
+     *  - `5` - unsupported target file format
+     *  - `6` - GD library version does not support target file format
+     *  - `7` - GD library is not installed!
+     *  - `8` - "chmod" command is disabled via configuration
+     *  - `9` - "exif_read_data" function is not available
      *
-     *  Default is 0 (no error).
+     *  Default is `0` (no error)
      *
      *  @var integer
      */
     public $error;
 
     /**
-     *  If set to TRUE, JPEG images will be auto-rotated according to the {@link http://keyj.emphy.de/exif-orientation-rant/ Exif Orientation Tag}
-     *  so that they are always shown correctly.
-     *
-     *  <samp>If you set this to TRUE you must also enable exif-support with --enable-exif. Windows users must enable both
-     *  the php_mbstring.dll and php_exif.dll DLL's in php.ini. The php_mbstring.dll DLL must be loaded before the
-     *  php_exif.dll DLL so adjust your php.ini accordingly. See {@link http://php.net/manual/en/exif.installation.php the PHP manual}</samp>
-     *
-     *  Default is FALSE
-     *
-     *  @since 2.2.4
-     *
-     *  @var boolean
-     */
-    public $auto_handle_exif_orientation;
-
-    /**
      *  Indicates whether the created image should be saved as a progressive JPEG.
      *
-     *  Used only if the file at {@link target_path} is a JPG/JPEG image.
+     *  Used only if the file at {@link target_path} is a `JPG/JPEG` image, or will be ignored otherwise.
      *
-     *  Default is FALSE
+     *  Default is `false`
      *
      *  @since 2.5.0
      *
@@ -120,11 +121,11 @@ class Zebra_Image {
     /**
      *  Indicates the quality of the output image (better quality means bigger file size).
      *
-     *  Used only if the file at {@link target_path} is a JPG/JPEG image.
+     *  >   Used only if the file at {@link target_path} is a `JPG/JPEG` image, or it will be ignored otherwise.
      *
-     *  Range is 0 - 100
+     *  Range is `0` - `100`.
      *
-     *  Default is 85
+     *  Default is `85`
      *
      *  @var integer
      */
@@ -133,12 +134,12 @@ class Zebra_Image {
     /**
      *  Indicates the compression level of the output image (lower compression means bigger file size).
      *
-     *  Available only if PHP version is 5.1.2+, and only if the file at {@link target_path} is a PNG image. It will be
-     *  ignored otherwise.
+     *  >   Used only if PHP version is `5.1.2+` and the file at {@link target_path} is a `PNG` image, or it will be
+     *      ignored otherwise.
      *
-     *  Range is 0 - 9
+     *  Range is `0` - `9`.
      *
-     *  Default is 9
+     *  Default is `9`
      *
      *  @since 2.2
      *
@@ -147,20 +148,20 @@ class Zebra_Image {
     public $png_compression;
 
     /**
-     *  Specifies whether, upon resizing, images should preserve their aspect ratio.
+     *  Specifies whether upon resizing images should preserve their aspect ratio.
      *
-     *  Available only for the {@link resize()} method
+     *  >   Available only for the {@link resize()} method.
      *
-     *  Default is TRUE
+     *  Default is `true`
      *
      *  @var boolean
      */
     public $preserve_aspect_ratio;
 
     /**
-     *  Indicates whether a target files should preserve the source file's date/time.
+     *  Indicates whether a target file should preserve the source file's date/time.
      *
-     *  Default is TRUE
+     *  Default is `true`
      *
      *  @since 1.0.4
      *
@@ -169,14 +170,14 @@ class Zebra_Image {
     public $preserve_time;
 
     /**
-     *  Indicates whether the target image should have a "sharpen" filter applied to it.
+     *  Indicates whether the target image should have a `sharpen` filter applied to it.
      *
      *  Can be very useful when creating thumbnails and should be used only when creating thumbnails.
      *
-     *  <i>The sharpen filter relies on the "imageconvolution" PHP function which is available only for PHP version
-     *  5.1.0+, and will leave the images unaltered for older versions!</i>
+     *  >   The sharpen filter relies on the {@link https://www.php.net/manual/en/function.imageconvolution.php imageconvolution}
+     *      function which is available for PHP version `5.1.0+`, and will leave the images unaltered for older versions!
      *
-     *  Default is FALSE
+     *  Default is `false`
      *
      *  @since 2.2
      *
@@ -187,11 +188,12 @@ class Zebra_Image {
     /**
      *  Path to an image file to apply the transformations to.
      *
-     *  Supported file types are <b>GIF</b>, <b>PNG</b>, <b>JPEG</b> and <b>WEBP</b>.
+     *  Supported file types are `GIF`, `PNG`, `JPEG` and `WEBP`.
      *
-     *  <samp>WEBP support is available only for PHP version 7.0.0+. Note that even though WEBP support was added to PHP
-     *  in version 5.5.0, it only started working since version 5.5.1, while support for transparency was added with PHP
-     *  version 7.0.0. As a result, I decided to make it available only if PHP version is at least 7.0.0.</samp>
+     *  >   `WEBP` support is available for PHP version `7.0.0+`.<br><br>
+     *      Note that even though `WEBP` support was added to PHP in version `5.5.0`, it only started working with version
+     *      `5.5.1`, while support for transparency was added with version `7.0.0`. As a result, I decided to make it
+     *      available only if PHP version is at least `7.0.0`
      *
      *  @var    string
      */
@@ -200,12 +202,13 @@ class Zebra_Image {
     /**
      *  Path (including file name) to where to save the transformed image.
      *
-     *  <i>Can be a different than {@link source_path} - the type of the transformed image will be as indicated by the
-     *  file's extension (supported file types are GIF, PNG, JPEG and WEBP)</i>.
+     *  >   Can be a different format than the file at {@link source_path}. The format of the transformed image will be
+     *      determined by the file's extension. Supported file types are `GIF`, `PNG`, `JPEG` and `WEBP`
      *
-     *  <samp>WEBP support is available only for PHP version 7.0.0+. Note that even though WEBP support was added to PHP
-     *  in version 5.5.0, it only started working since version 5.5.1, while support for transparency was added with PHP
-     *  version 7.0.0. As a result, I decided to make it available only if PHP version is at least 7.0.0.</samp>
+     *  >   `WEBP` support is available for PHP version `7.0.0+`.<br><br>
+     *      Note that even though `WEBP` support was added to PHP in version `5.5.0`, it only started working with version
+     *      `5.5.1`, while support for transparency was added with version `7.0.0`. As a result, I decided to make it
+     *      available only if PHP version is at least `7.0.0`
      *
      *  @var    string
      */
@@ -214,12 +217,12 @@ class Zebra_Image {
     /**
      *  Indicates the quality level of the output image.
      *
-     *  Available only if PHP version is 7.0.0+ and only if the file at {@link target_path} is a WEBP image. It will be
-     *  ignored otherwise.
+     *  >   Used only if PHP version is `7.0.0+` and the file at {@link target_path} is a `WEBP` image, or it will be
+     *      ignored otherwise.
      *
-     *  Range is 0 - 100
+     *  Range is `0` - `100`
      *
-     *  Default is 80
+     *  Default is `80`
      *
      *  @since 2.6.0
      *
@@ -230,7 +233,7 @@ class Zebra_Image {
     /**
      *  Constructor of the class.
      *
-     *  Initializes the class and the default properties
+     *  Initializes the class and the default properties.
      *
      *  @return void
      */
@@ -259,17 +262,19 @@ class Zebra_Image {
      *  Applies one or more filters to the image given as {@link source_path} and outputs it as the file specified as
      *  {@link target_path}.
      *
-     *  <samp>This method is available only if the {@link http://php.net/manual/en/function.imagefilter.php imagefilter}
-     *  function is available (available from PHP 5+), and will leave images unaltered otherwise.</samp>
+     *  >   This method is available only if the {@link https://www.php.net/manual/en/function.imagefilter.php imagefilter}
+     *      function is available (available from `PHP 5+`), and will leave images unaltered otherwise.
      *
      *  <code>
      *  // include the Zebra_Image library
+     *  // (you don't need this if you installed using composer)
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
      *  $img = new Zebra_Image();
      *
      *  // a source image
+     *  // (where "ext" is one of the supported file types extension)
      *  $img->source_path = 'path/to/source.ext';
      *
      *  // path to where should the resulting image be saved
@@ -303,69 +308,82 @@ class Zebra_Image {
      *  ));
      *  </code>
      *
-     *  @param  string  $filter     The (case-insensitive) name of the filter to apply. Can be one of the following:
+     *  @param  string  $filter     The case-insensitive name of the filter to apply. Can be one of the following:
      *
-     *                              -   <b>brightness</b>       -   changes the brightness of the image; use <b>arg1</b>
-     *                                                              to set the level of brightness; the range of brightness
-     *                                                              is -255 to 255;
-     *                              -   <b>colorize</b>         -   adds (subtracts) specified RGB values to each pixel;
-     *                                                              use <b>arg1</b>, <b>arg2</b> and <b>arg3</b> in the
-     *                                                              form of red, green, blue and <b>arg4</b> for the alpha
-     *                                                              channel. the range for each color is -255 to 255 and
-     *                                                              0 to 127 for alpha; <i>alpha support is available only
-     *                                                              for PHP 5.2.5+</i>;
-     *                              -   <b>contrast</b>         -   changes the contrast of the image; use <b>arg1</b>
-     *                                                              to set the level of contrast; the range of contrast
-     *                                                              is -100 to 100;
-     *                              -   <b>gaussian_blur</b>    -   blurs the image using the Gaussian method;
-     *                              -   <b>grayscale</b>        -   converts the image into grayscale;
-     *                              -   <b>edgedetect</b>       -   uses edge detection to highlight the edges in the image;
-     *                              -   <b>emboss</b>           -   embosses the image;
-     *                              -   <b>mean_removal</b>     -   uses mean removal to achieve a "sketchy" effect;
-     *                              -   <b>negate</b>           -   reverses all the colors of the image;
-     *                              -   <b>pixelate</b>         -   applies pixelation effect to the image, use <b>arg1</b>
-     *                                                              to set the block size and <b>arg2</b> to set the
-     *                                                              pixelation effect mode; <i>this filter is available
-     *                                                              only for PHP 5.3.0+</i>;
-     *                              -   <b>selective_blur</b>   -   blurs the image;
-     *                              -   <b>smooth</b>           -   makes the image smoother. Use <b>arg1</b> to set the
-     *                                                              level of smoothness. applies a 9-cell convolution matrix
-     *                                                              where center pixel has the weight of <b>arg1</b> and
-     *                                                              others weight of 1.0. the result is normalized by dividing
-     *                                                              the sum with <b>arg1</b> + 8.0 (sum of the matrix).
-     *                                                              any float is accepted;
+     *                              -   **brightness**          -   changes the brightness of the image; use `arg1` to set
+     *                                                              the level of brightness; the range of brightness is
+     *                                                              `-255` - `255`
+     *                              -   **colorize**            -   adds specified RGB values to each pixel; use `arg1`,
+     *                                                              `arg2` and `arg3` in the form of `red`, `green` and
+     *                                                              `blue`, and `arg4` for the `alpha` channel; the range
+     *                                                              for each color is `-255` to `255` and `0` to `127` for
+     *                                                              the `alpha` where `0` indicates completely opaque
+     *                                                              while `127` indicates completely transparent; *alpha
+     *                                                              support is available for PHP 5.2.5+*
+     *                              -   **contrast**            -   changes the contrast of the image; use `arg1` to set
+     *                                                              the level of contrast; the range of contrast is `-100`
+     *                                                              to `100`
+     *                              -   **edgedetect**          -   uses edge detection to highlight the edges in the image
+     *                              -   **emboss**              -   embosses the image
+     *                              -   **gaussian_blur**       -   blurs the image using the Gaussian method
+     *                              -   **grayscale**           -   converts the image into grayscale by changing the red,
+     *                                                              green and blue components to their weighted sum using
+     *                                                              the same coefficients as the REC.601 luma (Y') calculation;
+     *                                                              the alpha components are retained; for palette images
+     *                                                              the result may differ due to palette limitations
+     *                              -   **mean_removal**        -   uses mean removal to achieve a *"sketchy"* effect
+     *                              -   **negate**              -   reverses all the colors of the image
+     *                              -   **pixelate**            -   applies pixelation effect to the image; use `arg1` to
+     *                                                              set the block size and `arg2` to set the pixelation
+     *                                                              effect mode; *this filter is available only for PHP
+     *                                                              5.3.0+*
+     *                              -   **selective_blur**      -   blurs the image
+     *                              -   **scatter**             -   applies scatter effect to the image; use `arg1` and
+     *                                                              `arg2` to define the effect strength and additionally
+     *                                                              `arg3` to only apply the on select pixel colors
+     *                              -   **smooth**              -   makes the image smoother; use `arg1` to set the level
+     *                                                              of smoothness; applies a 9-cell convolution matrix
+     *                                                              where center pixel has the weight of `arg1` and others
+     *                                                              weight of 1.0; the result is normalized by dividing
+     *                                                              the sum with `arg1` + 8.0 (sum of the matrix); any
+     *                                                              float is accepted, large value (in practice: 2048 or)
+     *                                                              more) = no change
      *
      *  @param  mixed   $arg1       Used by the following filters:
-     *                              -   <b>brightness</b>       -   sets the brightness level (-255 to 255)
-     *                              -   <b>contrast</b>         -   sets the contrast level (-100 to 100)
-     *                              -   <b>colorize</b>         -   sets the value of the red component (-255 to 255)
-     *                              -   <b>smooth</b>           -   sets the smoothness level
-     *                              -   <b>pixelate</b>         -   sets the block size, in pixels
+     *                              -   **brightness**          -   sets the brightness level (`-255` to `255`)
+     *                              -   **contrast**            -   sets the contrast level (`-100` to `100`)
+     *                              -   **colorize**            -   sets the value of the red component (`-255` to `255`)
+     *                              -   **pixelate**            -   sets the block size, in pixels
+     *                              -   **scatter**             -   effect subtraction level; this must not be higher or
+     *                                                              equal to the addition level set with `arg3`
+     *                              -   **smooth**              -   sets the smoothness level
      *
      *  @param  mixed   $arg2       Used by the following filters:
-     *                              -   <b>colorize</b>         -   sets the value of the green component (-255 to 255)
-     *                              -   <b>pixelate</b>         -   whether to use advanced pixelation effect or not (defaults to FALSE).
+     *                              -   **colorize**            -   sets the value of the green component (`-255` to `255`)
+     *                              -   **pixelate**            -   whether to use advanced pixelation effect or not (defaults to `false`)
+     *                              -   **scatter**             -   effect addition level
      *
      *  @param  mixed   $arg3       Used by the following filters:
-     *                              -   <b>colorize</b>         -   sets the value of the blue component (-255 to 255)
+     *                              -   **colorize**            -   sets the value of the blue component (`-255` to `255`)
+     *                              -   **scatter**             -   optional array indexed color values to apply effect at
      *
      *  @param  mixed   $arg4       Used by the following filters:
-     *                              -   <b>colorize</b>         -   alpha channel; a value between 0 and 127. 0 indicates
-     *                                                              completely opaque while 127 indicates completely
-     *                                                              transparent.
+     *                              -   **colorize**            -   alpha channel; a value between `0` and `127`. `0` indicates
+     *                                                              completely opaque while `127` indicates completely
+     *                                                              transparent
      *
      *  @since 2.2.2
      *
-     *  @return boolean             Returns TRUE on success or FALSE on error.
+     *  @return boolean             Returns `true` on success or false on error.
      *
-     *                              If {@link http://php.net/manual/en/function.imagefilter.php imagefilter} is not
-     *                              available the method will return FALSE without setting an {@link error} code.
+     *                              If {@link https://www.php.net/manual/en/function.imagefilter.php imagefilter} is not
+     *                              available, the method will return `false` without setting an {@link error} code.
      *
      *                              If the requested filter doesn't exist, or invalid arguments are passed, the method
      *                              will trigger a warning.
      *
-     *                              If FALSE is returned and you are sure that
-     *                              {@link http://php.net/manual/en/function.imagefilter.php imagefilter} exists and that
+     *                              If `false` is returned and you are sure that
+     *                              {@link https://www.php.net/manual/en/function.imagefilter.php imagefilter} exists and that
      *                              the requested filter is valid, check the {@link error} property to see the error code.
      */
     public function apply_filter($filter, $arg1 = '', $arg2 = '', $arg3 = '', $arg4 = '') {
@@ -445,12 +463,14 @@ class Zebra_Image {
      *
      *  <code>
      *  // include the Zebra_Image library
+     *  // (you don't need this if you installed using composer)
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
      *  $img = new Zebra_Image();
      *
      *  // a source image
+     *  // (where "ext" is one of the supported file types extension)
      *  $img->source_path = 'path/to/source.ext';
      *
      *  // path to where should the resulting image be saved
@@ -470,21 +490,21 @@ class Zebra_Image {
      *
      *  @param  integer     $end_y              y coordinate where to end the cropping
      *
-     *  @param  hexadecimal $background_color   (Optional) A hexadecimal color value (like "#FFFFFF" or "#FFF") used when
+     *  @param  hexadecimal $background_color   (Optional) A hexadecimal color value (like `#FFFFFF` or `#FFF`) used when
      *                                          the cropping coordinates are off-scale (negative values and/or values
      *                                          greater than the image's size) to fill the remaining space.
      *
-     *                                          When set to -1 the script will preserve transparency for transparent GIF
-     *                                          and PNG images. For non-transparent images the background will be black
-     *                                          (#000000) in this case.
+     *                                          When set to `-1` the script will preserve transparency for transparent `GIF`
+     *                                          and `PNG` images. For non-transparent images the background will be black
+     *                                          (`#000000`) in this case.
      *
-     *                                          Default is -1
+     *                                          Default is `-1`
      *
      *  @since  1.0.4
      *
-     *  @return boolean     Returns TRUE on success or FALSE on error.
+     *  @return boolean     Returns `true` on success or `false` on error.
      *
-     *                      If FALSE is returned, check the {@link error} property to see the error code.
+     *                      If `false` is returned, check the {@link error} property to see the error code.
      */
     public function crop($start_x, $start_y, $end_x, $end_y, $background_color = -1) {
 
@@ -577,16 +597,18 @@ class Zebra_Image {
 
     /**
      *  Flips both horizontally and vertically the image given as {@link source_path} and outputs the resulted image as
-     *  {@link target_path}
+     *  {@link target_path}.
      *
      *  <code>
      *  // include the Zebra_Image library
+     *  // (you don't need this if you installed using composer)
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
      *  $img = new Zebra_Image();
      *
      *  // a source image
+     *  // (where "ext" is one of the supported file types extension)
      *  $img->source_path = 'path/to/source.ext';
      *
      *  // path to where should the resulting image be saved
@@ -600,9 +622,9 @@ class Zebra_Image {
      *
      *  @since 2.1
      *
-     *  @return boolean     Returns TRUE on success or FALSE on error.
+     *  @return boolean     Returns `true` on success or `false` on error.
      *
-     *                      If FALSE is returned, check the {@link error} property to see the error code.
+     *                      If `false` is returned, check the {@link error} property to see the error code.
      */
     public function flip_both() {
 
@@ -611,16 +633,18 @@ class Zebra_Image {
     }
 
     /**
-     *  Flips horizontally the image given as {@link source_path} and outputs the resulted image as {@link target_path}
+     *  Flips horizontally the image given as {@link source_path} and outputs the resulted image as {@link target_path}.
      *
      *  <code>
      *  // include the Zebra_Image library
+     *  // (you don't need this if you installed using composer)
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
      *  $img = new Zebra_Image();
      *
      *  // a source image
+     *  // (where "ext" is one of the supported file types extension)
      *  $img->source_path = 'path/to/source.ext';
      *
      *  // path to where should the resulting image be saved
@@ -632,9 +656,9 @@ class Zebra_Image {
      *  $img->flip_horizontal();
      *  </code>
      *
-     *  @return boolean     Returns TRUE on success or FALSE on error.
+     *  @return boolean     Returns `true` on success or `false` on error.
      *
-     *                      If FALSE is returned, check the {@link error} property to see the error code.
+     *                      If `false` is returned, check the {@link error} property to see the error code.
      */
     public function flip_horizontal() {
 
@@ -643,16 +667,18 @@ class Zebra_Image {
     }
 
     /**
-     *  Flips vertically the image given as {@link source_path} and outputs the resulted image as {@link target_path}
+     *  Flips vertically the image given as {@link source_path} and outputs the resulted image as {@link target_path}.
      *
      *  <code>
      *  // include the Zebra_Image library
+     *  // (you don't need this if you installed using composer)
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
      *  $img = new Zebra_Image();
      *
      *  // a source image
+     *  // (where "ext" is one of the supported file types extension)
      *  $img->source_path = 'path/to/source.ext';
      *
      *  // path to where should the resulting image be saved
@@ -664,9 +690,9 @@ class Zebra_Image {
      *  $img->flip_vertical();
      *  </code>
      *
-     *  @return boolean     Returns TRUE on success or FALSE on error.
+     *  @return boolean     Returns `true` on success or `false` on error.
      *
-     *                      If FALSE is returned, check the {@link error} property to see the error code.
+     *                      If `false` is returned, check the {@link error} property to see the error code.
      */
     public function flip_vertical() {
 
@@ -679,12 +705,14 @@ class Zebra_Image {
      *
      *  <code>
      *  // include the Zebra_Image library
+     *  // (you don't need this if you installed using composer)
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
      *  $img = new Zebra_Image();
      *
      *  // a source image
+     *  // (where "ext" is one of the supported file types extension)
      *  $img->source_path = 'path/to/source.ext';
      *
      *  // path to where should the resulting image be saved
@@ -702,100 +730,98 @@ class Zebra_Image {
      *
      *  @param  integer     $width              The width to resize the image to.
      *
-     *                                          If set to <b>0</b>, the width will be automatically adjusted, depending
-     *                                          on the value of the <b>height</b> argument so that the image preserves
-     *                                          its aspect ratio.
+     *                                          If set to `0`, the width will be automatically adjusted, depending on the
+     *                                          value of the `height` argument so that the image preserves its aspect ratio.
      *
-     *                                          If {@link preserve_aspect_ratio} is set to TRUE and both this and the
-     *                                          <b>height</b> arguments are values greater than <b>0</b>, the image will
-     *                                          be resized to the exact required width and height and the aspect ratio
-     *                                          will be preserved - (also see the description for the <b>method</b>
-     *                                          argument below on how can this be done).
+     *                                          If {@link preserve_aspect_ratio} is set to `true` and both this and the
+     *                                          `height` arguments are values greater than `0`, the image will be resized
+     *                                          to the exact required width and height and the aspect ratio will be
+     *                                          preserved (see also the description for the `method` argument below on
+     *                                          how can this be done).
      *
-     *                                          If {@link preserve_aspect_ratio} is set to FALSE, the image will be
+     *                                          If {@link preserve_aspect_ratio} is set to `false`, the image will be
      *                                          resized to the required width and the aspect ratio will be ignored.
      *
-     *                                          If both <b>width</b> and <b>height</b> are set to <b>0</b>, a copy of
-     *                                          the source image will be created ({@link jpeg_quality} and
-     *                                          {@link png_compression} will still apply).
+     *                                          If both `width` and `height` are set to `0`, a copy of the source image
+     *                                          will be created. {@link jpeg_quality} and {@link png_compression} will
+     *                                          still apply!
      *
-     *                                          If either <b>width</b> or <b>height</b> are set to <b>0</b>, the script
-     *                                          will consider the value of the {@link preserve_aspect_ratio} to bet set
-     *                                          to TRUE regardless of its actual value!
+     *                                          If either `width` or `height` are set to `0`, the script will consider
+     *                                          the value of {@link preserve_aspect_ratio} to bet set to `true` regardless
+     *                                          of its actual value!
      *
      *  @param  integer     $height             The height to resize the image to.
      *
-     *                                          If set to <b>0</b>, the height will be automatically adjusted, depending
-     *                                          on the value of the <b>width</b> argument so that the image preserves
-     *                                          its aspect ratio.
+     *                                          If set to `0`, the height will be automatically adjusted, depending on
+     *                                          the value of the `width` argument so that the image preserves its aspect
+     *                                          ratio.
      *
-     *                                          If {@link preserve_aspect_ratio} is set to TRUE and both this and the
-     *                                          <b>width</b> arguments are values greater than <b>0</b>, the image will
-     *                                          be resized to the exact required width and height and the aspect ratio
-     *                                          will be preserved - (also see the description for the <b>method</b>
-     *                                          argument below on how can this be done).
+     *                                          If {@link preserve_aspect_ratio} is set to `true` and both this and the
+     *                                          `width` arguments are values greater than `0`, the image will be resized
+     *                                          to the exact required width and height and the aspect ratio will be
+     *                                          preserved (see also the description for the `method` argument below on
+     *                                          how can this be done).
      *
-     *                                          If {@link preserve_aspect_ratio} is set to FALSE, the image will be
+     *                                          If {@link preserve_aspect_ratio} is set to `false`, the image will be
      *                                          resized to the required height and the aspect ratio will be ignored.
      *
-     *                                          If both <b>width</b> and <b>height</b> are set to <b>0</b>, a copy of
-     *                                          the source image will be created ({@link jpeg_quality} and
-     *                                          {@link png_compression} will still apply).
+     *                                          If both `width` and `height` are set to `0`, a copy of the source image
+     *                                          will be created. {@link jpeg_quality} and {@link png_compression} will
      *
-     *                                          If either <b>height</b> or <b>width</b> are set to <b>0</b>, the script
-     *                                          will consider the value of the {@link preserve_aspect_ratio} to bet set
-     *                                          to TRUE regardless of its actual value!
+     *                                          If either `width` or `height` are set to `0`, the script will consider
+     *                                          the value of {@link preserve_aspect_ratio} to bet set to `true` regardless
+     *                                          of its actual value!
      *
      *  @param  int     $method                 (Optional) Method to use when resizing images to exact width and height
      *                                          while preserving aspect ratio.
      *
-     *                                          If the {@link preserve_aspect_ratio} property is set to TRUE and both the
-     *                                          <b>width</b> and <b>height</b> arguments are values greater than <b>0</b>,
-     *                                          the image will be resized to the exact given width and height and the
-     *                                          aspect ratio will be preserved by using on of the following methods:
+     *                                          If the {@link preserve_aspect_ratio} property is set to `true` and both
+     *                                          the `width` and `height` arguments are values greater than `0`, the image
+     *                                          will be resized to the exact given width and height and the aspect ratio
+     *                                          will be preserved by using on of the following methods:
      *
-     *                                          -   <b>ZEBRA_IMAGE_BOXED</b> - the image will be scaled so that it will
-     *                                              fit in a box with the given width and height (both width/height will
-     *                                              be smaller or equal to the required width/height) and then it will
-     *                                              be centered both horizontally and vertically. The blank area will be
-     *                                              filled with the color specified by the <b>bgcolor</b> argument. (the
-     *                                              blank area will be filled only if the image is not transparent!)
+     *                                          -   **ZEBRA_IMAGE_BOXED** - the image will be scaled so that it will fit
+     *                                              in a box with the given width and height (both width/height will be
+     *                                              smaller or equal to the required width/height) and then it will
+     *                                              be centered both horizontally and vertically; the blank area will be
+     *                                              filled with the color specified by the `bgcolor` argument. (the blank
+     *                                              area will be filled only if the image is not transparent!)
      *
-     *                                          -   <b>ZEBRA_IMAGE_NOT_BOXED</b> - the image will be scaled so that it
-     *                                              <i>could</i> fit in a box with the given width and height but will
-     *                                              not be enclosed in a box with given width and height. The new width/
-     *                                              height will be both smaller or equal to the required width/height
+     *                                          -   **ZEBRA_IMAGE_NOT_BOXED** - the image will be scaled so that it
+     *                                              *could* fit in a box with the given width and height but will not be
+     *                                              enclosed in a box with given width and height. The new width/height
+     *                                              will be both smaller or equal to the required width/height.
      *
-     *                                          -   <b>ZEBRA_IMAGE_CROP_TOPLEFT</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_TOPCENTER</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_TOPRIGHT</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_MIDDLELEFT</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_CENTER</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_MIDDLERIGHT</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_BOTTOMLEFT</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_BOTTOMCENTER</b>
-     *                                          -   <b>ZEBRA_IMAGE_CROP_BOTTOMRIGHT</b>
+     *                                          -   **ZEBRA_IMAGE_CROP_TOPLEFT**
+     *                                          -   **ZEBRA_IMAGE_CROP_TOPCENTER**
+     *                                          -   **ZEBRA_IMAGE_CROP_TOPRIGHT**
+     *                                          -   **ZEBRA_IMAGE_CROP_MIDDLELEFT**
+     *                                          -   **ZEBRA_IMAGE_CROP_CENTER**
+     *                                          -   **ZEBRA_IMAGE_CROP_MIDDLERIGHT**
+     *                                          -   **ZEBRA_IMAGE_CROP_BOTTOMLEFT**
+     *                                          -   **ZEBRA_IMAGE_CROP_BOTTOMCENTER**
+     *                                          -   **ZEBRA_IMAGE_CROP_BOTTOMRIGHT**
      *
      *                                          For the methods involving crop, first the image is scaled so that both
      *                                          its sides are equal or greater than the respective sizes of the bounding
      *                                          box; next, a region of required width and height will be cropped from
      *                                          indicated region of the resulted image.
      *
-     *                                          Default is ZEBRA_IMAGE_CROP_CENTER
+     *                                          Default is `ZEBRA_IMAGE_CROP_CENTER`
      *
-     *  @param  hexadecimal $background_color   (Optional) The hexadecimal color (like "#FFFFFF" or "#FFF") of the
-     *                                          blank area. See the <b>method</b> argument.
+     *  @param  hexadecimal $background_color   (Optional) The hexadecimal color (like `#FFFFFF` or `#FFF`) of the blank
+     *                                          area. See the `method` argument.
      *
-     *                                          When set to -1 the script will preserve transparency for transparent GIF
-     *                                          and PNG images. For non-transparent images the background will be white
-     *                                          (#FFFFFF) in this case.
+     *                                          When set to `-1` the script will preserve transparency for transparent `GIF`
+     *                                          and `PNG` images. For non-transparent images the background will be white
+     *                                          (`#FFFFFF`) in this case.
      *
-     *                                          Default is -1
+     *                                          Default is `-1`
      *
-     *  @return boolean                         Returns TRUE on success or FALSE on error.
+     *  @return boolean                         Returns `true` on success or `false` on error.
      *
-     *                                          If FALSE is returned, check the {@link error} property to see what went
-     *                                          wrong
+     *                                          If `false` is returned, check the {@link error} property to see what went
+     *                                          wrong.
      */
     public function resize($width = 0, $height = 0, $method = ZEBRA_IMAGE_CROP_CENTER, $background_color = -1) {
 
@@ -1181,12 +1207,14 @@ class Zebra_Image {
      *
      *  <code>
      *  // include the Zebra_Image library
+     *  // (you don't need this if you installed using composer)
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
      *  $img = new Zebra_Image();
      *
      *  // a source image
+     *  // (where "ext" is one of the supported file types extension)
      *  $img->source_path = 'path/to/source.ext';
      *
      *  // path to where should the resulting image be saved
@@ -1200,20 +1228,20 @@ class Zebra_Image {
      *
      *  @param  double  $angle                  Angle by which to rotate the image clockwise.
      *
-     *                                          Between 0 and 360.
+     *                                          Between `0` and `360`.
      *
-     *  @param  mixed   $background_color       (Optional) The hexadecimal color (like "#FFFFFF" or "#FFF") of the
+     *  @param  mixed   $background_color       (Optional) The hexadecimal color (like `#FFFFFF` or `#FFF`) of the
      *                                          uncovered zone after the rotation.
      *
-     *                                          When set to -1 the script will preserve transparency for transparent GIF
-     *                                          and PNG images. For non-transparent images the background will be white
-     *                                          (#FFFFFF) in this case.
+     *                                          When set to `-1` the script will preserve transparency for transparent `GIF`
+     *                                          and `PNG` images. For non-transparent images the background will be white
+     *                                          (`#FFFFFF`) in this case.
      *
-     *                                          Default is -1.
+     *                                          Default is `-1`.
      *
-     *  @return boolean                         Returns TRUE on success or FALSE on error.
+     *  @return boolean                         Returns `true` on success or `false` on error.
      *
-     *                                          If FALSE is returned, check the {@link error} property to see the error
+     *                                          If `false` is returned, check the {@link error} property to see the error
      *                                          code.
      */
     public function rotate($angle, $background_color = -1) {
@@ -1328,7 +1356,7 @@ class Zebra_Image {
 
     /**
      *  Returns an array containing the image identifier representing the image obtained from {@link $source_path}, the
-     *  image's width and height and the image's type
+     *  image's width and height and the image's type.
      *
      *  @access private
      */
@@ -1534,7 +1562,7 @@ class Zebra_Image {
     }
 
     /**
-     *  Flips horizontally or vertically or both ways the image given as {@link source_path}.
+     *  Flips horizontally, vertically or both ways the image given as {@link source_path}.
      *
      *  @since 2.1
      *
@@ -1627,16 +1655,16 @@ class Zebra_Image {
     }
 
     /**
-     *  Converts a hexadecimal representation of a color (i.e. #123456 or #AAA) to a RGB representation.
+     *  Converts a hexadecimal representation of a color (i.e. `#123456` or `#AAA`) to a RGB representation.
      *
-     *  The RGB values will be a value between 0 and 255 each.
+     *  The RGB values will be a value between `0` and `255` each.
      *
-     *  @param  string  $color              Hexadecimal representation of a color (i.e. #123456 or #AAA).
+     *  @param  string  $color              Hexadecimal representation of a color (i.e. `#123456` or `#AAA`).
      *
-     *  @param  string  $default_on_error   (Optional) Hexadecimal representation of a color to be used in case $color
+     *  @param  string  $default_on_error   (Optional) Hexadecimal representation of a color to be used in case `$color`
      *                                      is not recognized as a hexadecimal color.
      *
-     *                                      Default is #FFFFFF
+     *                                      Default is `#FFFFFF`
      *
      *  @return array                       Returns an associative array with the values of (R)ed, (G)reen and (B)lue
      *
@@ -1688,10 +1716,10 @@ class Zebra_Image {
      *
      *  @param  string      $background_color   (Optional) The hexadecimal color of the background.
      *
-     *                                          Can also be -1 case in which the script will try to create a transparent
+     *                                          Can also be `-1` case in which the script will try to create a transparent
      *                                          image, if possible.
      *
-     *                                          Default is #FFFFFF.
+     *                                          Default is `#FFFFFF`.
      *
      *  @return                                 Returns the identifier of the newly created image.
      *
@@ -1739,10 +1767,10 @@ class Zebra_Image {
     /**
      *  Sharpens images. Useful when creating thumbnails.
      *
-     *  Code taken from the comments at {@link http://docs.php.net/imageconvolution}.
+     *  Code taken from the comments at {@link https://www.php.net/manual/en/function.imageconvolution.php}.
      *
-     *  <i>This function will yield a result only for PHP version 5.1.0+ and will leave the image unaltered for older
-     *  versions!</i>
+     *  >   This function will yield a result only for PHP version 5.1.0+ and will leave the image unaltered for older
+     *      versions!
      *
      *  @param  $identifier identifier  An image identifier
      *
@@ -1782,9 +1810,9 @@ class Zebra_Image {
      *
      *  @param  $identifier identifier  An image identifier
      *
-     *  @return boolean                 Returns TRUE on success or FALSE on error.
+     *  @return boolean                 Returns `true` on success or `false` on error.
      *
-     *                                  If FALSE is returned, check the {@link error} property to see the error code.
+     *                                  If `false` is returned, check the {@link error} property to see the error code.
      *
      *  @access private
      */
@@ -1804,7 +1832,7 @@ class Zebra_Image {
 
                 // if GD support for this file type is not available
                 // in version 1.6 of GD the support for GIF files was dropped see
-                // http://php.net/manual/en/function.imagegif.php#function.imagegif.notes
+                // https://www.php.net/manual/en/function.imagegif.php#function.imagegif.notes
                 if (!function_exists('imagegif')) {
 
                     // save the error level and stop the execution of the script
