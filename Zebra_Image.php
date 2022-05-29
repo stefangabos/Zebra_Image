@@ -493,7 +493,8 @@ class Zebra_Image {
         $args = func_get_args();
 
         // if a sixth argument exists
-        if (isset($args[5]) && is_resource($args[5])) {
+        // for PHP 8.0.0+ GD functions return and accept \GdImage objects instead of resources (https://php.watch/versions/8.0/gdimage)
+        if (isset($args[5]) && (is_resource($args[5]) || (version_compare(PHP_VERSION, '8.0.0', '>=') && $args[5] instanceof \GdImage))) {
 
             // that it is the image identifier that we'll be using further on
             $this->source_identifier = $args[5];
@@ -1926,6 +1927,13 @@ class Zebra_Image {
         // free memory
         imagedestroy($this->source_identifier);
         imagedestroy($identifier);
+
+        // for PHP 8.0.0+ imagedestroy is no-op (https://php.watch/versions/8.0/gdimage)
+        // and we have to use unset()
+        if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+            unset($this->source_identifier);
+            unset($identifier);
+        }
 
         // return true
         return true;
