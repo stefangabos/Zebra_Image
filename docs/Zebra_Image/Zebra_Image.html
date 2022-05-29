@@ -248,54 +248,18 @@ I have a few other projects that you might be interested in — <a href="https:/
 </div>
 <h3 id="class_methods">Class methods</h3>
 <h4 id="method__construct" class="method"><span><em>constructor</em></span> __construct()</h4>
-<p>Constructor of the class.</p>
-<p>Initializes the class and the default properties.</p>
 <div class="doc_block">
 <p class="code">
 void
 <span class="src-var">__construct</span>
 ()
 </p>
+<p>Constructor of the class.</p>
+<p>Initializes the class and the default properties.</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
 <h4 id="methodapply_filter" class="method"><span><em>method</em></span> apply_filter()</h4>
-<p>Applies one or more filters to the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs it as the file specified as   <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
-<p><p class="highlight">This method is available only if the <a href="https://www.php.net/manual/en/function.imagefilter.php">imagefilter</a>       function is available (available from <code>PHP 5+</code>), and will leave images unaltered otherwise.</p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
-<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;the&nbsp;&quot;grayscale&quot;&nbsp;filter</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-str">'grayscale'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;the&nbsp;&quot;contrast&quot;&nbsp;filter</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-str">'contrast'</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">20</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-</ol><p>You can also apply multiple filters at once. In this case, the method requires a single argument, an array of   arrays, containing the filters and associated arguments, where applicable:</p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;create&nbsp;a&nbsp;sepia&nbsp;effect</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;how&nbsp;we're&nbsp;applying&nbsp;multiple&nbsp;filters&nbsp;at&nbsp;once</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;each&nbsp;filter&nbsp;is&nbsp;in&nbsp;its&nbsp;own&nbsp;array</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;first&nbsp;we&nbsp;apply&nbsp;the&nbsp;&quot;grayscale&quot;&nbsp;filter</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'grayscale'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;then&nbsp;we&nbsp;apply&nbsp;the&nbsp;&quot;colorize&quot;&nbsp;filter&nbsp;with&nbsp;90,&nbsp;60,&nbsp;40&nbsp;as</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;the&nbsp;values&nbsp;for&nbsp;red,&nbsp;green&nbsp;and&nbsp;blue</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'colorize'</span><span class="src-sym">,&nbsp;</span><span class="src-num">90</span><span class="src-sym">,&nbsp;</span><span class="src-num">60</span><span class="src-sym">,&nbsp;</span><span class="src-num">40</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
-</ol>
 <div class="doc_block">
 <p class="code">
 boolean
@@ -333,6 +297,42 @@ boolean
 ]
 ) 
 </p>
+<p>Applies one or more filters to the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs it as the file specified as   <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
+<p><p class="highlight">This method is available only if the <a href="https://www.php.net/manual/en/function.imagefilter.php">imagefilter</a>       function is available (available from <code>PHP 5+</code>), and will leave images unaltered otherwise.</p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;the&nbsp;&quot;grayscale&quot;&nbsp;filter</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-str">'grayscale'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;the&nbsp;&quot;contrast&quot;&nbsp;filter</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-str">'contrast'</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">20</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol><p>You can also apply multiple filters at once. In this case, the method requires a single argument, an array of   arrays, containing the filters and associated arguments, where applicable:</p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;create&nbsp;a&nbsp;sepia&nbsp;effect</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;how&nbsp;we're&nbsp;applying&nbsp;multiple&nbsp;filters&nbsp;at&nbsp;once</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;each&nbsp;filter&nbsp;is&nbsp;in&nbsp;its&nbsp;own&nbsp;array</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodapply_filter">apply_filter</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;first&nbsp;we&nbsp;apply&nbsp;the&nbsp;&quot;grayscale&quot;&nbsp;filter</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'grayscale'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;then&nbsp;we&nbsp;apply&nbsp;the&nbsp;&quot;colorize&quot;&nbsp;filter&nbsp;with&nbsp;90,&nbsp;60,&nbsp;40&nbsp;as</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;the&nbsp;values&nbsp;for&nbsp;red,&nbsp;green&nbsp;and&nbsp;blue</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'colorize'</span><span class="src-sym">,&nbsp;</span><span class="src-num">90</span><span class="src-sym">,&nbsp;</span><span class="src-num">60</span><span class="src-sym">,&nbsp;</span><span class="src-num">40</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+</ol>
 <h5>Arguments</h5>
 <table>
 <tr>
@@ -404,26 +404,6 @@ transparent</li></ul></td>
 <div class="clear"></div>
 </div>
 <h4 id="methodcrop" class="method"><span><em>method</em></span> crop()</h4>
-<p>Crops a portion of the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs it as the file specified as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
-<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
-<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;crop&nbsp;a&nbsp;rectangle&nbsp;of&nbsp;100x100&nbsp;pixels,&nbsp;starting&nbsp;from&nbsp;the&nbsp;top-left&nbsp;corner</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodcrop">crop</a><span class="src-sym">(</span><span class="src-num">0</span><span class="src-sym">,&nbsp;</span><span class="src-num">0</span><span class="src-sym">,&nbsp;</span><span class="src-num">100</span><span class="src-sym">,&nbsp;</span><span class="src-num">100</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-</ol>
 <div class="doc_block">
 <p class="code">
 boolean
@@ -449,6 +429,26 @@ boolean
 ]
 ) 
 </p>
+<p>Crops a portion of the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs it as the file specified as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;crop&nbsp;a&nbsp;rectangle&nbsp;of&nbsp;100x100&nbsp;pixels,&nbsp;starting&nbsp;from&nbsp;the&nbsp;top-left&nbsp;corner</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodcrop">crop</a><span class="src-sym">(</span><span class="src-num">0</span><span class="src-sym">,&nbsp;</span><span class="src-num">0</span><span class="src-sym">,&nbsp;</span><span class="src-num">100</span><span class="src-sym">,&nbsp;</span><span class="src-num">100</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
 <h5>Arguments</h5>
 <table>
 <tr>
@@ -492,6 +492,12 @@ boolean
 <div class="clear"></div>
 </div>
 <h4 id="methodflip_both" class="method"><span><em>method</em></span> flip_both()</h4>
+<div class="doc_block">
+<p class="code">
+boolean
+<span class="src-var">flip_both</span>
+()
+</p>
 <p>Flips both horizontally and vertically the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as   <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
 <p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
@@ -512,12 +518,6 @@ boolean
 <li><div class="src-line"><span class="src-comm">//&nbsp;flip&nbsp;the&nbsp;image&nbsp;both&nbsp;horizontally&nbsp;and&nbsp;vertically</span></div></li>
 <li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodflip_both">flip_both</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 </ol>
-<div class="doc_block">
-<p class="code">
-boolean
-<span class="src-var">flip_both</span>
-()
-</p>
 <h5>Tags</h5>
 <table>
 <tr>
@@ -533,6 +533,12 @@ boolean
 <div class="clear"></div>
 </div>
 <h4 id="methodflip_horizontal" class="method"><span><em>method</em></span> flip_horizontal()</h4>
+<div class="doc_block">
+<p class="code">
+boolean
+<span class="src-var">flip_horizontal</span>
+()
+</p>
 <p>Flips horizontally the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
 <p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
@@ -553,12 +559,6 @@ boolean
 <li><div class="src-line"><span class="src-comm">//&nbsp;flip&nbsp;the&nbsp;image&nbsp;horizontally</span></div></li>
 <li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodflip_horizontal">flip_horizontal</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 </ol>
-<div class="doc_block">
-<p class="code">
-boolean
-<span class="src-var">flip_horizontal</span>
-()
-</p>
 <h5>Tags</h5>
 <table>
 <tr>
@@ -570,6 +570,12 @@ boolean
 <div class="clear"></div>
 </div>
 <h4 id="methodflip_vertical" class="method"><span><em>method</em></span> flip_vertical()</h4>
+<div class="doc_block">
+<p class="code">
+boolean
+<span class="src-var">flip_vertical</span>
+()
+</p>
 <p>Flips vertically the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
 <p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
@@ -590,12 +596,6 @@ boolean
 <li><div class="src-line"><span class="src-comm">//&nbsp;flip&nbsp;the&nbsp;image&nbsp;vertically</span></div></li>
 <li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodflip_vertical">flip_vertical</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 </ol>
-<div class="doc_block">
-<p class="code">
-boolean
-<span class="src-var">flip_vertical</span>
-()
-</p>
 <h5>Tags</h5>
 <table>
 <tr>
@@ -607,30 +607,6 @@ boolean
 <div class="clear"></div>
 </div>
 <h4 id="methodresize" class="method"><span><em>method</em></span> resize()</h4>
-<p>Resizes the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
-<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
-<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;a&nbsp;&quot;sharpen&quot;&nbsp;filter&nbsp;to&nbsp;the&nbsp;resulting&nbsp;images</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$sharpen_images">sharpen_images</a>&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
-<li><div class="src-line">&nbsp;</div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;resize&nbsp;the&nbsp;image&nbsp;to&nbsp;exactly&nbsp;150x150&nbsp;pixels,&nbsp;without&nbsp;altering</span></div></li>
-<li><div class="src-line"><span class="src-comm">//&nbsp;aspect&nbsp;ratio,&nbsp;by&nbsp;using&nbsp;the&nbsp;CROP_CENTER&nbsp;method</span></div></li>
-<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodresize">resize</a><span class="src-sym">(</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-id"><a href="../Zebra_Image/_Zebra_Image.php.html#defineZEBRA_IMAGE_CROP_CENTER">ZEBRA_IMAGE_CROP_CENTER</a></span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
-</ol>
 <div class="doc_block">
 <p class="code">
 boolean
@@ -665,6 +641,30 @@ ZEBRA_IMAGE_CROP_CENTER
 ]
 ) 
 </p>
+<p>Resizes the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
+<p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
+<li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/source.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;path&nbsp;to&nbsp;where&nbsp;should&nbsp;the&nbsp;resulting&nbsp;image&nbsp;be&nbsp;saved</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;note&nbsp;that&nbsp;by&nbsp;simply&nbsp;setting&nbsp;a&nbsp;different&nbsp;extension&nbsp;to&nbsp;the&nbsp;file&nbsp;will</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;instruct&nbsp;the&nbsp;script&nbsp;to&nbsp;create&nbsp;an&nbsp;image&nbsp;of&nbsp;that&nbsp;particular&nbsp;type</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>&nbsp;</span>=&nbsp;<span class="src-str">'path/to/target.ext'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;apply&nbsp;a&nbsp;&quot;sharpen&quot;&nbsp;filter&nbsp;to&nbsp;the&nbsp;resulting&nbsp;images</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html#var$sharpen_images">sharpen_images</a>&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;</div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;resize&nbsp;the&nbsp;image&nbsp;to&nbsp;exactly&nbsp;150x150&nbsp;pixels,&nbsp;without&nbsp;altering</span></div></li>
+<li><div class="src-line"><span class="src-comm">//&nbsp;aspect&nbsp;ratio,&nbsp;by&nbsp;using&nbsp;the&nbsp;CROP_CENTER&nbsp;method</span></div></li>
+<li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodresize">resize</a><span class="src-sym">(</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-num">150</span><span class="src-sym">,&nbsp;</span><span class="src-id"><a href="../Zebra_Image/_Zebra_Image.php.html#defineZEBRA_IMAGE_CROP_CENTER">ZEBRA_IMAGE_CROP_CENTER</a></span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol>
 <h5>Arguments</h5>
 <table>
 <tr>
@@ -707,6 +707,22 @@ will be both smaller or equal to the required width/height.</li></ul><p> <ul><li
 <div class="clear"></div>
 </div>
 <h4 id="methodrotate" class="method"><span><em>method</em></span> rotate()</h4>
+<div class="doc_block">
+<p class="code">
+boolean
+<span class="src-var">rotate</span>
+(
+<span class="src-key">double</span>
+<span class="src-var">$angle</span>
+, 
+[ 
+<span class="src-key">mixed</span>
+<span class="src-var">$background_color</span>
+=
+-1
+]
+) 
+</p>
 <p>Rotates the image given as <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a> and outputs the resulted image as <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>.</p>
 <p><ol class="code"><li><div class="src-line"><span class="src-comm">//&nbsp;include&nbsp;the&nbsp;Zebra_Image&nbsp;library</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(you&nbsp;don't&nbsp;need&nbsp;this&nbsp;if&nbsp;you&nbsp;installed&nbsp;using&nbsp;composer)</span></div></li>
@@ -727,22 +743,6 @@ will be both smaller or equal to the required width/height.</li></ul><p> <ul><li
 <li><div class="src-line"><span class="src-comm">//&nbsp;rotate&nbsp;the&nbsp;image&nbsp;45&nbsp;degrees,&nbsp;clockwise</span></div></li>
 <li><div class="src-line"><span class="src-var">$img</span><span class="src-sym">-&gt;</span><a href="../Zebra_Image/Zebra_Image.html#methodrotate">rotate</a><span class="src-sym">(</span><span class="src-num">45</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 </ol>
-<div class="doc_block">
-<p class="code">
-boolean
-<span class="src-var">rotate</span>
-(
-<span class="src-key">double</span>
-<span class="src-var">$angle</span>
-, 
-[ 
-<span class="src-key">mixed</span>
-<span class="src-var">$background_color</span>
-=
--1
-]
-) 
-</p>
 <h5>Arguments</h5>
 <table>
 <tr>
