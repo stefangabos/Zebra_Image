@@ -1,6 +1,7 @@
 ## version 2.7.0 (May 29, 2022)
 
-- fixed compatibility with PHP 8.0.0+
+- fixed an issue where starting with PHP 8.0 GdImage class objects replace GD image resources; see [here](https://php.watch/versions/8.0/gdimage)
+- fixed an issue where starting with PHP 8.1 sending a float value as width/height arguments instead of an interger would trigger a warning; see [here](https://php.watch/versions/8.1/deprecate-implicit-conversion-incompatible-float-string)
 
 ## version 2.6.0 (May 29, 2020)
 
