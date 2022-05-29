@@ -6,9 +6,9 @@
 
 [![Latest Stable Version](https://poser.pugx.org/stefangabos/zebra_image/v/stable)](https://packagist.org/packages/stefangabos/zebra_image) [![Total Downloads](https://poser.pugx.org/stefangabos/zebra_image/downloads)](https://packagist.org/packages/stefangabos/zebra_image) [![Monthly Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/monthly)](https://packagist.org/packages/stefangabos/zebra_image) [![Daily Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/daily)](https://packagist.org/packages/stefangabos/zebra_image) [![License](https://poser.pugx.org/stefangabos/zebra_image/license)](https://packagist.org/packages/stefangabos/zebra_image)
 
-Use Zebra Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** images. The library supports loading and saving images in the **GIF**, **JPEG**, **PNG** and **WEBP** formats and preserves transparency of **GIF**, **PNG8**, **PNG24** and **WEBP** images and it doesn't require any external libraries other than the [GD2 extension](http://www.php.net/manual/en/book.image.php/) (with which PHP usually comes pre-compiled with).
+Use Zebra Image to **resize**, **flip**, **rotate**, **crop** and **sharpen** images. The library supports loading and saving images in the **GIF**, **JPEG**, **PNG** and **WEBP** formats and preserves transparency of **GIF**, **PNG8**, **PNG24** and **WEBP** images and it doesn't require any external libraries other than the [GD2 extension](https://www.php.net/manual/en/book.image.php) (with which PHP usually comes pre-compiled with).
 
-All the [filters supported by PHP](http://php.net/manual/en/function.imagefilter.php) can be applied to images. These filters include negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate. Multiple filters can be applied at once for creating custom filters.
+All the [filters supported by PHP](https://www.php.net/manual/en/function.imagefilter.php) can be applied to images. These filters include negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate. Multiple filters can be applied at once for creating custom filters.
 
 The code is heavily commented and generates no warnings/errors/notices when PHP's error reporting level is set to [E_ALL](https://www.php.net/manual/en/function.error-reporting.php).
 
@@ -68,7 +68,7 @@ Here are the results of resizing a 800×573 pixels image to a 200×200 pixels im
 ## Features
 
 - can be used to resize, flip, rotate, crop and sharpen images
-- all the [filters supported by PHP](http://php.net/manual/en/function.imagefilter.php) can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
+- all the [filters supported by PHP](https://www.php.net/manual/en/function.imagefilter.php) can be applied to images: negate, grayscale, brightness, contrast, colorize, edgedetect, emboss, gaussian blur, selective blur, mean removal, smooth and pixelate; multiple filters can be applied at once for creating custom filters;
 - images can be resized to *exact* sizes and maintaining aspect ratio by automatically cropping them
 - preserves transparency of GIF, PNG8, PNG24 and WEBP images
 - supports creation of interlaced JPEG images
