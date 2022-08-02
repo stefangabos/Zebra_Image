@@ -1542,7 +1542,7 @@ class Zebra_Image {
                 return false;
 
             // if "exif_read_data" function is available, EXIF information is available, orientation information is available and orientation needs fixing
-            } elseif (($exif = exif_read_data($this->source_path)) && isset($exif['Orientation']) && in_array($exif['Orientation'], array(3, 6, 8))) {
+            } elseif (($exif = @exif_read_data($this->source_path)) && isset($exif['Orientation']) && in_array($exif['Orientation'], array(3, 6, 8))) {
 
                 // fix the orientation
                 switch ($exif['Orientation']) {
