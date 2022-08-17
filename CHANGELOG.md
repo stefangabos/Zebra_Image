@@ -1,3 +1,10 @@
+## version 2.8.0 (August 17, 2022)
+
+- fixed potential warning when dealing with bad EXIF information; see [#24](https://github.com/stefangabos/Zebra_Image/pull/24); thank you [userlond](https://github.com/userlond) for the fix!
+- fixed a bug with `WEBP` images in PHP version lower than 7.0.1
+- fixed a potential bug when using `ZEBRA_IMAGE_BOXED` or `ZEBRA_IMAGE_NOT_BOXED` methods when resizing
+- lots of minor bug fixes and source code formatting because we are now using [PHPStan](https://github.com/phpstan/phpstan) for static code analysis and [PHP CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) for detecting coding standards violations, which are now [PSR12](https://www.php-fig.org/psr/psr-12/)-ish with a few of the rules excluded
+
 ## version 2.7.0 (May 29, 2022)
 
 - fixed an issue where starting with PHP 8.0 GdImage class objects replace GD image resources; see [here](https://php.watch/versions/8.0/gdimage)
