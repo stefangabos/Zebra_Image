@@ -100,10 +100,10 @@ function show_error($error_code, $source_path, $target_path) {
             echo 'Could not write target file "' . $source_path . '"';
             break;
         case 4:
-            echo '"' . $source_path . '" is an unsupported source file format';
+            echo '"' . $source_path . '" is of an unsupported source file format';
             break;
         case 5:
-            echo '"' . $target_path . '" is an unsupported target file format';
+            echo '"' . $target_path . '" is of an unsupported target file format';
             break;
         case 6:
             echo 'GD library version does not support target file format';
