@@ -65,7 +65,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.7.0 (last revision: May 29, 2022)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
+<li>2.8.0 (last revision: August 17, 2022)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
 </ul>
 <h4>License:</h4>
 <ul>
@@ -265,7 +265,7 @@ void
 boolean
 <span class="src-var">apply_filter</span>
 (
-<span class="src-key">string</span>
+<span class="src-key">mixed</span>
 <span class="src-var">$filter</span>
 , 
 [ 
@@ -336,7 +336,7 @@ boolean
 <h5>Arguments</h5>
 <table>
 <tr>
-<td><em>string</em></td>
+<td><em>mixed</em></td>
 <td><strong>$filter</strong></td>
 <td><p>The case-insensitive name of the filter to apply. Can be one of the following:</p><p><ul><li><strong>brightness</strong>          -   changes the brightness of the image; use <code>arg1</code> to set
 the level of brightness; the range of brightness is
@@ -422,7 +422,7 @@ boolean
 <span class="src-var">$end_y</span>
 , 
 [ 
-<span class="src-key">hexadecimal</span>
+<span class="src-key">mixed</span>
 <span class="src-var">$background_color</span>
 =
 -1
@@ -472,7 +472,7 @@ boolean
 <td>y coordinate where to end the cropping</td>
 </tr>
 <tr>
-<td><em>hexadecimal</em></td>
+<td><em>mixed</em></td>
 <td><strong>$background_color</strong></td>
 <td><p>(Optional) A hexadecimal color value (like <code>#FFFFFF</code> or <code>#FFF</code>) used when                                           the cropping coordinates are off-scale (negative values and/or values                                           greater than the image's size) to fill the remaining space.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be black                                           (<code>#000000</code>) in this case.</p><p>Default is <code>-1</code></p></td>
 </tr>
@@ -634,7 +634,7 @@ ZEBRA_IMAGE_CROP_CENTER
 ]
 , 
 [ 
-<span class="src-key">hexadecimal</span>
+<span class="src-key">mixed</span>
 <span class="src-var">$background_color</span>
 =
 -1
@@ -691,7 +691,7 @@ enclosed in a box with given width and height. The new width/height
 will be both smaller or equal to the required width/height.</li></ul><p> <ul><li><strong>ZEBRA_IMAGE_CROP_TOPLEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_TOPCENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_TOPRIGHT</strong></li><li><strong>ZEBRA_IMAGE_CROP_MIDDLELEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_CENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_MIDDLERIGHT</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMLEFT</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMCENTER</strong></li><li><strong>ZEBRA_IMAGE_CROP_BOTTOMRIGHT</strong></li></ul>                                           For the methods involving crop, first the image is scaled so that both                                           its sides are equal or greater than the respective sizes of the bounding                                           box; next, a region of required width and height will be cropped from                                           indicated region of the resulted image.</p><p>Default is <code>ZEBRA_IMAGE_CROP_CENTER</code></p></td>
 </tr>
 <tr>
-<td><em>hexadecimal</em></td>
+<td><em>mixed</em></td>
 <td><strong>$background_color</strong></td>
 <td><p>(Optional) The hexadecimal color (like <code>#FFFFFF</code> or <code>#FFF</code>) of the blank                                           area. See the <code>method</code> argument.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be white                                           (<code>#FFFFFF</code>) in this case.</p><p>Default is <code>-1</code></p></td>
 </tr>
@@ -771,7 +771,7 @@ boolean
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Sun, 29 May 22</span>
+Documentation generated on <span>Wed, 17 Aug 22</span>
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
