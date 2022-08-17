@@ -1449,19 +1449,25 @@ class Zebra_Image {
             // get target file's type based on the file extension
             $this->target_type = strtolower(substr($this->target_path, strrpos($this->target_path, '.') + 1));
 
-            // if we are working with WEBP images but PHP version is less than 7.1.0
+            // if we are working with WEBP images
             if ($this->source_type === 'webp') {
 
                 // define this constant which is not available until PHP 7.1.0
-                if (!defined('IMAGETYPE_WEBP')) define('IMAGETYPE_WEBP', 18);
+                if (!defined('IMAGETYPE_WEBP')) {
+                    define('IMAGETYPE_WEBP', 18);
+                }
+
+                // if PHP version is less than 7.1.0
+                if (version_compare(PHP_VERSION, '7.0.0') >= 0 && version_compare(PHP_VERSION, '7.1.0') < 0) {
+
+                    // flag these so we compute them later on
+                    $this->source_width = -1;
+                    $this->source_height = -1;
+
+                }
 
                 // set value to newly created constant
                 $this->source_type = IMAGETYPE_WEBP;
-
-                // because we didn't get to run getimagesize()
-                // we need to unset these manually
-                unset($this->source_width);
-                unset($this->source_height);
 
             }
 
@@ -1517,7 +1523,7 @@ class Zebra_Image {
                     $identifier = imagecreatefromwebp($this->source_path);
 
                     // if we are working with WEBP images but PHP version is less than 7.1.0
-                    if (!isset($this->source_width)) {
+                    if ($this->source_width === -1) {
 
                         // use these to get image's width and height as support for WEBP in getimagesize() was added only
                         // beginning with PHP 7.1.0
