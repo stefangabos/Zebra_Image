@@ -880,7 +880,7 @@ class Zebra_Image {
                     $horizontal_aspect_ratio = $width / $this->source_width;
 
                     // if the image's newly computed height would be inside the bounding box
-                    if (round($horizontal_aspect_ratio * $this->source_height < $height)) {
+                    if (round($horizontal_aspect_ratio * $this->source_height) < $height) {
 
                         // the target image's width is as given as argument to the method
                         $target_width = $width;
