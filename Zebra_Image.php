@@ -26,7 +26,7 @@ ini_set('gd.jpeg_ignore_warning', '1');
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.8.0 (last revision: August 17, 2022)
+ *  @version    2.8.1 (last revision: October 10, 2022)
  *  @copyright  © 2006 - 2022 Stefan Gabos
  *  @license    https://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
@@ -93,8 +93,8 @@ class Zebra_Image {
      *  - `1` - source file could not be found
      *  - `2` - source file is not readable
      *  - `3` - could not write target file
-     *  - `4` - unsupported source file format
-     *  - `5` - unsupported target file format
+     *  - `4` - unsupported source file type *(note that you will also get this for animated WEBP images!)*
+     *  - `5` - unsupported target file type
      *  - `6` - GD library version does not support target file format
      *  - `7` - GD library is not installed!
      *  - `8` - "chmod" command is disabled via configuration
@@ -194,7 +194,9 @@ class Zebra_Image {
      *  >   `WEBP` support is available for PHP version `7.0.0+`.<br><br>
      *      Note that even though `WEBP` support was added to PHP in version `5.5.0`, it only started working with version
      *      `5.5.1`, while support for transparency was added with version `7.0.0`. As a result, I decided to make it
-     *      available only if PHP version is at least `7.0.0`
+     *      available only if PHP version is at least `7.0.0`<br><br>
+     *      Animated `WEBP` images are not currently supported by GD.
+     *      See {@link https://github.com/libgd/libgd/issues/648 here} and {@link https://bugs.php.net/bug.php?id=79809&thanks=4 here}.
      *
      *  @var    string
      */
@@ -209,7 +211,9 @@ class Zebra_Image {
      *  >   `WEBP` support is available for PHP version `7.0.0+`.<br><br>
      *      Note that even though `WEBP` support was added to PHP in version `5.5.0`, it only started working with version
      *      `5.5.1`, while support for transparency was added with version `7.0.0`. As a result, I decided to make it
-     *      available only if PHP version is at least `7.0.0`
+     *      available only if PHP version is at least `7.0.0`<br><br>
+     *      Animated `WEBP` images are not currently supported by GD.
+     *      See {@link https://github.com/libgd/libgd/issues/648 here} and {@link https://bugs.php.net/bug.php?id=79809&thanks=4 here}.
      *
      *  @var    string
      */
@@ -1518,6 +1522,39 @@ class Zebra_Image {
 
                 // if WEBP
                 case IMAGETYPE_WEBP:
+
+                    // because animated WEBP images are not supported
+                    // we need to check if this is such a file
+                    // WEBP file header https://developers.google.com/speed/webp/docs/riff_container
+                    // solution from by Sven Liivak https://stackoverflow.com/questions/45190469/how-to-identify-whether-webp-image-is-static-or-animated#answer-52333192
+
+                    $fh = fopen($this->source_path, 'rb');
+
+                    // let's see if this is the "Extended" file format
+                    fseek($fh, 12);
+
+                    // if this is the extended file format
+                    if (fread($fh, 4) === 'VP8X') {
+
+                        // look for the "Animation (A)" bit
+                        fseek($fh, 16);
+
+                        // is this is an animated WEBP?
+                        $is_animated = ((ord(fread($fh, 1)) >> 1) & 1);
+
+                    }
+
+                    fclose($fh);
+
+                    // if this is an animated WEBP
+                    if ($is_animated) {
+
+                        // flag as unsupported file type
+                        $this->error = 4;
+
+                        return false;
+
+                    }
 
                     // create an image from file
                     $identifier = imagecreatefromwebp($this->source_path);
