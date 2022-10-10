@@ -1,3 +1,7 @@
+## version 2.8.1 (October 10, 2022)
+
+- fixed issue where animated WEBP images would break the script; animated WEBP images are not (yet) supported by GD; thanks to [Yani](https://github.com/yani) for reporting this one! see [#25](https://github.com/stefangabos/Zebra_Image/issues/25)
+
 ## version 2.8.0 (August 17, 2022)
 
 - fixed potential warning when dealing with bad EXIF information; see [#24](https://github.com/stefangabos/Zebra_Image/pull/24); thank you [userlond](https://github.com/userlond) for the fix!
