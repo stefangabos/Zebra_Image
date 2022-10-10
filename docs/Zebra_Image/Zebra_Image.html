@@ -65,7 +65,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.8.0 (last revision: August 17, 2022)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
+<li>2.8.1 (last revision: October 10, 2022)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
 </ul>
 <h4>License:</h4>
 <ul>
@@ -144,7 +144,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 <h4 id="var$error" class="variable"><span><em>integer</em></span> $error <span class="value"></span></h4>
 <div class="doc_block">
 <p>In case of an error read this property's value to see the error's code.</p>
-<p>Possible error codes are:</p><p><ul><li><code>1</code> - source file could not be found</li><li><code>2</code> - source file is not readable</li><li><code>3</code> - could not write target file</li><li><code>4</code> - unsupported source file format</li><li><code>5</code> - unsupported target file format</li><li><code>6</code> - GD library version does not support target file format</li><li><code>7</code> - GD library is not installed!</li><li><code>8</code> - &quot;chmod&quot; command is disabled via configuration</li><li><code>9</code> - &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is <code>0</code> (no error)</p>
+<p>Possible error codes are:</p><p><ul><li><code>1</code> - source file could not be found</li><li><code>2</code> - source file is not readable</li><li><code>3</code> - could not write target file</li><li><code>4</code> - unsupported source file type <em>(note that you will also get this for animated WEBP images!)</em></li><li><code>5</code> - unsupported target file type</li><li><code>6</code> - GD library version does not support target file format</li><li><code>7</code> - GD library is not installed!</li><li><code>8</code> - &quot;chmod&quot; command is disabled via configuration</li><li><code>9</code> - &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is <code>0</code> (no error)</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
@@ -221,14 +221,14 @@ I have a few other projects that you might be interested in — <a href="https:/
 <h4 id="var$source_path" class="variable"><span><em>string</em></span> $source_path <span class="value"></span></h4>
 <div class="doc_block">
 <p>Path to an image file to apply the transformations to.</p>
-<p>Supported file types are <code>GIF</code>, <code>PNG</code>, <code>JPEG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code></p>
+<p>Supported file types are <code>GIF</code>, <code>PNG</code>, <code>JPEG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
 <h4 id="var$target_path" class="variable"><span><em>string</em></span> $target_path <span class="value"></span></h4>
 <div class="doc_block">
 <p>Path (including file name) to where to save the transformed image.</p>
-<p><p class="highlight">Can be a different format than the file at <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>. The format of the transformed image will be       determined by the file's extension. Supported file types are <code>GIF</code>, <code>PNG</code>, <code>JPEG</code> and <code>WEBP</code></p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code></p>
+<p><p class="highlight">Can be a different format than the file at <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>. The format of the transformed image will be       determined by the file's extension. Supported file types are <code>GIF</code>, <code>PNG</code>, <code>JPEG</code> and <code>WEBP</code></p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
@@ -771,7 +771,7 @@ boolean
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Wed, 17 Aug 22</span>
+Documentation generated on <span>Mon, 10 Oct 22</span>
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
