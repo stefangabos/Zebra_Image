@@ -159,28 +159,28 @@ if (!$image->resize(100, 100, ZEBRA_IMAGE_CROP_CENTER)) {
     switch ($image->error) {
 
         case 1:
-            echo 'Source file could not be found!';
+            echo 'Source file could not be found';
             break;
         case 2:
-            echo 'Source file is not readable!';
+            echo 'Source file is not readable';
             break;
         case 3:
-            echo 'Could not write target file!';
+            echo 'Could not write target file';
             break;
         case 4:
-            echo 'Unsupported source file format!';
+            echo 'Unsupported source file type';
             break;
         case 5:
-            echo 'Unsupported target file format!';
+            echo 'Unsupported target file type';
             break;
         case 6:
-            echo 'GD library version does not support target file format!';
+            echo 'GD library version does not support target file format';
             break;
         case 7:
-            echo 'GD library is not installed!';
+            echo 'GD library is not installed';
             break;
         case 8:
-            echo '"chmod" command is disabled via configuration!';
+            echo '"chmod" command is disabled via configuration';
             break;
         case 9:
             echo '"exif_read_data" function is not available';
