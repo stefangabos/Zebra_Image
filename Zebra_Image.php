@@ -1547,7 +1547,7 @@ class Zebra_Image {
                     fclose($fh);
 
                     // if this is an animated WEBP
-                    if ($is_animated) {
+                    if (isset($is_animated) && $is_animated) {
 
                         // flag as unsupported file type
                         $this->error = 4;
