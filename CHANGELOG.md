@@ -1,4 +1,4 @@
-## version 2.8.1 (TBA)
+## version 2.8.1 (December 29, 2022)
 
 - fixed an issue where in PHP 8 the script would break with certain GIF images; see [#26](https://github.com/stefangabos/Zebra_Image/issues/26)l thank you [Marcus Nyberg](https://github.com/mce1978) for reporting!
 - fixed issue where animated WEBP images would break the script; animated WEBP images are not (yet) supported by GD; thanks to [Yani](https://github.com/yani) for reporting this one! see [#25](https://github.com/stefangabos/Zebra_Image/issues/25)
