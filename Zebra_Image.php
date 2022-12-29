@@ -1489,10 +1489,22 @@ class Zebra_Image {
                     if (($this->source_transparent_color_index = imagecolortransparent($identifier)) >= 0) {
 
                         // get the transparent color's RGB values
-                        // we have to mute errors because there are GIF images which *are* transparent and everything
-                        // works as expected, but imagecolortransparent() returns a color that is outside the range of
-                        // colors in the image's pallette...
-                        $this->source_transparent_color = @imagecolorsforindex($identifier, $this->source_transparent_color_index);
+                        // there are GIF images which *are* transparent and everything works as expected, but
+                        // imagecolortransparent() returns a color that is outside the range of colors in the image's pallette...
+                        // therefore, we check first if the index is in range
+                        if ($this->source_transparent_color_index < imagecolorstotal($identifier)) {
+
+                            // if transparent color index is in range, get the transparent color's RGB values
+                            $this->source_transparent_color = @imagecolorsforindex($identifier, $this->source_transparent_color_index);
+
+                        // if transparent color index is outside the range of colors in the image's pallette
+                        } else {
+
+                            // get RGB values for color at index 0
+                            // (so that we don't have error further in the code)
+                            $this->source_transparent_color = @imagecolorsforindex($identifier, 0);
+
+                        }
 
                     }
 
