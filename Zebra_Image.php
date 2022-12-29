@@ -20,8 +20,8 @@ define('ZEBRA_IMAGE_CROP_BOTTOMRIGHT', 10);
 ini_set('gd.jpeg_ignore_warning', '1');
 
 /**
- *  A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several
- *  types of image manipulation operations and applying filters to images. Supports WEBP format.
+ *  A single-file, lightweight PHP library designed for efficient image manipulation featuring methods for modifying
+ *  images and applying filters Supports WEBP format.
  *
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *

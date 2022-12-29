@@ -2,7 +2,7 @@
 
 # Zebra Image &nbsp;[![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A+compact+(one-file+only)+and+lightweight+PHP+library+for+image+manipulation+providing+methods+for+performing+several+types+of+image+manipulation+operations+and+applying+filters+to+images&url=https://github.com/stefangabos/Zebra_Image&via=stefangabos&hashtags=php,gd2)
 
-*A compact (one-file only) and lightweight PHP library for image manipulation providing methods for performing several types of image manipulation operations and applying filters to images.*
+*A single-file, lightweight PHP library designed for efficient image manipulation featuring methods for modifying images and applying filters*
 
 [![Latest Stable Version](https://poser.pugx.org/stefangabos/zebra_image/v/stable)](https://packagist.org/packages/stefangabos/zebra_image) [![Total Downloads](https://poser.pugx.org/stefangabos/zebra_image/downloads)](https://packagist.org/packages/stefangabos/zebra_image) [![Monthly Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/monthly)](https://packagist.org/packages/stefangabos/zebra_image) [![Daily Downloads](https://poser.pugx.org/stefangabos/zebra_image/d/daily)](https://packagist.org/packages/stefangabos/zebra_image) [![License](https://poser.pugx.org/stefangabos/zebra_image/license)](https://packagist.org/packages/stefangabos/zebra_image)
 
