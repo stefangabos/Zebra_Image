@@ -19,7 +19,7 @@ $image = new Zebra_Image();
 //$auto_handle_exif_orientation = true;
 
 // indicate a source image
-$original_image = $image->source_path = 'images/' . (!isset($_GET['original']) || !in_array($_GET['original'], array('image-solid.gif', 'image-transparent.gif', 'image.jpg', 'image-solid-png24.png', 'image-solid-png8.png', 'image-transparent-png24.png', 'image-transparent-png8.png', 'image-transparent-webp.webp')) ? 'image-transparent-png24.png' : $_GET['original']);
+$original_image = $image->source_path = 'images/' . (!isset($_GET['original']) || !in_array($_GET['original'], array('image.bmp', 'image-solid.gif', 'image-transparent.gif', 'image.jpg', 'image-solid-png24.png', 'image-solid-png8.png', 'image-transparent-png24.png', 'image-transparent-png8.png', 'image-transparent-webp.webp')) ? 'image-transparent-png24.png' : $_GET['original']);
 
 /**
  *
@@ -34,7 +34,7 @@ $image->target_path = 'results/resize.' . $ext;
 
 // resize
 // and if there is an error, show the error message
-if (!$image->resize(200, 200, ZEBRA_IMAGE_BOXED, -1)) show_error($image->error, $image->source_path, $image->target_path);
+if (!$image->resize(200, 200, ZEBRA_IMAGE_BOXED, stripos($original_image, 'bmp') !== false ? '#FFFFFF' : -1)) show_error($image->error, $image->source_path, $image->target_path);
 
 // from this moment on, work on the resized image
 $image->source_path = 'results/resize.' . $ext;
@@ -147,6 +147,7 @@ function show_error($error_code, $source_path, $target_path) {
                     <li><a href="?original=image-transparent-png24.png">transparent <strong>PNG24</strong></a></li>
                     <li><a href="?original=image-transparent-png8.png">transparent <strong>PNG8</strong></a></li>
                     <li><a href="?original=image-transparent-webp.webp">transparent <strong>WEBP</strong></a></li>
+                    <li><a href="?original=image.bmp"><strong>BMP</strong></a> (really slow)</li>
                 </ul>
                 <small class="text-right display-block"><em>images have background in order to observe transparency</em></small>
             </th>
@@ -157,7 +158,7 @@ function show_error($error_code, $source_path, $target_path) {
             array(
                 'title' => 'Resizing',
                 'image' => 'resize',
-                'usage' => '$image->resize(200, 200, ZEBRA_IMAGE_BOXED)',
+                'usage' => '$image->resize(200, 200, ZEBRA_IMAGE_BOXED, -1)',
                 'docs'  =>  'methodresize',
             ),
             array(
@@ -196,7 +197,7 @@ function show_error($error_code, $source_path, $target_path) {
                 'usage' => '$image->apply_filter(array(' . "\n\t" . 'array(\'grayscale\'),' . "\n\t" . 'array(\'emboss\'),' . "\n" . '))',
                 'docs'  =>  'methodapply_filter',
             ),
-        ) as $options): ?>
+        ) as $index => $options): ?>
         <tr>
             <th colspan="2">
                 <h3><?php echo $options['title']; ?></h3>
@@ -216,7 +217,8 @@ function show_error($error_code, $source_path, $target_path) {
                 <?php echo highlight_string('' .
                     '<?php ' .
                         "\n\n" .    '$image = new Zebra_Image(); ' .
-                        "\n" .      '$image->source_path = \'input_image.' . $ext . '\';' .
+                        ($index > 0 ? "\n" . '// source image is the one resized at the beginning' : '') .
+                        "\n" .      '$image->source_path = \'' . ($index > 0 ? 'resized' : 'input') . '_image.' . $ext . '\';' .
                         "\n" .      '$image->target_path = \'output_image.' . $ext . '\';' .
                         "\n" .      'if (!' . $options['usage'] . ')' .
                         "\n\t" .        'die($image->error);' . "\n\t"
