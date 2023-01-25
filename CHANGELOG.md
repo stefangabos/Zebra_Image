@@ -1,3 +1,8 @@
+## version 2.8.2 (January 25, 2023)
+
+- added support for BMP; see [#27](https://github.com/stefangabos/Zebra_Image/issues/27); thanks [icret](https://github.com/icret) for suggesting
+- fixed some issues with WEBP images
+
 ## version 2.8.1 (December 29, 2022)
 
 - fixed an issue where in PHP 8 the script would break with certain GIF images; see [#26](https://github.com/stefangabos/Zebra_Image/issues/26) - thank you [Marcus Nyberg](https://github.com/mce1978) for reporting!
