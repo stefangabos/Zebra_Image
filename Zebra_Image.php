@@ -53,9 +53,12 @@ class Zebra_Image {
     /**
      *  Indicates whether BMP images should be compressed with run-length encoding (RLE), or not.
      *
-     *  >   Used only if the file at {@link target_path} is a `BMP` image, or it will be ignored otherwise.
+     *  >   Used only if PHP version is `7.2.0+` and the file at {@link target_path} is a `BMP` image, or it will be
+     *      ignored otherwise.
      *
      *  Default is `TRUE`
+     *
+     *  @since 2.8.1
      *
      *  @var boolean
      */
@@ -120,7 +123,7 @@ class Zebra_Image {
     /**
      *  Indicates whether the created image should be saved as a progressive JPEG.
      *
-     *  Used only if the file at {@link target_path} is a `JPG/JPEG` image, or will be ignored otherwise.
+     *  >   Used only if the file at {@link target_path} is a `JPG/JPEG` image, or will be ignored otherwise.
      *
      *  Default is `false`
      *
