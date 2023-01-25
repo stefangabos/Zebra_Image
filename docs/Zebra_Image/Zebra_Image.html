@@ -65,7 +65,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.8.1 (last revision: December 29, 2022)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
+<li>2.8.2 (last revision: January 25, 2023)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
 </ul>
 <h4>License:</h4>
 <ul>
@@ -73,13 +73,14 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Copyright:</h4>
 <ul>
-<li>© 2006 - 2022 Stefan Gabos</li>
+<li>© 2006 - 2023 Stefan Gabos</li>
 </ul>
 <div id="top" class="doc_toc">
 <div class="left">
 <h3>Properties</h3>
 <ul>
 <li><a href="#var$auto_handle_exif_orientation">$auto_handle_exif_orientation</a></li>
+<li><a href="#var$bmp_compressed">$bmp_compressed</a></li>
 <li><a href="#var$chmod_value">$chmod_value</a></li>
 <li><a href="#var$enlarge_smaller_images">$enlarge_smaller_images</a></li>
 <li><a href="#var$error">$error</a></li>
@@ -127,6 +128,20 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
+<h4 id="var$bmp_compressed" class="variable"><span><em>boolean</em></span> $bmp_compressed <span class="value"></span></h4>
+<div class="doc_block">
+<p>Indicates whether BMP images should be compressed with run-length encoding (RLE), or not.</p>
+<p><p class="highlight">Used only if PHP version is <code>7.2.0+</code> and the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>BMP</code> image, or it will be       ignored otherwise.</p><p>Default is <code>TRUE</code></p>
+<h5>Tags</h5>
+<table>
+<tr>
+<td><strong>since:</strong>&nbsp;&nbsp;</td>
+<td>2.8.1</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
 <h4 id="var$chmod_value" class="variable"><span><em>integer</em></span> $chmod_value <span class="value"></span></h4>
 <div class="doc_block">
 <p>Indicates the file system permissions to be set for newly created images.</p>
@@ -151,7 +166,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 <h4 id="var$jpeg_interlace" class="variable"><span><em>boolean</em></span> $jpeg_interlace <span class="value"></span></h4>
 <div class="doc_block">
 <p>Indicates whether the created image should be saved as a progressive JPEG.</p>
-<p>Used only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>JPG/JPEG</code> image, or will be ignored otherwise.</p><p>Default is <code>false</code></p>
+<p><p class="highlight">Used only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>JPG/JPEG</code> image, or will be ignored otherwise.</p><p>Default is <code>false</code></p>
 <h5>Tags</h5>
 <table>
 <tr>
@@ -221,14 +236,14 @@ I have a few other projects that you might be interested in — <a href="https:/
 <h4 id="var$source_path" class="variable"><span><em>string</em></span> $source_path <span class="value"></span></h4>
 <div class="doc_block">
 <p>Path to an image file to apply the transformations to.</p>
-<p>Supported file types are <code>GIF</code>, <code>PNG</code>, <code>JPEG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p>
+<p>Supported file types are <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
 <h4 id="var$target_path" class="variable"><span><em>string</em></span> $target_path <span class="value"></span></h4>
 <div class="doc_block">
 <p>Path (including file name) to where to save the transformed image.</p>
-<p><p class="highlight">Can be a different format than the file at <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>. The format of the transformed image will be       determined by the file's extension. Supported file types are <code>GIF</code>, <code>PNG</code>, <code>JPEG</code> and <code>WEBP</code></p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p>
+<p><p class="highlight">Can be a different format than the file at <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>. The format of the transformed image will be       determined by the file's extension. Supported file types are <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
@@ -771,7 +786,7 @@ boolean
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Fri, 30 Dec 22</span>
+Documentation generated on <span>Wed, 25 Jan 23</span>
 </div>
 </div>
 <!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-0301ZD47Q7"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-0301ZD47Q7');</script></body>
