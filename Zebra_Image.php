@@ -110,7 +110,7 @@ class Zebra_Image {
      *  - `4` - unsupported source file type *(note that you will also get this for animated WEBP images!)*
      *  - `5` - unsupported target file type
      *  - `6` - GD library version does not support target file format
-     *  - `7` - GD library is not installed!
+     *  - `7` - GD library is not installed
      *  - `8` - "chmod" command is disabled via configuration
      *  - `9` - "exif_read_data" function is not available
      *
@@ -559,7 +559,7 @@ class Zebra_Image {
      *
      *  @param  mixed       $background_color   (Optional) A hexadecimal color value (like `#FFFFFF` or `#FFF`) used when
      *                                          the cropping coordinates are off-scale (negative values and/or values
-     *                                          greater than the image's size) to fill the remaining space.
+     *                                          greater than the image's size) to fill the remaining space with.
      *
      *                                          When set to `-1` the script will preserve transparency for transparent `GIF`
      *                                          and `PNG` images. For non-transparent images the background will be black
@@ -583,7 +583,7 @@ class Zebra_Image {
         // for PHP 8.0.0+ GD functions return and accept \GdImage objects instead of resources (https://php.watch/versions/8.0/gdimage)
         if (isset($args[5]) && (is_resource($args[5]) || (version_compare(PHP_VERSION, '8.0.0', '>=') && $args[5] instanceof \GdImage))) {
 
-            // that it is the image identifier that we'll be using further on
+            // this is the image identifier that we'll be using going forward
             $this->source_identifier = $args[5];
 
             // set this to true so that the script will continue to execute at the next IF
