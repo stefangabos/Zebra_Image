@@ -122,7 +122,7 @@ require_once 'Zebra_Image.php';
 require 'path/to/Zebra_Image.php';
 
 // create a new instance of the class
-$image = new Zebra_Image();
+$image = new stefangabos\Zebra_Image\Zebra_Image();
 
 // if you handle image uploads from users and you have enabled exif-support with --enable-exif
 // (or, on a Windows machine you have enabled php_mbstring.dll and php_exif.dll in php.ini)
