@@ -68,12 +68,13 @@ $image->target_path = 'results/crop.' . $ext;
 if (!$image->crop(0, 0, 100, 100)) show_error($image->error, $image->source_path, $image->target_path);
 
 // indicate a target image
+$image->source_path = $original_image;
 $image->target_path = 'results/rotate.' . $ext;
 
 // rotate
 // and if there is an error, show the error message
 // (if we are rotating a solid image, use #FFF as color of uncovered zone after the rotation)
-if (!$image->rotate(45, stripos($original_image, 'solid') !== false ? '#FFFFFF' : -1)) show_error($image->error, $image->source_path, $image->target_path);
+if (!$image->rotate(180, stripos($original_image, 'solid') !== false ? '#FFFFFF' : -1)) show_error($image->error, $image->source_path, $image->target_path);
 
 // indicate a target image
 $image->target_path = 'results/filter.' . $ext;
@@ -188,7 +189,7 @@ function show_error($error_code, $source_path, $target_path) {
             array(
                 'title' => 'Rotate',
                 'image' => 'rotate',
-                'usage' => '$image->rotate(45' . (stripos($original_image, 'solid') !== false ? ', \'#FFFFFF\'' : '') . ')',
+                'usage' => '$image->rotate(180' . (stripos($original_image, 'solid') !== false ? ', \'#FFFFFF\'' : '') . ')',
                 'docs'  =>  'methodrotate',
             ),
             array(
@@ -218,7 +219,7 @@ function show_error($error_code, $source_path, $target_path) {
                     '<?php ' .
                         "\n\n" .    '$image = new Zebra_Image(); ' .
                         ($index > 0 ? "\n" . '// source image is the one resized at the beginning' : '') .
-                        "\n" .      '$image->source_path = \'' . ($index > 0 ? 'resized' : 'input') . '_image.' . $ext . '\';' .
+                        "\n" .      '$image->source_path = \'' . ($index > 0 && $options['image'] !== 'rotate' ? 'resized' : 'input') . '_image.' . $ext . '\';' .
                         "\n" .      '$image->target_path = \'output_image.' . $ext . '\';' .
                         "\n" .      'if (!' . $options['usage'] . ')' .
                         "\n\t" .        'die($image->error);' . "\n\t"
