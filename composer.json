@@ -20,7 +20,7 @@
         "classmap": ["Zebra_Image.php"]
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.8",
-        "squizlabs/php_codesniffer": "*"
+        "phpstan/phpstan": "^2",
+        "squizlabs/php_codesniffer": "^3"
     }
 }
