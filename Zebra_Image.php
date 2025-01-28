@@ -1260,6 +1260,8 @@ class Zebra_Image {
     /**
      *  Rotates the image given as {@link source_path} and outputs the resulted image as {@link target_path}.
      *
+     *  >   Note that rotating transparent GIFs will most likely **not** work!
+     *
      *  <code>
      *  // include the Zebra_Image library
      *  // (you don't need this if you installed using composer)
