@@ -40,6 +40,10 @@
 <ul>
 <li><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></li>
 </ul>
+<p><strong>Files:</strong></p>
+<ul>
+<li><a href="../Zebra_Image/_Zebra_Image.php.html">Zebra_Image.php</a></li>
+</ul>
 <p class="hello-separator"></p>
 <p class="hello">
 <img src="https://avatars1.githubusercontent.com/u/741165?s=460&u=95c38afa1015f9ed705f3ad9848b3c2687b547db&v=4" width="131" alt="Stefan Gabos">
@@ -53,7 +57,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 </p>
 </div>
 </td>
-<td style="background: #FFF">
+<td style="background: #FFF; width: 100%">
 <div id="doc_content">
 <h2>Class: <strong>Zebra_Image</strong></h2>
 <h6><strong>source file:</strong> /Zebra_Image.php</h6>
@@ -65,7 +69,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>2.8.2 (last revision: January 25, 2023)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
+<li>3.0.0 (last revision: January 27, 2025)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
 </ul>
 <h4>License:</h4>
 <ul>
@@ -73,7 +77,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Copyright:</h4>
 <ul>
-<li>© 2006 - 2023 Stefan Gabos</li>
+<li>© 2006 - 2025 Stefan Gabos</li>
 </ul>
 <div id="top" class="doc_toc">
 <div class="left">
@@ -114,7 +118,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 <div class="clear"></div>
 </div>
 <h3 id="class_vars">Class properties</h3>
-<h4 id="var$auto_handle_exif_orientation" class="variable"><span><em>boolean</em></span> $auto_handle_exif_orientation <span class="value"></span></h4>
+<h4 id="var$auto_handle_exif_orientation" class="variable"><span><em>boolean</em></span> $auto_handle_exif_orientation <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>If set to <code>true</code>, JPEG images will be auto-rotated according to the <a href="http://keyj.emphy.de/exif-orientation-rant/">Exif Orientation Tag</a>   so that they are always shown correctly.</p>
 <p><p class="highlight">If set to <code>true</code> you must also enable exif-support with <code>--enable-exif</code>.<br>       Windows users must enable both the <code>php_mbstring.dll</code> and <code>php_exif.dll</code> DLL's in <code>php.ini</code>.<br>       <code>php_mbstring.dll</code> must be loaded before <code>php_exif.dll</code>, so adjust your php.ini accordingly.       See <a href="https://www.php.net/manual/en/exif.installation.php">the manual</a>.</p><p>Default is <code>false</code></p>
@@ -128,7 +132,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$bmp_compressed" class="variable"><span><em>boolean</em></span> $bmp_compressed <span class="value"></span></h4>
+<h4 id="var$bmp_compressed" class="variable"><span><em>boolean</em></span> $bmp_compressed <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates whether BMP images should be compressed with run-length encoding (RLE), or not.</p>
 <p><p class="highlight">Used only if PHP version is <code>7.2.0+</code> and the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>BMP</code> image, or it will be       ignored otherwise.</p><p>Default is <code>TRUE</code></p>
@@ -142,28 +146,28 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$chmod_value" class="variable"><span><em>integer</em></span> $chmod_value <span class="value"></span></h4>
+<h4 id="var$chmod_value" class="variable"><span><em>integer</em></span> $chmod_value <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates the file system permissions to be set for newly created images.</p>
 <p>Better is to leave this setting as it is.</p><p>If you know what you are doing, here is how you can calculate the permission levels:</p><ul><li>400 Owner Read</li><li>200 Owner Write</li><li>100 Owner Execute</li><li>40 Group Read</li><li>20 Group Write</li><li>10 Group Execute</li><li>4 Global Read</li><li>2 Global Write</li><li>1 Global Execute</li></ul><p>   Default is <code>0755</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$enlarge_smaller_images" class="variable"><span><em>boolean</em></span> $enlarge_smaller_images <span class="value"></span></h4>
+<h4 id="var$enlarge_smaller_images" class="variable"><span><em>boolean</em></span> $enlarge_smaller_images <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>If set to <code>false</code>, images having both width and height smaller than the required width and height will be left   untouched. <a href="../Zebra_Image/Zebra_Image.html#var$jpeg_quality">jpeg_quality</a> and <a href="../Zebra_Image/Zebra_Image.html#var$png_compression">png_compression</a> will still apply!</p>
 <p>Available only for the <a href="../Zebra_Image/Zebra_Image.html#methodresize">resize()</a> method.</p><p>Default is <code>true</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$error" class="variable"><span><em>integer</em></span> $error <span class="value"></span></h4>
+<h4 id="var$error" class="variable"><span><em>integer</em></span> $error <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>In case of an error read this property's value to see the error's code.</p>
-<p>Possible error codes are:</p><p><ul><li><code>1</code> - source file could not be found</li><li><code>2</code> - source file is not readable</li><li><code>3</code> - could not write target file</li><li><code>4</code> - unsupported source file type <em>(note that you will also get this for animated WEBP images!)</em></li><li><code>5</code> - unsupported target file type</li><li><code>6</code> - GD library version does not support target file format</li><li><code>7</code> - GD library is not installed!</li><li><code>8</code> - &quot;chmod&quot; command is disabled via configuration</li><li><code>9</code> - &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is <code>0</code> (no error)</p>
+<p>Possible error codes are:</p><p><ul><li><code>1</code> - source file could not be found</li><li><code>2</code> - source file is not readable</li><li><code>3</code> - could not write target file</li><li><code>4</code> - unsupported source file type <em>(note that you will also get this for animated WEBP images!)</em></li><li><code>5</code> - unsupported target file type</li><li><code>6</code> - GD library version does not support target file format</li><li><code>7</code> - GD library is not installed</li><li><code>8</code> - &quot;chmod&quot; command is disabled via configuration</li><li><code>9</code> - &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is <code>0</code> (no error)</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$jpeg_interlace" class="variable"><span><em>boolean</em></span> $jpeg_interlace <span class="value"></span></h4>
+<h4 id="var$jpeg_interlace" class="variable"><span><em>boolean</em></span> $jpeg_interlace <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates whether the created image should be saved as a progressive JPEG.</p>
 <p><p class="highlight">Used only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>JPG/JPEG</code> image, or will be ignored otherwise.</p><p>Default is <code>false</code></p>
@@ -177,14 +181,14 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$jpeg_quality" class="variable"><span><em>integer</em></span> $jpeg_quality <span class="value"></span></h4>
+<h4 id="var$jpeg_quality" class="variable"><span><em>integer</em></span> $jpeg_quality <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates the quality of the output image (better quality means bigger file size).</p>
 <p><p class="highlight">Used only if the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>JPG/JPEG</code> image, or it will be ignored otherwise.</p><p>Range is <code>0</code> - <code>100</code>.</p><p>Default is <code>85</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$png_compression" class="variable"><span><em>integer</em></span> $png_compression <span class="value"></span></h4>
+<h4 id="var$png_compression" class="variable"><span><em>integer</em></span> $png_compression <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates the compression level of the output image (lower compression means bigger file size).</p>
 <p><p class="highlight">Used only if PHP version is <code>5.1.2+</code> and the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>PNG</code> image, or it will be       ignored otherwise.</p><p>Range is <code>0</code> - <code>9</code>.</p><p>Default is <code>9</code></p>
@@ -198,14 +202,14 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$preserve_aspect_ratio" class="variable"><span><em>boolean</em></span> $preserve_aspect_ratio <span class="value"></span></h4>
+<h4 id="var$preserve_aspect_ratio" class="variable"><span><em>boolean</em></span> $preserve_aspect_ratio <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Specifies whether upon resizing images should preserve their aspect ratio.</p>
 <p><p class="highlight">Available only for the <a href="../Zebra_Image/Zebra_Image.html#methodresize">resize()</a> method.</p><p>Default is <code>true</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$preserve_time" class="variable"><span><em>boolean</em></span> $preserve_time <span class="value"></span></h4>
+<h4 id="var$preserve_time" class="variable"><span><em>boolean</em></span> $preserve_time <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates whether a target file should preserve the source file's date/time.</p>
 <p>Default is <code>true</code></p>
@@ -219,7 +223,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$sharpen_images" class="variable"><span><em>boolean</em></span> $sharpen_images <span class="value"></span></h4>
+<h4 id="var$sharpen_images" class="variable"><span><em>boolean</em></span> $sharpen_images <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates whether the target image should have a <code>sharpen</code> filter applied to it.</p>
 <p>Can be very useful when creating thumbnails and should be used only when creating thumbnails.</p><p class="highlight">The sharpen filter relies on the <a href="https://www.php.net/manual/en/function.imageconvolution.php">imageconvolution</a>       function which is available for PHP version <code>5.1.0+</code>, and will leave the images unaltered for older versions!</p><p>Default is <code>false</code></p>
@@ -233,21 +237,21 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$source_path" class="variable"><span><em>string</em></span> $source_path <span class="value"></span></h4>
+<h4 id="var$source_path" class="variable"><span><em>string</em></span> $source_path <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Path to an image file to apply the transformations to.</p>
 <p>Supported file types are <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$target_path" class="variable"><span><em>string</em></span> $target_path <span class="value"></span></h4>
+<h4 id="var$target_path" class="variable"><span><em>string</em></span> $target_path <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Path (including file name) to where to save the transformed image.</p>
 <p><p class="highlight">Can be a different format than the file at <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>. The format of the transformed image will be       determined by the file's extension. Supported file types are <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
-<h4 id="var$webp_quality" class="variable"><span><em>integer</em></span> $webp_quality <span class="value"></span></h4>
+<h4 id="var$webp_quality" class="variable"><span><em>integer</em></span> $webp_quality <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates the quality level of the output image.</p>
 <p><p class="highlight">Used only if PHP version is <code>7.0.0+</code> and the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a> is a <code>WEBP</code> image, or it will be       ignored otherwise.</p><p>Range is <code>0</code> - <code>100</code></p><p>Default is <code>80</code></p>
@@ -270,7 +274,7 @@ void
 ()
 </p>
 <p>Constructor of the class.</p>
-<p>Initializes the class and the default properties.</p>
+<p>Initializes the class and the default properties.</p><p class="highlight">Be aware that this will call<br>       <code>ini_set('gd.jpeg_ignore_warning', '1')</code><br>       in order for it to be able to handle partially broken JPEG files without warnings/errors</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
@@ -318,7 +322,7 @@ boolean
 <li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">stefangabos</span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
@@ -450,7 +454,7 @@ boolean
 <li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">stefangabos</span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
@@ -489,7 +493,7 @@ boolean
 <tr>
 <td><em>mixed</em></td>
 <td><strong>$background_color</strong></td>
-<td><p>(Optional) A hexadecimal color value (like <code>#FFFFFF</code> or <code>#FFF</code>) used when                                           the cropping coordinates are off-scale (negative values and/or values                                           greater than the image's size) to fill the remaining space.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be black                                           (<code>#000000</code>) in this case.</p><p>Default is <code>-1</code></p></td>
+<td><p><span class="optional">Optional</span> A hexadecimal color value (like <code>#FFFFFF</code> or <code>#FFF</code>) used when                                           the cropping coordinates are off-scale (negative values and/or values                                           greater than the image's size) to fill the remaining space with.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be black                                           (<code>#000000</code>) in this case.</p><p>Default is <code>-1</code></p></td>
 </tr>
 </table>
 <h5>Tags</h5>
@@ -519,7 +523,7 @@ boolean
 <li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">stefangabos</span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
@@ -560,7 +564,7 @@ boolean
 <li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">stefangabos</span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
@@ -597,7 +601,7 @@ boolean
 <li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">stefangabos</span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
@@ -662,7 +666,7 @@ ZEBRA_IMAGE_CROP_CENTER
 <li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">stefangabos</span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
@@ -695,7 +699,7 @@ ZEBRA_IMAGE_CROP_CENTER
 <tr>
 <td><em>int</em></td>
 <td><strong>$method</strong></td>
-<td><p>(Optional) Method to use when resizing images to exact width and height                                           while preserving aspect ratio.</p><p>If the <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> property is set to <code>true</code> and both                                           the <code>width</code> and <code>height</code> arguments are values greater than <code>0</code>, the image                                           will be resized to the exact given width and height and the aspect ratio                                           will be preserved by using on of the following methods:</p><p><ul><li><strong>ZEBRA_IMAGE_BOXED</strong> - the image will be scaled so that it will fit
+<td><p><span class="optional">Optional</span> Method to use when resizing images to exact width and height                                           while preserving aspect ratio.</p><p>If the <a href="../Zebra_Image/Zebra_Image.html#var$preserve_aspect_ratio">preserve_aspect_ratio</a> property is set to <code>true</code> and both                                           the <code>width</code> and <code>height</code> arguments are values greater than <code>0</code>, the image                                           will be resized to the exact given width and height and the aspect ratio                                           will be preserved by using on of the following methods:</p><p><ul><li><strong>ZEBRA_IMAGE_BOXED</strong> - the image will be scaled so that it will fit
 in a box with the given width and height (both width/height will be
 smaller or equal to the required width/height) and then it will
 be centered both horizontally and vertically; the blank area will be
@@ -708,7 +712,7 @@ will be both smaller or equal to the required width/height.</li></ul><p> <ul><li
 <tr>
 <td><em>mixed</em></td>
 <td><strong>$background_color</strong></td>
-<td><p>(Optional) The hexadecimal color (like <code>#FFFFFF</code> or <code>#FFF</code>) of the blank                                           area. See the <code>method</code> argument.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be white                                           (<code>#FFFFFF</code>) in this case.</p><p>Default is <code>-1</code></p></td>
+<td><p><span class="optional">Optional</span> The hexadecimal color (like <code>#FFFFFF</code> or <code>#FFF</code>) of the blank                                           area. See the <code>method</code> argument.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be white                                           (<code>#FFFFFF</code>) in this case.</p><p>Default is <code>-1</code></p></td>
 </tr>
 </table>
 <h5>Tags</h5>
@@ -744,7 +748,7 @@ boolean
 <li><div class="src-line">require&nbsp;<span class="src-str">'path/to/Zebra_Image.php'</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;instantiate&nbsp;the&nbsp;class</span></div></li>
-<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><span class="src-var">$img&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">stefangabos</span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span>\<span class="src-id"><a href="../Zebra_Image/Zebra_Image.html">Zebra_Image</a></span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;</div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;a&nbsp;source&nbsp;image</span></div></li>
 <li><div class="src-line"><span class="src-comm">//&nbsp;(where&nbsp;&quot;ext&quot;&nbsp;is&nbsp;one&nbsp;of&nbsp;the&nbsp;supported&nbsp;file&nbsp;types&nbsp;extension)</span></div></li>
@@ -768,7 +772,7 @@ boolean
 <tr>
 <td><em>mixed</em></td>
 <td><strong>$background_color</strong></td>
-<td><p>(Optional) The hexadecimal color (like <code>#FFFFFF</code> or <code>#FFF</code>) of the                                           uncovered zone after the rotation.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be white                                           (<code>#FFFFFF</code>) in this case.</p><p>Default is <code>-1</code>.</p></td>
+<td><p><span class="optional">Optional</span> The hexadecimal color (like <code>#FFFFFF</code> or <code>#FFF</code>) of the                                           uncovered zone after the rotation.</p><p>When set to <code>-1</code> the script will preserve transparency for transparent <code>GIF</code>                                           and <code>PNG</code> images. For non-transparent images the background will be white                                           (<code>#FFFFFF</code>) in this case.</p><p>Default is <code>-1</code>.</p></td>
 </tr>
 </table>
 <h5>Tags</h5>
@@ -786,7 +790,7 @@ boolean
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Wed, 25 Jan 23</span>
+Documentation generated on <span>Tue, 28 January 2025</span>
 </div>
 </div>
 <!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-0301ZD47Q7"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-0301ZD47Q7');</script></body>
