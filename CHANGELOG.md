@@ -1,3 +1,9 @@
+## version 3.0.0 (January 28, 2025)
+
+- added namespace - see [#31](https://github.com/stefangabos/Zebra_Image/issues/31); thanks [Marcus Nyberg](https://github.com/mce1978) for suggesting
+- the library automatically sets `gd.jpeg_ignore_warning` but now this is also mentioned in the [docs](https://stefangabos.github.io/Zebra_Image/Zebra_Image/Zebra_Image.html#method__construct)
+- updated the minimum required PHP version to `5.3.0`
+
 ## version 2.8.2 (January 25, 2023)
 
 - added support for BMP; see [#27](https://github.com/stefangabos/Zebra_Image/issues/27); thanks [icret](https://github.com/icret) for suggesting
