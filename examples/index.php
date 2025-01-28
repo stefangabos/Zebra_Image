@@ -12,7 +12,7 @@ if (!is_dir('results') || !is_writable('results')) die('<strong>ERROR</strong><b
 require '../Zebra_Image.php';
 
 // create a new instance of the class
-$image = new Zebra_Image();
+$image = new stefangabos\Zebra_Image\Zebra_Image();
 
 // set this to TRUE if you work on images uploaded by users
 // (see http://stefangabos.ro/wp-content/docs/Zebra_Image/Zebra_Image/Zebra_Image.html#var$auto_handle_exif_orientation)
