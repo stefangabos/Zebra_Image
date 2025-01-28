@@ -1,5 +1,7 @@
 <?php
 
+namespace stefangabos\Zebra_Image;
+
 /**
  *  Methods used with the {@link resize()} method.
  */
@@ -16,9 +18,6 @@ define('ZEBRA_IMAGE_CROP_BOTTOMLEFT', 8);
 define('ZEBRA_IMAGE_CROP_BOTTOMCENTER', 9);
 define('ZEBRA_IMAGE_CROP_BOTTOMRIGHT', 10);
 
-// this enables handling of partially broken JPEG files without warnings/errors
-ini_set('gd.jpeg_ignore_warning', '1');
-
 /**
  *  A single-file, lightweight PHP library designed for efficient image manipulation featuring methods for modifying
  *  images and applying filters Supports WEBP format.
@@ -26,8 +25,8 @@ ini_set('gd.jpeg_ignore_warning', '1');
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    2.8.2 (last revision: January 25, 2023)
- *  @copyright  © 2006 - 2023 Stefan Gabos
+ *  @version    3.0.0 (last revision: January 28, 2025)
+ *  @copyright  © 2006 - 2025 Stefan Gabos
  *  @license    https://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
  */
@@ -298,6 +297,10 @@ class Zebra_Image {
      *
      *  Initializes the class and the default properties.
      *
+     *  >   Be aware that this will call<br>
+     *      `ini_set('gd.jpeg_ignore_warning', '1')`<br>
+     *      in order for it to be able to handle partially broken JPEG files without warnings/errors
+     *
      *  @return void
      */
     public function __construct() {
@@ -319,6 +322,9 @@ class Zebra_Image {
 
         $this->source_path = $this->target_path = '';
 
+        // this enables handling of partially broken JPEG files without warnings/errors
+        ini_set('gd.jpeg_ignore_warning', '1');
+
     }
 
     /**
@@ -334,7 +340,7 @@ class Zebra_Image {
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
-     *  $img = new Zebra_Image();
+     *  $img = new stefangabos\Zebra_Image\Zebra_Image();
      *
      *  // a source image
      *  // (where "ext" is one of the supported file types extension)
@@ -534,7 +540,7 @@ class Zebra_Image {
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
-     *  $img = new Zebra_Image();
+     *  $img = new stefangabos\Zebra_Image\Zebra_Image();
      *
      *  // a source image
      *  // (where "ext" is one of the supported file types extension)
@@ -683,7 +689,7 @@ class Zebra_Image {
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
-     *  $img = new Zebra_Image();
+     *  $img = new stefangabos\Zebra_Image\Zebra_Image();
      *
      *  // a source image
      *  // (where "ext" is one of the supported file types extension)
@@ -719,7 +725,7 @@ class Zebra_Image {
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
-     *  $img = new Zebra_Image();
+     *  $img = new stefangabos\Zebra_Image\Zebra_Image();
      *
      *  // a source image
      *  // (where "ext" is one of the supported file types extension)
@@ -753,7 +759,7 @@ class Zebra_Image {
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
-     *  $img = new Zebra_Image();
+     *  $img = new stefangabos\Zebra_Image\Zebra_Image();
      *
      *  // a source image
      *  // (where "ext" is one of the supported file types extension)
@@ -787,7 +793,7 @@ class Zebra_Image {
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
-     *  $img = new Zebra_Image();
+     *  $img = new stefangabos\Zebra_Image\Zebra_Image();
      *
      *  // a source image
      *  // (where "ext" is one of the supported file types extension)
@@ -1260,7 +1266,7 @@ class Zebra_Image {
      *  require 'path/to/Zebra_Image.php';
      *
      *  // instantiate the class
-     *  $img = new Zebra_Image();
+     *  $img = new stefangabos\Zebra_Image\Zebra_Image();
      *
      *  // a source image
      *  // (where "ext" is one of the supported file types extension)
@@ -1349,7 +1355,7 @@ class Zebra_Image {
 
                         // make color transparent
                         // (imagecolorallocate may return FALSE, that's why the elvis operator)
-                        imagecolortransparent($this->source_identifier, $background_color ? : null);
+                        imagecolortransparent($this->source_identifier, $background_color ?: null);
 
                     }
 
