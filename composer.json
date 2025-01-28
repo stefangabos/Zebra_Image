@@ -17,10 +17,19 @@
         "php": ">=5.3"
     },
     "autoload": {
-        "classmap": ["Zebra_Image.php"]
+        "psr-4": {
+            "stefangabos\\Zebra_Image\\": "./"
+        }
     },
     "require-dev": {
         "phpstan/phpstan": "^2",
         "squizlabs/php_codesniffer": "^3"
+    },
+    "support": {
+        "issues": "https://github.com/stefangabos/Zebra_Image/issues",
+        "source": "https://github.com/stefangabos/Zebra_Image"
+    },
+    "config": {
+        "sort-packages": true
     }
 }
