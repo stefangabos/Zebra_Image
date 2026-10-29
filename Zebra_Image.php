@@ -1515,13 +1515,18 @@ class Zebra_Image {
             // get target file's type based on the file extension
             $this->target_type = strtolower(substr($this->target_path, strrpos($this->target_path, '.') + 1));
 
+            // define this constant which is not available until PHP 7.1.0
+            if (!defined('IMAGETYPE_WEBP')) {
+                define('IMAGETYPE_WEBP', 18);
+            }
+
+            // define this constant which is not available until PHP 8.1.0
+            if (!defined('IMAGETYPE_AVIF')) {
+                define('IMAGETYPE_AVIF', 19);
+            }
+
             // if we are working with WEBP images
             if ($this->source_type === 'webp') {
-
-                // define this constant which is not available until PHP 7.1.0
-                if (!defined('IMAGETYPE_WEBP')) {
-                    define('IMAGETYPE_WEBP', 18);
-                }
 
                 // if PHP version is less than 7.1.0
                 if (version_compare(PHP_VERSION, '7.1.0') < 0) {
@@ -1535,11 +1540,6 @@ class Zebra_Image {
                 // set value to newly created constant
                 $this->source_type = IMAGETYPE_WEBP;
 
-            }
-
-            // define this constant which is not available until PHP 8.1.0
-            if (!defined('IMAGETYPE_AVIF')) {
-                define('IMAGETYPE_AVIF', 19);
             }
 
             // create an image from file using extension dependant function
