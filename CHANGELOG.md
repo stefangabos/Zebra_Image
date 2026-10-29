@@ -1,3 +1,7 @@
+## version 3.1.0 (October 29, 2026)
+
+- fixed deprecation warnings on PHP 8.5+; see [#32](https://github.com/stefangabos/Zebra_Image/issues/32)
+
 ## version 3.0.0 (January 28, 2025)
 
 - added namespace - see [#31](https://github.com/stefangabos/Zebra_Image/issues/31); thanks [Marcus Nyberg](https://github.com/mce1978) for suggesting
