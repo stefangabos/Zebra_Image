@@ -1489,13 +1489,18 @@ class Zebra_Image {
         // and if it founds an unsupported file type
         } elseif (
 
-            ($this->source_type = strtolower(substr($this->source_path, strrpos($this->source_path, '.') + 1))) &&
+            ($this->source_type = strtolower(substr($this->source_path, strrpos($this->source_path, '.') + 1))) && (
 
-            !(version_compare(PHP_VERSION, '7.0.0') < 0 && $this->source_type === 'webp') &&
-            !(version_compare(PHP_VERSION, '7.2.0') < 0 && $this->source_type === 'bmp') &&
+                // WEBP is supported only for PHP 7.0.0+
+                (version_compare(PHP_VERSION, '7.0.0') < 0 && $this->source_type === 'webp') ||
 
-            // getimagesize() doesn't support WEBP until 7.1.0 so we will handle that differently
-            ($this->source_path !== 'webp' && !list($this->source_width, $this->source_height, $this->source_type) = @getimagesize($this->source_path))
+                // BMP is supported only for PHP 7.2.0+
+                (version_compare(PHP_VERSION, '7.2.0') < 0 && $this->source_type === 'bmp') ||
+
+                // getimagesize() doesn't support WEBP until 7.1.0 so we handle that differently
+                (!(version_compare(PHP_VERSION, '7.1.0') < 0 && $this->source_type === 'webp') && !list($this->source_width, $this->source_height, $this->source_type) = @getimagesize($this->source_path))
+
+            )
 
         ) {
 
