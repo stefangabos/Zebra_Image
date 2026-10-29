@@ -69,7 +69,7 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Version:</h4>
 <ul>
-<li>3.0.0 (last revision: January 28, 2025)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
+<li>3.1.0 (last revision: October 29, 2026)<br>See <a href="https://github.com/stefangabos/Zebra_Image//blob/master/CHANGELOG.md" class="projects-homepage">CHANGELOG</a></li>
 </ul>
 <h4>License:</h4>
 <ul>
@@ -77,13 +77,14 @@ I have a few other projects that you might be interested in — <a href="https:/
 </ul>
 <h4>Copyright:</h4>
 <ul>
-<li>© 2006 - 2025 Stefan Gabos</li>
+<li>© 2006 - 2026 Stefan Gabos</li>
 </ul>
 <div id="top" class="doc_toc">
 <div class="left">
 <h3>Properties</h3>
 <ul>
 <li><a href="#var$auto_handle_exif_orientation">$auto_handle_exif_orientation</a></li>
+<li><a href="#var$avif_quality">$avif_quality</a></li>
 <li><a href="#var$bmp_compressed">$bmp_compressed</a></li>
 <li><a href="#var$chmod_value">$chmod_value</a></li>
 <li><a href="#var$enlarge_smaller_images">$enlarge_smaller_images</a></li>
@@ -132,6 +133,20 @@ I have a few other projects that you might be interested in — <a href="https:/
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
+<h4 id="var$avif_quality" class="variable"><span><em>integer</em></span> $avif_quality <span class="value"></span><span class="access public">public</span></h4>
+<div class="doc_block">
+<p>Indicates the quality level of the output image.</p>
+<p><p class="highlight">Used only if PHP version is <code>8.1.0+</code>, GD was compiled with AVIF support, and the file at <a href="../Zebra_Image/Zebra_Image.html#var$target_path">target_path</a>       is an <code>AVIF</code> image, or it will be ignored otherwise.</p><p>Range is <code>0</code> - <code>100</code></p><p>Default is <code>80</code></p>
+<h5>Tags</h5>
+<table>
+<tr>
+<td><strong>since:</strong>&nbsp;&nbsp;</td>
+<td>3.1.0</td>
+</tr>
+</table>
+<a href="#top" class="top">top</a>
+<div class="clear"></div>
+</div>
 <h4 id="var$bmp_compressed" class="variable"><span><em>boolean</em></span> $bmp_compressed <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Indicates whether BMP images should be compressed with run-length encoding (RLE), or not.</p>
@@ -163,7 +178,8 @@ I have a few other projects that you might be interested in — <a href="https:/
 <h4 id="var$error" class="variable"><span><em>integer</em></span> $error <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>In case of an error read this property's value to see the error's code.</p>
-<p>Possible error codes are:</p><p><ul><li><code>1</code> - source file could not be found</li><li><code>2</code> - source file is not readable</li><li><code>3</code> - could not write target file</li><li><code>4</code> - unsupported source file type <em>(note that you will also get this for animated WEBP images!)</em></li><li><code>5</code> - unsupported target file type</li><li><code>6</code> - GD library version does not support target file format</li><li><code>7</code> - GD library is not installed</li><li><code>8</code> - &quot;chmod&quot; command is disabled via configuration</li><li><code>9</code> - &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is <code>0</code> (no error)</p>
+<p>Possible error codes are:</p><p><ul><li><code>1</code> - source file could not be found</li><li><code>2</code> - source file is not readable</li><li><code>3</code> - could not write target file</li><li><code>4</code> - unsupported source file type <em>(note that you will also get this for animated WEBP images, and for AVIF
+images if GD was not compiled with AVIF support!)</em></li><li><code>5</code> - unsupported target file type</li><li><code>6</code> - GD library version does not support target file format</li><li><code>7</code> - GD library is not installed</li><li><code>8</code> - &quot;chmod&quot; command is disabled via configuration</li><li><code>9</code> - &quot;exif_read_data&quot; function is not available</li></ul><p>   Default is <code>0</code> (no error)</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
@@ -240,14 +256,14 @@ I have a few other projects that you might be interested in — <a href="https:/
 <h4 id="var$source_path" class="variable"><span><em>string</em></span> $source_path <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Path to an image file to apply the transformations to.</p>
-<p>Supported file types are <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p>
+<p>Supported file types are <code>AVIF</code>, <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p><p class="highlight"><code>AVIF</code> support is available for PHP version <code>8.1.0+</code> and only if GD was compiled with AVIF support (look for       <code>AVIF Support</code> in the output of <a href="https://www.php.net/manual/en/function.gd-info.php">gd_info()</a>).<br><br>       For animated <code>AVIF</code> images only the first frame is used.</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
 <h4 id="var$target_path" class="variable"><span><em>string</em></span> $target_path <span class="value"></span><span class="access public">public</span></h4>
 <div class="doc_block">
 <p>Path (including file name) to where to save the transformed image.</p>
-<p><p class="highlight">Can be a different format than the file at <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>. The format of the transformed image will be       determined by the file's extension. Supported file types are <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p>
+<p><p class="highlight">Can be a different format than the file at <a href="../Zebra_Image/Zebra_Image.html#var$source_path">source_path</a>. The format of the transformed image will be       determined by the file's extension. Supported file types are <code>AVIF</code>, <code>BMP</code>, <code>GIF</code>, <code>JPEG</code>, <code>PNG</code> and <code>WEBP</code>.</p><p class="highlight"><code>WEBP</code> support is available for PHP version <code>7.0.0+</code>.<br><br>       Note that even though <code>WEBP</code> support was added to PHP in version <code>5.5.0</code>, it only started working with version       <code>5.5.1</code>, while support for transparency was added with version <code>7.0.0</code>. As a result, I decided to make it       available only if PHP version is at least <code>7.0.0</code><br><br>       Animated <code>WEBP</code> images are not currently supported by GD.       See <a href="https://github.com/libgd/libgd/issues/648">here</a> and <a href="https://bugs.php.net/bug.php?id=79809&thanks=4">here</a>.</p><p class="highlight"><code>BMP</code> support is available for PHP version <code>7.2.0+</code></p><p class="highlight"><code>AVIF</code> support is available for PHP version <code>8.1.0+</code> and only if GD was compiled with AVIF support (look for       <code>AVIF Support</code> in the output of <a href="https://www.php.net/manual/en/function.gd-info.php">gd_info()</a>)</p>
 <a href="#top" class="top">top</a>
 <div class="clear"></div>
 </div>
@@ -790,7 +806,7 @@ boolean
 </tr>
 </table>
 <div id="doc_footer">
-Documentation generated on <span>Thu, 17 September 2026</span>
+Documentation generated on <span>Thu, 29 October 2026</span>
 <p class="doc_author">I also build fast, custom-coded one-page websites for small businesses at <a href="https://pagedrop.pro/">PageDrop.pro</a></p>
 </div>
 </div>
