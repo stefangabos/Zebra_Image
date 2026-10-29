@@ -18,8 +18,11 @@ $image = new stefangabos\Zebra_Image\Zebra_Image();
 // (see http://stefangabos.ro/wp-content/docs/Zebra_Image/Zebra_Image/Zebra_Image.html#var$auto_handle_exif_orientation)
 //$auto_handle_exif_orientation = true;
 
+// AVIF images can be used only with PHP 8.1.0+ and if GD was compiled with AVIF support
+$avif_supported = function_exists('imageavif');
+
 // indicate a source image
-$original_image = $image->source_path = 'images/' . (!isset($_GET['original']) || !in_array($_GET['original'], array('image.bmp', 'image-solid.gif', 'image-transparent.gif', 'image.jpg', 'image-solid-png24.png', 'image-solid-png8.png', 'image-transparent-png24.png', 'image-transparent-png8.png', 'image-transparent-webp.webp')) ? 'image-transparent-png24.png' : $_GET['original']);
+$original_image = $image->source_path = 'images/' . (!isset($_GET['original']) || !in_array($_GET['original'], array_merge(array('image.bmp', 'image-solid.gif', 'image-transparent.gif', 'image.jpg', 'image-solid-png24.png', 'image-solid-png8.png', 'image-transparent-png24.png', 'image-transparent-png8.png', 'image-transparent-webp.webp'), $avif_supported ? array('image.avif') : array())) ? 'image-transparent-png24.png' : $_GET['original']);
 
 /**
  *
@@ -149,6 +152,11 @@ function show_error($error_code, $source_path, $target_path) {
                     <li><a href="?original=image-transparent-png8.png">transparent <strong>PNG8</strong></a></li>
                     <li><a href="?original=image-transparent-webp.webp">transparent <strong>WEBP</strong></a></li>
                     <li><a href="?original=image.bmp"><strong>BMP</strong></a> (really slow)</li>
+                    <?php if ($avif_supported): ?>
+                    <li><a href="?original=image.avif"><strong>AVIF</strong></a></li>
+                    <?php else: ?>
+                    <li><strong>AVIF</strong> (not available, requires PHP 8.1+ with GD compiled with AVIF support)</li>
+                    <?php endif; ?>
                 </ul>
                 <small class="text-right display-block"><em>images have background in order to observe transparency</em></small>
             </th>
