@@ -3,6 +3,7 @@
 - added support for AVIF images (requires PHP 8.1.0+ with GD compiled with AVIF support); see [#30](https://github.com/stefangabos/Zebra_Image/issues/30); thanks [Guillem Comes](https://github.com/guillemc) for suggesting
 - fixed deprecation warnings on PHP 8.5+; see [#32](https://github.com/stefangabos/Zebra_Image/issues/32)
 - fixed deprecation warnings on PHP 8.1+ when resizing images with ZEBRA_IMAGE_BOXED
+- fixed WEBP images crashing the script on PHP < 7.0 and being rejected on PHP 7.0
 - fixed notice on PHP < 7.1 when the source image is of an unsupported type
 
 ## version 3.0.0 (January 28, 2025)
