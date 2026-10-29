@@ -1230,8 +1230,8 @@ class Zebra_Image {
                     imagecopyresampled(
                         $target_identifier,
                         $this->source_identifier,
-                        ($width > 0 && $height > 0 && $method !== ZEBRA_IMAGE_NOT_BOXED ? ($width - $target_width) / 2 : 0),
-                        ($width > 0 && $height > 0 && $method !== ZEBRA_IMAGE_NOT_BOXED ? ($height - $target_height) / 2 : 0),
+                        ($width > 0 && $height > 0 && $method !== ZEBRA_IMAGE_NOT_BOXED ? intval(floor(($width - $target_width) / 2)) : 0),
+                        ($width > 0 && $height > 0 && $method !== ZEBRA_IMAGE_NOT_BOXED ? intval(floor(($height - $target_height) / 2)) : 0),
                         0,
                         0,
                         $target_width,
