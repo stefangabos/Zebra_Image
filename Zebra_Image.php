@@ -25,8 +25,8 @@ define('ZEBRA_IMAGE_CROP_BOTTOMRIGHT', 10);
  *  Read more {@link https://github.com/stefangabos/Zebra_Image/ here}
  *
  *  @author     Stefan Gabos <contact@stefangabos.ro>
- *  @version    3.0.0 (last revision: January 28, 2025)
- *  @copyright  © 2006 - 2025 Stefan Gabos
+ *  @version    3.1.0 (last revision: October 29, 2026)
+ *  @copyright  © 2006 - 2026 Stefan Gabos
  *  @license    https://www.gnu.org/licenses/lgpl-3.0.txt GNU LESSER GENERAL PUBLIC LICENSE
  *  @package    Zebra_Image
  */
@@ -2117,12 +2117,11 @@ class Zebra_Image {
         }
 
         // free memory
-        imagedestroy($this->source_identifier);
-        imagedestroy($identifier);
-
-        // for PHP 8.0.0+ imagedestroy is no-op (https://php.watch/versions/8.0/gdimage)
-        // and we have to use unset()
-        if (version_compare(PHP_VERSION, '8.0.0', '>=')) {
+        // imagedestroy() is a no-op for PHP 8.0.0+ (https://php.watch/versions/8.0/gdimage) and deprecated for PHP 8.5.0+, so for those versions unset() is used
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            imagedestroy($this->source_identifier);
+            imagedestroy($identifier);
+        } else {
             unset($this->source_identifier);
             unset($identifier);
         }
