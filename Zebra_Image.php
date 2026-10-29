@@ -50,6 +50,22 @@ class Zebra_Image {
     public $auto_handle_exif_orientation;
 
     /**
+     *  Indicates the quality level of the output image.
+     *
+     *  >   Used only if PHP version is `8.1.0+`, GD was compiled with AVIF support, and the file at {@link target_path}
+     *      is an `AVIF` image, or it will be ignored otherwise.
+     *
+     *  Range is `0` - `100`
+     *
+     *  Default is `80`
+     *
+     *  @since 3.1.0
+     *
+     *  @var integer
+     */
+    public $avif_quality;
+
+    /**
      *  Indicates whether BMP images should be compressed with run-length encoding (RLE), or not.
      *
      *  >   Used only if PHP version is `7.2.0+` and the file at {@link target_path} is a `BMP` image, or it will be
@@ -106,7 +122,8 @@ class Zebra_Image {
      *  - `1` - source file could not be found
      *  - `2` - source file is not readable
      *  - `3` - could not write target file
-     *  - `4` - unsupported source file type *(note that you will also get this for animated WEBP images!)*
+     *  - `4` - unsupported source file type *(note that you will also get this for animated WEBP images, and for AVIF
+     *          images if GD was not compiled with AVIF support!)*
      *  - `5` - unsupported target file type
      *  - `6` - GD library version does not support target file format
      *  - `7` - GD library is not installed
@@ -202,7 +219,7 @@ class Zebra_Image {
     /**
      *  Path to an image file to apply the transformations to.
      *
-     *  Supported file types are `BMP`, `GIF`, `JPEG`, `PNG` and `WEBP`.
+     *  Supported file types are `AVIF`, `BMP`, `GIF`, `JPEG`, `PNG` and `WEBP`.
      *
      *  >   `WEBP` support is available for PHP version `7.0.0+`.<br><br>
      *      Note that even though `WEBP` support was added to PHP in version `5.5.0`, it only started working with version
@@ -212,6 +229,10 @@ class Zebra_Image {
      *      See {@link https://github.com/libgd/libgd/issues/648 here} and {@link https://bugs.php.net/bug.php?id=79809&thanks=4 here}.
      *
      *  >   `BMP` support is available for PHP version `7.2.0+`
+     *
+     *  >   `AVIF` support is available for PHP version `8.1.0+` and only if GD was compiled with AVIF support (look for
+     *      `AVIF Support` in the output of {@link https://www.php.net/manual/en/function.gd-info.php gd_info()}).<br><br>
+     *      For animated `AVIF` images only the first frame is used.
      *
      *  @var    string
      */
@@ -221,7 +242,7 @@ class Zebra_Image {
      *  Path (including file name) to where to save the transformed image.
      *
      *  >   Can be a different format than the file at {@link source_path}. The format of the transformed image will be
-     *      determined by the file's extension. Supported file types are `BMP`, `GIF`, `JPEG`, `PNG` and `WEBP`.
+     *      determined by the file's extension. Supported file types are `AVIF`, `BMP`, `GIF`, `JPEG`, `PNG` and `WEBP`.
      *
      *  >   `WEBP` support is available for PHP version `7.0.0+`.<br><br>
      *      Note that even though `WEBP` support was added to PHP in version `5.5.0`, it only started working with version
@@ -231,6 +252,9 @@ class Zebra_Image {
      *      See {@link https://github.com/libgd/libgd/issues/648 here} and {@link https://bugs.php.net/bug.php?id=79809&thanks=4 here}.
      *
      *  >   `BMP` support is available for PHP version `7.2.0+`
+     *
+     *  >   `AVIF` support is available for PHP version `8.1.0+` and only if GD was compiled with AVIF support (look for
+     *      `AVIF Support` in the output of {@link https://www.php.net/manual/en/function.gd-info.php gd_info()})
      *
      *  @var    string
      */
@@ -306,6 +330,8 @@ class Zebra_Image {
     public function __construct() {
 
         // set default values for properties
+        $this->avif_quality = 80;
+
         $this->chmod_value = 0755;
 
         $this->error = 0;
@@ -1329,8 +1355,8 @@ class Zebra_Image {
             // if the uncovered zone after the rotation is to be transparent
             if ($background_color == -1) {
 
-                // if target image is a PNG or an WEBP
-                if ($this->target_type === 'png' || $this->target_type === 'webp') {
+                // if target image is a PNG, a WEBP or an AVIF
+                if ($this->target_type === 'png' || $this->target_type === 'webp' || $this->target_type === 'avif') {
 
                     // allocate a transparent color
                     $background_color = imagecolorallocatealpha($this->source_identifier, 0, 0, 0, 127);
@@ -1506,9 +1532,42 @@ class Zebra_Image {
 
             }
 
+            // define this constant which is not available until PHP 8.1.0
+            if (!defined('IMAGETYPE_AVIF')) {
+                define('IMAGETYPE_AVIF', 19);
+            }
+
             // create an image from file using extension dependant function
             // checks for file extension
             switch ($this->source_type) {
+
+                // if AVIF
+                case IMAGETYPE_AVIF:
+
+                    // if GD was not compiled with AVIF support
+                    if (!function_exists('imagecreatefromavif')) {
+
+                        // flag as unsupported file type
+                        $this->error = 4;
+
+                        return false;
+
+                    }
+
+                    // create an image from file
+                    $identifier = imagecreatefromavif($this->source_path);
+
+                    // getimagesize() reports AVIF images as 0x0 for PHP versions lower than 8.2.0
+                    $this->source_width = imagesx($identifier);
+                    $this->source_height = imagesy($identifier);
+
+                    // disable blending
+                    imagealphablending($identifier, false);
+
+                    // save full alpha channel information
+                    imagesavealpha($identifier, true);
+
+                    break;
 
                 // if BMP
                 case IMAGETYPE_BMP:
@@ -1631,7 +1690,7 @@ class Zebra_Image {
                 default:
 
                     // if unsupported file type
-                    // note that we call this if the file is not BMP, GIF, JPG, PNG or WEBP even though the getimagesize function
+                    // note that we call this if the file is not AVIF, BMP, GIF, JPG, PNG or WEBP even though the getimagesize function
                     // might handle more image types
                     $this->error = 4;
 
@@ -1965,6 +2024,29 @@ class Zebra_Image {
 
         // image saving process goes according to required extension
         switch ($this->target_type) {
+
+            // if AVIF
+            case 'avif':
+
+                // if GD support for this file type is not available
+                if (!function_exists('imageavif')) {
+
+                    // save the error level and stop the execution of the script
+                    $this->error = 6;
+
+                    return false;
+
+                // if, for some reason, file could not be created
+                } elseif (@!imageavif($identifier, $this->target_path, $this->avif_quality)) {
+
+                    // save the error level and stop the execution of the script
+                    $this->error = 3;
+
+                    return false;
+
+                }
+
+                break;
 
             // if BMP
             case 'bmp':
